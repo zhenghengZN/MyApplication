@@ -44,12 +44,12 @@ public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> 
         holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + taobaoContentBean.getDiscountPrice());
 
         CouponsItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115)), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115), (ImageView) holder.getView(R.id.product_img));
-        doDrther(holder, mDatasList.get(position), position);
+        doOrther(holder, mDatasList.get(position), position);
         holder.itemView.setTag(position);
     }
 
 
-    public abstract void doDrther(RecyclerViewHolder viewHolder, T item, int position);
+    public abstract void doOrther(RecyclerViewHolder viewHolder, T item, int position);
 
     public static void displayImageByResizeasBitmap(Context context, String url, int targetWidth, int targetHeight, ImageView targetView) {
 

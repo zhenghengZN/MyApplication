@@ -8,5 +8,7 @@
     <color name="color_b2b2b2">#b2b2b2</color>
     <color name="color_686868">#686868</color>
     <color name="color_ef5050">#ef5050</color>
+    <color name="color_select_bg">#F2F2F2</color>
+    <color name="color_add_appointment_list_no">#999999</color>
 
 </resources>
