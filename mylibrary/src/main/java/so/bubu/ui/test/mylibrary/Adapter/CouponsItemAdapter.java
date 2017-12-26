@@ -3,6 +3,9 @@ package so.bubu.ui.test.mylibrary.Adapter;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,8 +41,24 @@ public class CouponsItemAdapter<T> extends ComRecyclerViewAdapter {
         holder.setImageResource(R.id.taobao_platform, R.drawable.taobao_logo_30);
         holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + taobaoContentBean.getDiscountPrice());
 
-        CouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115)), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115), (ImageView) holder.getView(R.id.product_img));
+        CouponsItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115)), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115), (ImageView) holder.getView(R.id.product_img));
         holder.itemView.setTag(position);
+    }
+
+    public static void displayImageByResizeasBitmap(Context context, String url, int targetWidth, int targetHeight, ImageView targetView) {
+
+        Glide
+                .with(context)
+                .load(R.drawable.bindtaobao)
+//                .crossFade()
+                .asBitmap()
+                .placeholder(R.drawable.imagebackground)
+                .error(R.drawable.imagebackground)
+                .override(targetWidth, targetHeight)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .centerCrop()
+//                .animate(animationObject)
+                .into(targetView);
     }
 
 }
