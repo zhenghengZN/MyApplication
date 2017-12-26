@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_e2e2e2">#e2e2e2</color>
+    <color name="color_ff6f06">#ec2050</color>
+    <color name="color_ff5000">#f50449</color>
+    <color name="colorPrimary">#ec2050</color>
+    <color name="color_b2b2b2">#b2b2b2</color>
+    <color name="color_686868">#686868</color>
+    <color name="color_ef5050">#ef5050</color>
+
+</resources>
