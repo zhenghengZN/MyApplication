@@ -3,11 +3,25 @@ package so.bubu.ui.test.mylibrary.bean;
 import java.util.List;
 
 /**
- * Created by zhengheng on 17/12/25.
+ * Created by zhengheng on 17/12/7.
  */
 public class MineBean {
 
+    /**
+     * type : LoginCell
+     * objects : [{"title":"快速登录","iconFontCode":"0xe77c;","picUrl":"http://ac-egDFgpKJ.clouddn.com/c7a93b81213187e02d9a.jpg","url":"/redirectAction?action=SignUpOrLoginWithMobilePhone"}]
+     */
+
+    private String type;
     private List<ObjectsBean> objects;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public List<ObjectsBean> getObjects() {
         return objects;
@@ -19,10 +33,10 @@ public class MineBean {
 
     public static class ObjectsBean {
         /**
-         * title : 绑定淘宝
-         * iconFontCode : 0xe67c
+         * title : 快速登录
+         * iconFontCode : 0xe77c;
          * picUrl : http://ac-egDFgpKJ.clouddn.com/c7a93b81213187e02d9a.jpg
-         * url : /redirectAction?action=TaobaoLogin
+         * url : /redirectAction?action=SignUpOrLoginWithMobilePhone
          */
 
         private String title;

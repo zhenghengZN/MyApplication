@@ -14,13 +14,13 @@ import Utils.ResourceUtil;
 import common.ComRecyclerViewAdapter;
 import common.RecyclerViewHolder;
 import so.bubu.ui.test.mylibrary.R;
-import so.bubu.ui.test.mylibrary.bean.CouponItemBean;
+import so.bubu.ui.test.mylibrary.bean.CouponsItemBean;
 
 
 /**
  * Created by zhengheng on 17/12/25.
  */
-public abstract class CouponsItemAdapter<T extends CouponItemBean.ObjectsBean> extends ComRecyclerViewAdapter {
+public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> extends ComRecyclerViewAdapter {
 
     private LinkedList<T> mDatasList = new LinkedList();
 
