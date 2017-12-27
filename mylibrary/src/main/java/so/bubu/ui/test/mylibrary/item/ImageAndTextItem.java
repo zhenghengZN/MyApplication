@@ -32,27 +32,27 @@ public class ImageAndTextItem {
     }
 
     public ImageView getLeftImageView() {
-        ImageView imageView = view.findViewById(R.id.left_icon);
+        ImageView imageView = (ImageView) view.findViewById(R.id.left_icon);
         return imageView;
     }
 
     public ImageView getRightImageView(){
-        ImageView imageView = view.findViewById(R.id.right_icon);
+        ImageView imageView = (ImageView) view.findViewById(R.id.right_icon);
         return imageView;
     }
 
     public TextView getTitleTextView(){
-        TextView textView = view.findViewById(R.id.tv_name);
+        TextView textView = (TextView) view.findViewById(R.id.tv_name);
         return textView;
     }
 
     public TextView getSubTitleTextView(){
-        TextView textView = view.findViewById(R.id.tv_detail);
+        TextView textView = (TextView) view.findViewById(R.id.tv_detail);
         return textView;
     }
 
     public TextView getDraftNum(){
-        TextView textView = view.findViewById(R.id.tv_draft_num);
+        TextView textView = (TextView) view.findViewById(R.id.tv_draft_num);
         return textView;
     }
 

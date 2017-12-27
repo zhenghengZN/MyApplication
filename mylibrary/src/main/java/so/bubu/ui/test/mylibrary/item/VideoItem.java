@@ -27,17 +27,17 @@ public class VideoItem {
     }
 
     public FrameLayout getImgLayout() {
-        FrameLayout layoutview = view.findViewById(R.id.fl_img);
+        FrameLayout layoutview = (FrameLayout) view.findViewById(R.id.fl_img);
         return layoutview;
     }
 
     public ImageView getHotImg() {
-        ImageView imageview = view.findViewById(R.id.iv_hot);
+        ImageView imageview = (ImageView) view.findViewById(R.id.iv_hot);
         return imageview;
     }
 
     public ImageView getIvNoImg() {
-        ImageView imageview = view.findViewById(R.id.iv_no_img);
+        ImageView imageview = (ImageView) view.findViewById(R.id.iv_no_img);
         return imageview;
     }
 
@@ -48,12 +48,12 @@ public class VideoItem {
     }
 
     public ImageView getPlayImg() {
-        ImageView img = view.findViewById(R.id.video_play);
+        ImageView img = (ImageView) view.findViewById(R.id.video_play);
         return img;
     }
 
     public TextView getVideoTitle() {
-        TextView text = view.findViewById(R.id.video_title);
+        TextView text = (TextView) view.findViewById(R.id.video_title);
         return text;
     }
 

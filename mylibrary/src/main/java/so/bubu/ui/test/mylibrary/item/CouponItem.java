@@ -32,42 +32,42 @@ public class CouponItem {
     }
 
     public ImageView getProImage(){
-        ImageView imageview = view.findViewById(R.id.product_img);
+        ImageView imageview = (ImageView) view.findViewById(R.id.product_img);
         return imageview;
     }
 
     public TextView getProDesc(){
-        TextView textview = view.findViewById(R.id.taobao_pro_desc);
+        TextView textview = (TextView) view.findViewById(R.id.taobao_pro_desc);
         return textview;
     }
 
     public ImageView getPlatformImage(){
-        ImageView imageview = view.findViewById(R.id.taobao_platform);
+        ImageView imageview = (ImageView) view.findViewById(R.id.taobao_platform);
         return imageview;
     }
 
     public TextView getDiscountPrice(){
-        TextView textview = view.findViewById(R.id.taobao_discountPrice);
+        TextView textview = (TextView) view.findViewById(R.id.taobao_discountPrice);
         return textview;
     }
 
     public TextView getDiz30Day(){
-        TextView textview = view.findViewById(R.id.biz30Day);
+        TextView textview = (TextView) view.findViewById(R.id.biz30Day);
         return textview;
     }
 
     public TextView getMuch(){
-        TextView textview = view.findViewById(R.id.taobao_much);
+        TextView textview = (TextView) view.findViewById(R.id.taobao_much);
         return textview;
     }
 
     public TextView getFinalPrice(){
-        TextView textview = view.findViewById(R.id.taobao_finalPrice);
+        TextView textview = (TextView) view.findViewById(R.id.taobao_finalPrice);
         return textview;
     }
 
     public TextView getCouponAmount(){
-        TextView textview = view.findViewById(R.id.couponAmount);
+        TextView textview = (TextView) view.findViewById(R.id.couponAmount);
         return textview;
     }
 

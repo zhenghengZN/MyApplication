@@ -26,17 +26,17 @@ public class HotItemView {
     }
 
     public FrameLayout getImageFrameLayout(){
-        FrameLayout view = this.view.findViewById(R.id.fl_img);
+        FrameLayout view = (FrameLayout) this.view.findViewById(R.id.fl_img);
         return view;
     }
 
     public ImageView getHotImg(){
-        ImageView imageview = view.findViewById(R.id.iv_hot);
+        ImageView imageview = (ImageView) view.findViewById(R.id.iv_hot);
         return imageview;
     }
 
     public ImageView getIvNoImg(){
-        ImageView imageview = view.findViewById(R.id.iv_no_img);
+        ImageView imageview = (ImageView) view.findViewById(R.id.iv_no_img);
         return imageview;
     }
 
@@ -46,12 +46,12 @@ public class HotItemView {
     }
 
     public TextView getTitleTextView(){
-        TextView textview = view.findViewById(R.id.tv_name_cn);
+        TextView textview = (TextView) view.findViewById(R.id.tv_name_cn);
         return textview;
     }
 
     public TextView getSubTitleTextView(){
-        TextView textview = view.findViewById(R.id.tv_name_desc);
+        TextView textview = (TextView) view.findViewById(R.id.tv_name_desc);
         return textview;
     }
 
