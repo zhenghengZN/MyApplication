@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kevin.wraprecyclerview.BaseRecyclerAdapter;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,7 +16,8 @@ import java.util.List;
  *
  * Created by wangwn on 2016/4/8.
  */
-public abstract class ComRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
+//public abstract class ComRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
+public abstract  class ComRecyclerViewAdapter<T> extends BaseRecyclerAdapter<T,RecyclerViewHolder> {
     protected final int mItemLayoutId;
     protected LayoutInflater mInflater;
     protected Context mContext;
@@ -25,7 +29,8 @@ public abstract class ComRecyclerViewAdapter<T> extends RecyclerView.Adapter<Rec
     }
 
 
-    public ComRecyclerViewAdapter(Context context, List<T> mDatas, int itemLayoutId) {
+    public ComRecyclerViewAdapter(Context context, LinkedList<T> mDatas, int itemLayoutId) {
+        super(context, mDatas);
         this.mInflater = LayoutInflater.from(context);
         this.mContext = context;
         this.list = mDatas;
@@ -71,13 +76,13 @@ public abstract class ComRecyclerViewAdapter<T> extends RecyclerView.Adapter<Rec
 
     public abstract void convert(RecyclerViewHolder viewHolder, T item,int position);
 
-    @Override
-    public int getItemCount() {
-        if(list != null){
-            return list.size();
-        }
-        return 0;
-    }
+//    @Override
+//    public int getItemCount() {
+//        if(list != null){
+//            return list.size();
+//        }
+//        return 0;
+//    }
 
     public interface OnItemClickLitener<T>
     {

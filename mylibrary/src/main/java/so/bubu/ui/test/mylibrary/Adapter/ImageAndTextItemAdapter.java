@@ -15,7 +15,7 @@ import so.bubu.ui.test.mylibrary.bean.MineBean;
  */
 public  abstract class ImageAndTextItemAdapter <T extends MineBean.ObjectsBean> extends ComRecyclerViewAdapter{
     private LinkedList<T> mDataList = new LinkedList<>();
-    public ImageAndTextItemAdapter(Context context, List mDatas, int itemLayoutId) {
+    public ImageAndTextItemAdapter(Context context, LinkedList mDatas, int itemLayoutId) {
         super(context, mDatas, R.layout.mine_cell);
         mDataList.addAll(mDatas);
     }

@@ -24,7 +24,7 @@ public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> 
 
     private LinkedList<T> mDatasList = new LinkedList();
 
-    public CouponsItemAdapter(Context context, List<T> mDatas) {
+    public CouponsItemAdapter(Context context, LinkedList<T> mDatas) {
         super(context, mDatas, R.layout.taobao_item);
         mDatasList.addAll(mDatas);
     }
