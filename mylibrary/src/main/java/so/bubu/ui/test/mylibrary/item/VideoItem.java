@@ -22,6 +22,10 @@ public class VideoItem {
         view = LayoutInflater.from(context).inflate(R.layout.video_item, null, false);
     }
 
+    public View getItemView(){
+        return view;
+    }
+
     public FrameLayout getImgLayout() {
         FrameLayout layoutview = view.findViewById(R.id.fl_img);
         return layoutview;
