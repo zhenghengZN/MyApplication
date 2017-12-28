@@ -55,7 +55,7 @@ public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> 
 
         Glide
                 .with(context)
-                .load(R.drawable.bindtaobao)
+                .load(url)
 //                .crossFade()
                 .asBitmap()
                 .placeholder(R.drawable.imagebackground)
