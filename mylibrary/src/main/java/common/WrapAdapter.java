@@ -3,6 +3,7 @@ package common;
 /**
  * Created by zhengheng on 17/12/28.
  */
+
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * description:用于recyclerview添加headview和footerview
+ */
 @SuppressWarnings("rawtypes")
 public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -31,17 +35,20 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
      * or a footer at the bottom.
      */
     public class FixedViewInfo {
-        /** The view to add to the list */
+        /**
+         * The view to add to the list
+         */
         public View view;
-        /** The data backing the view. This is returned from {RecyclerView.Adapter#getItemViewType(int)}. */
+        /**
+         * The data backing the view. This is returned from {RecyclerView.Adapter#getItemViewType(int)}.
+         */
         public int viewType;
     }
 
     /**
      * Constructor.
      *
-     * @param adapter
-     * 		the adapter to wrap
+     * @param adapter the adapter to wrap
      */
     public WrapAdapter(T adapter) {
         super();
@@ -86,8 +93,8 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
         info.view = view;
         info.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size();
         mFooterViewInfos.add(info);
-        if(reverse) {
-            for(int i = 0; i < mFooterViewInfos.size(); i++) {
+        if (reverse) {
+            for (int i = 0; i < mFooterViewInfos.size(); i++) {
                 FixedViewInfo fixedViewInfo = mFooterViewInfos.get(i);
                 fixedViewInfo.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size() - i - 1;
             }
@@ -139,7 +146,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
      * @version 1.0
      */
     public void adjustSpanSize(RecyclerView recycler) {
-        if(recycler.getLayoutManager() instanceof GridLayoutManager) {
+        if (recycler.getLayoutManager() instanceof GridLayoutManager) {
             final GridLayoutManager layoutManager = (GridLayoutManager) recycler.getLayoutManager();
             layoutManager.setSpanSizeLookup(new SpanSizeLookup() {
 
@@ -153,7 +160,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
             });
         }
 
-        if(recycler.getLayoutManager() instanceof StaggeredGridLayoutManager) {
+        if (recycler.getLayoutManager() instanceof StaggeredGridLayoutManager) {
             this.isStaggeredGrid = true;
         }
     }
@@ -284,11 +291,11 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
         }
     }
 
-    public void clearHeaderView(){
+    public void clearHeaderView() {
         mHeaderViewInfos.clear();
     }
 
-    public void clearFooterView(){
+    public void clearFooterView() {
         mFooterViewInfos.clear();
     }
 }
