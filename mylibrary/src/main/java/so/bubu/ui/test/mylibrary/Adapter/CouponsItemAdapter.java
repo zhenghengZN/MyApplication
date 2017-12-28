@@ -22,11 +22,11 @@ import so.bubu.ui.test.mylibrary.bean.CouponsItemBean;
  */
 public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> extends ComRecyclerViewAdapter {
 
-    private LinkedList<T> mDatasList = new LinkedList();
+    private LinkedList<T> mDatasList;
 
     public CouponsItemAdapter(Context context, LinkedList<T> mDatas) {
         super(context, mDatas, R.layout.taobao_item);
-        mDatasList.addAll(mDatas);
+        mDatasList = mDatas;
     }
 
     @Override
