@@ -3,10 +3,9 @@ package so.bubu.ui.test.mylibrary.Adapter;
 import android.content.Context;
 
 import java.util.LinkedList;
-import java.util.List;
 
-import common.ComRecyclerViewAdapter;
-import common.RecyclerViewHolder;
+import so.bubu.ui.test.mylibrary.Adapter.common.ComRecyclerViewAdapter;
+import so.bubu.ui.test.mylibrary.Adapter.common.RecyclerViewHolder;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.bean.MineBean;
 

@@ -44,6 +44,16 @@ public class MineBean {
         private String picUrl;
         private String url;
 
+        public String getDetail() {
+            return detail;
+        }
+
+        public void setDetail(String detail) {
+            this.detail = detail;
+        }
+
+        private String detail;
+
         public String getTitle() {
             return title;
         }

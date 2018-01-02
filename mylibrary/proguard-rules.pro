@@ -39,3 +39,7 @@
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
+
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** { *;}
+-keep interface com.squareup.okhttp.** { *; }

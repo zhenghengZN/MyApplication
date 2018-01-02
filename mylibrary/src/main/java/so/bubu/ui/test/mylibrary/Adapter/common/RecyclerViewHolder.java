@@ -1,4 +1,4 @@
-package common;
+package so.bubu.ui.test.mylibrary.Adapter.common;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;

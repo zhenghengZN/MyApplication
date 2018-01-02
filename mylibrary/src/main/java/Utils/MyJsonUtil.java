@@ -21,7 +21,7 @@ public class MyJsonUtil {
                     am.open(fileName)));
             String next = "";
             while (null != (next = br.readLine())) {
-                sb.append(next);
+                sb.append(next.trim());
             }
         } catch (IOException e) {
             e.printStackTrace();

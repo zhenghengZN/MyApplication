@@ -1,4 +1,4 @@
-package common;
+package so.bubu.ui.test.mylibrary.Adapter.common;
 
 /**
  * Created by zhengheng on 17/12/28.

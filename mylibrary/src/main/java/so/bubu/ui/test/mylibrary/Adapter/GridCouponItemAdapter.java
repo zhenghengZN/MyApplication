@@ -12,8 +12,8 @@ import java.util.LinkedList;
 
 import Utils.CommonMethod;
 import Utils.ResourceUtil;
-import common.ComRecyclerViewAdapter;
-import common.RecyclerViewHolder;
+import so.bubu.ui.test.mylibrary.Adapter.common.ComRecyclerViewAdapter;
+import so.bubu.ui.test.mylibrary.Adapter.common.RecyclerViewHolder;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.bean.CouponsItemBean;
 
@@ -39,7 +39,7 @@ public abstract class GridCouponItemAdapter<T extends CouponsItemBean.ObjectsBea
         holder.setText(R.id.taobao_finalPrice, taobaoContentBean.getFinalPrice() + " ");
 
         ViewGroup.LayoutParams layoutParams = holder.getView(R.id.rl_content).getLayoutParams();
-        layoutParams.width = mGridWidth;
+//        layoutParams.width = mGridWidth;
         layoutParams.height = mGridWidth + ResourceUtil.Dp2Px(110);
         holder.getView(R.id.rl_content).setLayoutParams(layoutParams);
         holder.setText(R.id.biz30Day, "月销:" + taobaoContentBean.getBiz30Day());

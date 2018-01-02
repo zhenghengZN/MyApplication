@@ -27,5 +27,7 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:1.2.1'
     compile 'com.android.support:cardview-v7:23.+'
     compile 'com.kevin:wraprecyclerview:1.0.6'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:multidex:1.0.1'
 
 }
