@@ -34,5 +34,6 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(MainActivity.this,"test",Toast.LENGTH_SHORT).show();
             }
         });
+        setBackClick();
     }
 }

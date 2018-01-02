@@ -10,8 +10,8 @@ import java.util.List;
 public class CouponsItemBean {
 
 
-    public static String[] CouponsItemKeys = {"picUrl", "title", "platform", "discountPrice", "biz30Day",
-            "finalPrice", "couponAmount", "couponShareUrl"};
+//    public static String[] CouponsItemKeys = {"picUrl", "title", "platform", "discountPrice", "biz30Day",
+//            "finalPrice", "couponAmount", "couponShareUrl"};
     /**
      * hasMore : true
      * objects : [{"category":"女装/女士精品","commision":2.7,"couponAmount":3,"couponEffectiveEndTime":"2017-12-31T15:59:59.000Z","couponRemain":89232,"couponShareUrl":"https://uland.taobao.com/coupon/edetail?e=yD4sdwtky8QN2BoQUE6FNzGPHTcqQ4ufIGZPSe9jdjR088L0dUrFHspPccAg7n0MpdNaR4WuSGicDadKY%2FDznrRpywujSvOp2nUIklpPPqYK4tl%2FBGQdTIlca75LhnUVze8N6wK7LDDioUGkcP0mO0vhb%2B5EG2EF1&pid=mm_119950409_20916506_70766512&af=1&tj1=1&tj2=1","couponTotal":99999,"discountPrice":49,"finalPrice":46,"id":"59f7ec8967f356006408179e","isFeatured":true,"picUrl":"http://img.alicdn.com/bao/uploaded/i4/2934924135/TB15quSljuhSKJjSspdXXc11XXa_!!0-item_pic.jpg_360x360","platform":"天猫","title":"加厚毛呢九分阔腿裤"},{"category":"服饰配件/皮带/帽子/围巾","commision":1.2,"couponAmount":30,"couponEffectiveEndTime":"2017-11-02T15:59:59.000Z","couponRemain":5000,"couponShareUrl":"https://uland.taobao.com/coupon/edetail?e=AXJVjXFdUiQN%2BoQUE6FNzGPHTcqQ4ufIGZPSe9jdjR088L0dUrFHspPccAg7n0Mpy7btAWKTsewjXUYC%2FVfP0hpywujSvOp2nUIklpPPqYJLckVDLRNFUdYi6G2BR2FerK0xctS2FQwnxBqfkr6k6wyAppCrdon5nhS&pid=mm_119950409_20916506_70766512&af=1&tj1=1&tj2=1","couponTotal":5000,"discountPrice":59.9,"finalPrice":29.9,"id":"59f7ec8917d0090062390f87","isFeatured":true,"picUrl":"http://img.alicdn.com/bao/uploaded/i2/1014983020/TB1EycCgBUSMeJjy1zkXXaWmpXa_!!0-item_pic.jpg_360x360","platform":"天猫","title":"冬季男士加厚针织围巾 礼盒装"}]
