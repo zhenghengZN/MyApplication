@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/common_activity_menu" android:id="@+id/title"></include>
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/test"/>
 </RelativeLayout>
