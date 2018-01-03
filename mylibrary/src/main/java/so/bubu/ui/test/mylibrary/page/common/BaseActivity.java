@@ -5,7 +5,9 @@ import android.support.annotation.LayoutRes;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import so.bubu.ui.test.mylibrary.R;
 
@@ -24,10 +26,6 @@ public abstract class BaseActivity extends BaseCompatActivity {
         doInCreateView();
     }
 
-//    public View addBaseContenetView(int layoutResID) {
-//      return  LayoutInflater.from(this).inflate(layoutResID, null);
-//    }
-
     public abstract View addBaseContenetView();
 
 
@@ -37,12 +35,33 @@ public abstract class BaseActivity extends BaseCompatActivity {
      * 设置后退按钮
      */
     public void setBackClick() {
-        findViewById(R.id.tv_back).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fl_back).setVisibility(View.VISIBLE);
+        findViewById(R.id.fl_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doBack(-1, null);
             }
         });
+    }
+
+    /**
+     * 设置后退图标
+     */
+    public ImageView setBackImage(int ResId) {
+        ImageView view = (ImageView) findViewById(R.id.tv_back);
+        findViewById(R.id.fl_back).setVisibility(View.VISIBLE);
+        view.setImageResource(ResId);
+        return view;
+    }
+
+    /**
+     * 设置标题
+     */
+    public TextView setTitleView(String title) {
+        TextView view = (TextView) findViewById(R.id.tv_title);
+        view.setText(title);
+        view.setVisibility(View.VISIBLE);
+        return view;
     }
 
 }
