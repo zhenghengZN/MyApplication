@@ -59,10 +59,12 @@ public class StrokeButton extends Button{
 
     public GradientDrawable setShape(int color){
         GradientDrawable gd = new GradientDrawable();//创建drawable
-        gd.setColor(color);
-        gd.setCornerRadius(ResourceUtil.Dp2Px(22f));
-//        gd.setGradientType(GradientDrawable.RECTANGLE);
+        gd.setStroke(ResourceUtil.Dp2Px(1f), color);
+        gd.setCornerRadius(ResourceUtil.Dp2Px(50f));
+        gd.setGradientType(GradientDrawable.RECTANGLE);
         return gd;
     }
+
+
 
 }

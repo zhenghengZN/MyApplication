@@ -37,9 +37,9 @@
         <item name="android:textAllCaps">false</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/baseApp_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/baseApp_colorPrimaryDark</item>
+        <item name="colorAccent">@color/baseApp_colorAccent</item>
     </style>
 
 
