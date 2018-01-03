@@ -36,4 +36,12 @@ public class MainActivity extends BaseActivity {
         });
         setBackClick();
     }
+
+    public void solidbtn(View view){
+        Toast.makeText(this,"SolidButton",Toast.LENGTH_SHORT).show();
+    }
+
+    public void strokebtn(View view){
+        Toast.makeText(this,"StrokeButton",Toast.LENGTH_SHORT).show();
+    }
 }

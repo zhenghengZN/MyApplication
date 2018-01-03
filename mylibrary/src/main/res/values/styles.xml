@@ -48,4 +48,15 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="buttonStart">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:textColor">@color/color_82cd6b</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
