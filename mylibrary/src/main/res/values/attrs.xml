@@ -20,16 +20,18 @@
     <attr name="ActionBarCustomViewNavigationup" format="reference"></attr>
 
     <declare-styleable name="SolidButton">
-        <attr name="solid_press_true_drawable" format="reference"/>
-        <attr name="solid_press_false_drawable" format="reference"/>
-        <attr name="solid_press_true_color" format="color"/>
-        <attr name="solid_press_false_color" format="color"/>
+        <attr name="solid_radius" format="dimension"/>
+        <attr name="solid_bg_normal_color" format="color"/>
+        <attr name="solid_bg_pressed_color" format="color"/>
+        <attr name="solid_text_normal_color" format="color"/>
+        <attr name="solid_text_pressed_color" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="StrokeButton">
-        <attr name="stroke_press_true_drawable" format="reference"/>
-        <attr name="stroke_press_false_drawable" format="reference"/>
-        <attr name="stroke_press_true_color" format="color"/>
-        <attr name="stroke_press_false_color" format="color"/>
+        <attr name="stroke_radius" format="dimension"/>
+        <attr name="stroke_bg_normal_color" format="color"/>
+        <attr name="stroke_bg_pressed_color" format="color"/>
+        <attr name="stroke_text_normal_color" format="color"/>
+        <attr name="stroke_text_pressed_color" format="color"/>
     </declare-styleable>
 </resources>
