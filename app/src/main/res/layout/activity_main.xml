@@ -28,7 +28,7 @@
         android:onClick="strokebtn"
         android:text="test2"
         app:stroke_radius="50dp"
-        app:stroke_width="4dp"
+        app:stroke_width="1dp"
         app:stroke_bg_normal_color="@color/color_82cd6b"
         app:stroke_text_normal_color="@android:color/black"
         app:stroke_bg_pressed_color="@color/color_82cd6b"

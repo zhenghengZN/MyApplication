@@ -40,12 +40,12 @@ public class StrokeButton extends Button {
     public StrokeButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StrokeButton);
-        mRadius = (int) ta.getDimension(R.styleable.StrokeButton_stroke_radius, 0);
+        mRadius = (int) ta.getDimension(R.styleable.StrokeButton_stroke_radius, ResourceUtil.Dp2Px(50));
         mBgNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_normal_color, getResources().getColor(R.color.color_82cd6b));
         mBgPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mTextNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_text_normal_color, getResources().getColor(R.color.color_82cd6b));
         mTextPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_text_pressed_color, getResources().getColor(R.color.color_82cd6b));
-        mStrokeWidth = (int) ta.getDimension(R.styleable.StrokeButton_stroke_width, 1);
+        mStrokeWidth = (int) ta.getDimension(R.styleable.StrokeButton_stroke_width, ResourceUtil.Dp2Px(1));
         ta.recycle();
         initUI();
     }
@@ -81,7 +81,7 @@ public class StrokeButton extends Button {
         RoundRectShape rectShape = new RoundRectShape(outRectr, null, null);
         //创建drawable
         GradientDrawable pressedDrawable = new GradientDrawable();
-        pressedDrawable.setStroke(ResourceUtil.Dp2Px(mStrokeWidth), mBgPressedColor);
+        pressedDrawable.setStroke(mStrokeWidth, mBgPressedColor);
         pressedDrawable.setCornerRadii(outRectr);
 //        ShapeDrawable pressedDrawable = new ShapeDrawable(rectShape);
         //设置我们按钮背景的颜色
@@ -98,7 +98,7 @@ public class StrokeButton extends Button {
 //        ShapeDrawable normalDrawable = new ShapeDrawable(rectShape);
 //        normalDrawable.getPaint().setStrokeWidth(mBgNormalColor);
         GradientDrawable normalDrawable = new GradientDrawable();
-        normalDrawable.setStroke(ResourceUtil.Dp2Px(mStrokeWidth), mBgNormalColor);
+        normalDrawable.setStroke(mStrokeWidth, mBgNormalColor);
         normalDrawable.setCornerRadii(outRectr);
         drawable.addState(mNormalState, normalDrawable);
         //设置我们的背景，就是xml里面的selector

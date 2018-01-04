@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity {
 
         StrokeButton strokeButton = new StrokeButton(this);
         strokeButton.setLayoutParams(commomlayoutParams);
+        strokeButton.setStrokeWidth(1);
         strokeButton.setText("demo");
 
 //        linearLayout.setLayoutParams(commomlayoutParams);
