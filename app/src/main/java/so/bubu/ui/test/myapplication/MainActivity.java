@@ -35,19 +35,11 @@ public class MainActivity extends BaseActivity {
         SolidButton button = new SolidButton(this);
         button.setLayoutParams(commomlayoutParams);
         button.setText("demo");
-        button.setRadius(ResourceUtil.Dp2Px(50));
-        button.setBgNormalPressedcolor(0xff000000, 0xff000000);
-        button.setTextNormalPressedcolor(0xffff0000, 0xffff0000);
         linearLayout.addView(button, commomlayoutParams);
 
         StrokeButton strokeButton = new StrokeButton(this);
-        strokeButton.setRadius(ResourceUtil.Dp2Px(50));
         strokeButton.setLayoutParams(commomlayoutParams);
         strokeButton.setText("demo");
-        strokeButton.setStrokeWidth(ResourceUtil.Dp2Px(4));
-        strokeButton.setBgNormalPressedcolor(0xff000000, 0xff000000);
-        strokeButton.setTextNormalPressedcolor(0xffff0000, 0xffff0000);
-
 
 //        linearLayout.setLayoutParams(commomlayoutParams);
         linearLayout.addView(strokeButton, commomlayoutParams);

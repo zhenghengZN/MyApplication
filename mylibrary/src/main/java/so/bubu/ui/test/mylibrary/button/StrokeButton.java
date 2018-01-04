@@ -24,11 +24,11 @@ public class StrokeButton extends Button {
     public static int[] mPressState = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
     public static int[] mDisableState = new int[]{-android.R.attr.state_enabled};
     public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
-    private int mRadius = 0;                                                                            //默认的圆角半径
+    private int mRadius = ResourceUtil.Dp2Px(50);                                                                            //默认的圆角半径
     private int mStrokeWidth = 1;
     //默认文字和背景颜色
-    private int mBgNormalColor = Color.WHITE;
-    private int mBgPressedColor = Color.WHITE;
+    private int mBgNormalColor = getResources().getColor(R.color.color_82cd6b);
+    private int mBgPressedColor = getResources().getColor(R.color.color_82cd6b);
     private int mTextNormalColor = getResources().getColor(R.color.color_82cd6b);
     private int mTextPressedColor = getResources().getColor(R.color.color_82cd6b);
 
@@ -41,8 +41,8 @@ public class StrokeButton extends Button {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StrokeButton);
         mRadius = (int) ta.getDimension(R.styleable.StrokeButton_stroke_radius, 0);
-        mBgNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_normal_color, Color.WHITE);
-        mBgPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_pressed_color, Color.WHITE);
+        mBgNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_normal_color, getResources().getColor(R.color.color_82cd6b));
+        mBgPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mTextNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_text_normal_color, getResources().getColor(R.color.color_82cd6b));
         mTextPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_text_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mStrokeWidth = (int) ta.getDimension(R.styleable.StrokeButton_stroke_width, 1);

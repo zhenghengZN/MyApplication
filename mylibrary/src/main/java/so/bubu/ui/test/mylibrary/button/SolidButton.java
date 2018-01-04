@@ -25,7 +25,7 @@ public class SolidButton extends Button {
     public static int[]	mPressState			= new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled };
     public static int[]	mDisableState		= new int[] { -android.R.attr.state_enabled };
     public static int[]	mSelectedState		= new int[] { android.R.attr.state_selected, android.R.attr.state_enabled };
-    private int			mRadius				= 0;																			//默认的圆角半径
+    private int mRadius = ResourceUtil.Dp2Px(50);                                                                            //默认的圆角半径
 
     //默认文字和背景颜色
     private int			mBgNormalColor		= getResources().getColor(R.color.color_82cd6b);
@@ -42,7 +42,7 @@ public class SolidButton extends Button {
     public SolidButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SolidButton);
-        mRadius = (int)ta.getDimension(R.styleable.SolidButton_solid_radius, 0);
+        mRadius = (int)ta.getDimension(R.styleable.SolidButton_solid_radius, ResourceUtil.Dp2Px(50));
         mBgNormalColor = ta.getColor(R.styleable.SolidButton_solid_bg_normal_color, getResources().getColor(R.color.color_82cd6b));
         mBgPressedColor = ta.getColor(R.styleable.SolidButton_solid_bg_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mTextNormalColor = ta.getColor(R.styleable.SolidButton_solid_text_normal_color, Color.WHITE);
