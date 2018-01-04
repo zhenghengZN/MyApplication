@@ -18,22 +18,21 @@ import so.bubu.ui.test.mylibrary.R;
 /**
  * Created by zhengheng on 18/1/3.
  */
-public class StrokeButton extends Button{
+public class StrokeButton extends Button {
 
-    public static int[]	mNormalState		= new int[] {};
-    public static int[]	mPressState			= new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled };
-    public static int[]	mDisableState		= new int[] { -android.R.attr.state_enabled };
-    public static int[]	mSelectedState		= new int[] { android.R.attr.state_selected, android.R.attr.state_enabled };
-    private int			mRadius				= 0;																			//默认的圆角半径
-
+    public static int[] mNormalState = new int[]{};
+    public static int[] mPressState = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
+    public static int[] mDisableState = new int[]{-android.R.attr.state_enabled};
+    public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
+    private int mRadius = 0;                                                                            //默认的圆角半径
+    private int mStrokeWidth = 1;
     //默认文字和背景颜色
-    private int			mBgNormalColor		= Color.RED;
-    private int			mBgPressedColor		= Color.GREEN;
-    private int			mTextNormalColor	= Color.WHITE;
-    private int			mTextPressedColor	= Color.GRAY;
+    private int mBgNormalColor = Color.WHITE;
+    private int mBgPressedColor = Color.WHITE;
+    private int mTextNormalColor = getResources().getColor(R.color.color_82cd6b);
+    private int mTextPressedColor = getResources().getColor(R.color.color_82cd6b);
 
-    public StrokeButton(Context context)
-    {
+    public StrokeButton(Context context) {
         super(context);
         initUI();
     }
@@ -41,17 +40,17 @@ public class StrokeButton extends Button{
     public StrokeButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StrokeButton);
-        mRadius = (int)ta.getDimension(R.styleable.StrokeButton_stroke_radius, 0);
-        mBgNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_normal_color, Color.RED);
-        mBgPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_pressed_color, Color.GREEN);
-        mTextNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_text_normal_color, Color.WHITE);
-        mTextPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_text_pressed_color, Color.GRAY);
+        mRadius = (int) ta.getDimension(R.styleable.StrokeButton_stroke_radius, 0);
+        mBgNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_normal_color, Color.WHITE);
+        mBgPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_bg_pressed_color, Color.WHITE);
+        mTextNormalColor = ta.getColor(R.styleable.StrokeButton_stroke_text_normal_color, getResources().getColor(R.color.color_82cd6b));
+        mTextPressedColor = ta.getColor(R.styleable.StrokeButton_stroke_text_pressed_color, getResources().getColor(R.color.color_82cd6b));
+        mStrokeWidth = (int) ta.getDimension(R.styleable.StrokeButton_stroke_width, 1);
         ta.recycle();
         initUI();
     }
 
-    private void initUI()
-    {
+    private void initUI() {
         setGravity(Gravity.CENTER);
         buildDraweableState();
         buildColorDrawableState();
@@ -60,20 +59,18 @@ public class StrokeButton extends Button{
     /**
      * 构建图片drawble
      */
-    private void buildColorDrawableState()
-    {
-        ColorStateList colorStateList = new ColorStateList(new int[][] { mPressState, mNormalState },
-                new int[] { mTextPressedColor, mTextNormalColor });
+    private void buildColorDrawableState() {
+        ColorStateList colorStateList = new ColorStateList(new int[][]{mPressState, mNormalState},
+                new int[]{mTextPressedColor, mTextNormalColor});
         setTextColor(colorStateList);
     }
 
     /**
      * 构建背景Drawble
      */
-    private void buildDraweableState()
-    {
+    private void buildDraweableState() {
 
-        float outRectr[] = new float[] { mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius };
+        float outRectr[] = new float[]{mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius};
         //创建状态管理器
         StateListDrawable drawable = new StateListDrawable();
         /**
@@ -84,7 +81,7 @@ public class StrokeButton extends Button{
         RoundRectShape rectShape = new RoundRectShape(outRectr, null, null);
         //创建drawable
         GradientDrawable pressedDrawable = new GradientDrawable();
-        pressedDrawable.setStroke(ResourceUtil.Dp2Px(1f), mBgPressedColor);
+        pressedDrawable.setStroke(ResourceUtil.Dp2Px(mStrokeWidth), mBgPressedColor);
         pressedDrawable.setCornerRadii(outRectr);
 //        ShapeDrawable pressedDrawable = new ShapeDrawable(rectShape);
         //设置我们按钮背景的颜色
@@ -101,7 +98,7 @@ public class StrokeButton extends Button{
 //        ShapeDrawable normalDrawable = new ShapeDrawable(rectShape);
 //        normalDrawable.getPaint().setStrokeWidth(mBgNormalColor);
         GradientDrawable normalDrawable = new GradientDrawable();
-        normalDrawable.setStroke(ResourceUtil.Dp2Px(1f), mBgNormalColor);
+        normalDrawable.setStroke(ResourceUtil.Dp2Px(mStrokeWidth), mBgNormalColor);
         normalDrawable.setCornerRadii(outRectr);
         drawable.addState(mNormalState, normalDrawable);
         //设置我们的背景，就是xml里面的selector
@@ -113,9 +110,18 @@ public class StrokeButton extends Button{
      *
      * @param radius
      */
-    public void setRadius(int radius)
-    {
+    public void setRadius(int radius) {
         this.mRadius = radius;
+        buildDraweableState();
+    }
+
+    /**
+     * 设置描边宽度
+     *
+     * @param StrokeWidth
+     */
+    public void setStrokeWidth(int StrokeWidth){
+        this.mStrokeWidth = StrokeWidth;
         buildDraweableState();
     }
 
@@ -125,8 +131,7 @@ public class StrokeButton extends Button{
      * @param normalColor
      * @param prssedClor
      */
-    public void setBgNormalPressedcolor(int normalColor, int prssedClor)
-    {
+    public void setBgNormalPressedcolor(int normalColor, int prssedClor) {
 
         mBgNormalColor = normalColor;
         mBgPressedColor = prssedClor;
@@ -140,8 +145,7 @@ public class StrokeButton extends Button{
      * @param normalColor
      * @param pressedColor
      */
-    public void setTextNormalPressedcolor(int normalColor, int pressedColor)
-    {
+    public void setTextNormalPressedcolor(int normalColor, int pressedColor) {
         mTextPressedColor = pressedColor;
         mTextNormalColor = normalColor;
         buildColorDrawableState();

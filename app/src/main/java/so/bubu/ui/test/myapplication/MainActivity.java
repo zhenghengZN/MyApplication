@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
         strokeButton.setRadius(ResourceUtil.Dp2Px(50));
         strokeButton.setLayoutParams(commomlayoutParams);
         strokeButton.setText("demo");
+        strokeButton.setStrokeWidth(ResourceUtil.Dp2Px(4));
         strokeButton.setBgNormalPressedcolor(0xff000000, 0xff000000);
         strokeButton.setTextNormalPressedcolor(0xffff0000, 0xffff0000);
 

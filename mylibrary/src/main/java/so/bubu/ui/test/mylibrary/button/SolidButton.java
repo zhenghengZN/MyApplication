@@ -28,10 +28,10 @@ public class SolidButton extends Button {
     private int			mRadius				= 0;																			//默认的圆角半径
 
     //默认文字和背景颜色
-    private int			mBgNormalColor		= Color.RED;
-    private int			mBgPressedColor		= Color.GREEN;
+    private int			mBgNormalColor		= getResources().getColor(R.color.color_82cd6b);
+    private int			mBgPressedColor		= getResources().getColor(R.color.color_82cd6b);
     private int			mTextNormalColor	= Color.WHITE;
-    private int			mTextPressedColor	= Color.GRAY;
+    private int			mTextPressedColor	= Color.WHITE;
 
     public SolidButton(Context context)
     {
@@ -43,10 +43,10 @@ public class SolidButton extends Button {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SolidButton);
         mRadius = (int)ta.getDimension(R.styleable.SolidButton_solid_radius, 0);
-        mBgNormalColor = ta.getColor(R.styleable.SolidButton_solid_bg_normal_color, Color.RED);
-        mBgPressedColor = ta.getColor(R.styleable.SolidButton_solid_bg_pressed_color, Color.GREEN);
+        mBgNormalColor = ta.getColor(R.styleable.SolidButton_solid_bg_normal_color, getResources().getColor(R.color.color_82cd6b));
+        mBgPressedColor = ta.getColor(R.styleable.SolidButton_solid_bg_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mTextNormalColor = ta.getColor(R.styleable.SolidButton_solid_text_normal_color, Color.WHITE);
-        mTextPressedColor = ta.getColor(R.styleable.SolidButton_solid_text_pressed_color, Color.GRAY);
+        mTextPressedColor = ta.getColor(R.styleable.SolidButton_solid_text_pressed_color, Color.WHITE);
         ta.recycle();
         initUI();
     }

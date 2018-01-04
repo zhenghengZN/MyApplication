@@ -33,5 +33,6 @@
         <attr name="stroke_bg_pressed_color" format="color"/>
         <attr name="stroke_text_normal_color" format="color"/>
         <attr name="stroke_text_pressed_color" format="color"/>
+        <attr name="stroke_width" format="dimension"/>
     </declare-styleable>
 </resources>
