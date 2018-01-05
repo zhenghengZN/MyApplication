@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import so.bubu.ui.test.mylibrary.R;
+import so.bubu.ui.test.mylibrary.button.SolidButton;
 
 /**
  * Created by zhengheng on 18/1/2.
@@ -62,6 +63,12 @@ public abstract class BaseActivity extends BaseCompatActivity {
         view.setText(title);
         view.setVisibility(View.VISIBLE);
         return view;
+    }
+
+
+    public SolidButton setDataButton(){
+        SolidButton btn = (SolidButton) findViewById(R.id.data_button);
+        return btn;
     }
 
 }
