@@ -17,7 +17,7 @@
             android:layout_height="44dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/tv_back"
@@ -77,10 +77,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            app:solid_radius="4dp"
-            android:paddingLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:text="Json"
             android:visibility="gone"
-            android:paddingRight="5dp"/>
+            app:solid_radius="4dp" />
     </RelativeLayout>
 
     <View style="@style/normal_line" />

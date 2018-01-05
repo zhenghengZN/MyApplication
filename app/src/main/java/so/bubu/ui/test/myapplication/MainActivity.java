@@ -45,6 +45,8 @@ public class MainActivity extends BaseActivity {
 //        linearLayout.setLayoutParams(commomlayoutParams);
         linearLayout.addView(strokeButton, commomlayoutParams);
         inflate.addView(linearLayout);
+        SolidButton btn = (SolidButton) findViewById(R.id.data_button);
+        btn.setVisibility(View.VISIBLE);
 
         return inflate;
     }
