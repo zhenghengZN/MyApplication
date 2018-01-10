@@ -37,18 +37,31 @@ public class MainActivity extends BaseActivity {
         button.setText("demo");
         linearLayout.addView(button, commomlayoutParams);
 
-        StrokeButton strokeButton = new StrokeButton(this);
-        strokeButton.setLayoutParams(commomlayoutParams);
-        strokeButton.setStrokeWidth(1);
-        strokeButton.setText("demo");
-        strokeButton.setTextNormalPressedcolor(0xffff0000,0xffff0000);
+//        StrokeButton strokeButton = new StrokeButton(this);
+//        strokeButton.setLayoutParams(commomlayoutParams);
+//        strokeButton.setStrokeWidth(1);
+//        strokeButton.setText("demo");
+//        strokeButton.setTextNormalPressedcolor(0xffff0000,0xffff0000);
 
 //        linearLayout.setLayoutParams(commomlayoutParams);
+
+
+        StrokeButton strokeButton = new StrokeButton(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ResourceUtil.Dp2Px(44));
+        layoutParams.setMargins(ResourceUtil.Dp2Px(25), ResourceUtil.Dp2Px(12), ResourceUtil.Dp2Px(25), ResourceUtil.Dp2Px(15));
+        strokeButton.setText("Demo");
+        strokeButton.setTextSize(18);
+        //设置圆角 默认为50
+        strokeButton.setRadius(ResourceUtil.Dp2Px(50));
+        //设置描边大小  默认为1
+        strokeButton.setStrokeWidth(ResourceUtil.Dp2Px(1));
+        //设置button背景颜色,默认,选中的
+        strokeButton.setTextNormalPressedcolor(0xffffffff, 0xffffffff);
+
         linearLayout.addView(strokeButton, commomlayoutParams);
         inflate.addView(linearLayout);
         SolidButton btn = (SolidButton) findViewById(R.id.data_button);
         btn.setVisibility(View.VISIBLE);
-
         return inflate;
     }
 

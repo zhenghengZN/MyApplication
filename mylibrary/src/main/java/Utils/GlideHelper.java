@@ -61,7 +61,7 @@ public class GlideHelper {
     }
 
 
-    public static void displayRoundedCornersImageNoError(Context context, int url, int targetWidth, int targetHeight, int radis, ImageView targetView) {
+    public static void displayRoundedCornersImageNoError(Context context, String url, int targetWidth, int targetHeight, int radis, ImageView targetView) {
 
         Glide
                 .with(context)

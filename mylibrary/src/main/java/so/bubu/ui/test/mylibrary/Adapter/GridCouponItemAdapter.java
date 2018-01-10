@@ -51,7 +51,7 @@ public abstract class GridCouponItemAdapter<T extends CouponsItemBean.ObjectsBea
             holder.setImageResource(R.id.taobao_platform, R.drawable.taobao_logo_30);
             holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + taobaoContentBean.getDiscountPrice());
         }
-        GridCouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), mGridWidth, mGridWidth), mGridWidth, mGridWidth, (ImageView) holder.getView(R.id.product_img));
+        GridCouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), mGridWidth, mGridWidth), mGridWidth, mGridWidth, (ImageView) holder.getView(R.id.iv_type));
         doOther(holder, mDatasList.get(position), position);
         holder.itemView.setTag(position);
     }
