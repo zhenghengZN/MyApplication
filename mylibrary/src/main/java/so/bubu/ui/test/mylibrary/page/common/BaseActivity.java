@@ -68,6 +68,7 @@ public abstract class BaseActivity extends BaseCompatActivity {
 
     public SolidButton setDataButton(){
         SolidButton btn = (SolidButton) findViewById(R.id.data_button);
+        btn.setVisibility(View.VISIBLE);
         return btn;
     }
 

@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         strokeButton.setLayoutParams(commomlayoutParams);
         strokeButton.setStrokeWidth(1);
         strokeButton.setText("demo");
+        strokeButton.setTextNormalPressedcolor(0xffff0000,0xffff0000);
 
 //        linearLayout.setLayoutParams(commomlayoutParams);
         linearLayout.addView(strokeButton, commomlayoutParams);
