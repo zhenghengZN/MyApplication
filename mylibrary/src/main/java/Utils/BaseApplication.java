@@ -19,7 +19,6 @@ public class BaseApplication extends Application {
 	private static final String TAG = BaseApplication.class.getSimpleName();
 	
 	private static BaseApplication sInstance;
-	private List<WeakReference<Activity>> activities = new LinkedList<WeakReference<Activity>>();
 
 	public static BaseApplication getInstance() {
 

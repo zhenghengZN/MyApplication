@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.io.File;
 
-import so.bubu.ui.test.myapplication.BaseApplication;
+//import so.bubu.ui.test.myapplication.BaseApplication;
 
 
 /**
