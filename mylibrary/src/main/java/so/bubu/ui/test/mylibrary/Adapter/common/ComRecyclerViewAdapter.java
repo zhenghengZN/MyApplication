@@ -23,6 +23,8 @@ public abstract  class ComRecyclerViewAdapter<T> extends BaseRecyclerAdapter<T,R
     protected List<T> list;
     private OnItemClickLitener mOnItemClickLitener;
 
+
+
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
         this.mOnItemClickLitener = mOnItemClickLitener;
     }

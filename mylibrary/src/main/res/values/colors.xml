@@ -17,4 +17,7 @@
     <color name="colorPrimaryDark">#083939</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color_82cd6b">#82cd6b</color>
+    <color name="color_menu_infor">#999999</color>
+    <color name="color_tab_line">#82CD6B</color>
+    <color name="text_tips_bg">#FEE6AA</color>
 </resources>

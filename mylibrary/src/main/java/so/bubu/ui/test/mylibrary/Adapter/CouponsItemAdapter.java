@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import Utils.CommonMethod;
@@ -19,11 +20,11 @@ import so.bubu.ui.test.mylibrary.bean.CouponsItemBean;
 /**
  * Created by zhengheng on 17/12/25.
  */
-public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> extends ComRecyclerViewAdapter {
+public abstract class CouponsItemAdapter extends ComRecyclerViewAdapter {
 
-    private LinkedList<T> mDatasList;
+    private LinkedList<HashMap<String, Object>> mDatasList;
 
-    public CouponsItemAdapter(Context context, LinkedList<T> mDatas) {
+    public CouponsItemAdapter(Context context, LinkedList<HashMap<String, Object>> mDatas) {
         super(context, mDatas, R.layout.taobao_item);
         mDatasList = mDatas;
     }
@@ -31,27 +32,27 @@ public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> 
     @Override
     public void convert(RecyclerViewHolder holder, Object item, int position) {
 
-        T taobaoContentBean = (T) mDatasList.get(position);
-        holder.setText(R.id.taobao_pro_desc, taobaoContentBean.getTitle());
-        holder.setText(R.id.taobao_finalPrice, taobaoContentBean.getFinalPrice() + " ");
+        HashMap<String, Object> object = mDatasList.get(position);
+        holder.setText(R.id.taobao_pro_desc, (String)object.get("title"));
+        holder.setText(R.id.taobao_finalPrice, (String)object.get("finalPrice") + " ");
 
-        holder.setText(R.id.biz30Day, "月销:" + taobaoContentBean.getBiz30Day());
-        holder.setText(R.id.couponAmount, "立减 " + taobaoContentBean.getCouponAmount() + " 元");
+        holder.setText(R.id.biz30Day, "月销:" + (String)object.get("biz30Day"));
+        holder.setText(R.id.couponAmount, "立减 " +(String)object.get("couponAmount") + " 元");
 
-        if (taobaoContentBean.getPlatform().equals("天猫")) {
+        if (("天猫").equalsIgnoreCase((String) object.get("platform"))) {
             holder.setImageResource(R.id.taobao_platform, R.drawable.tmall_logo_30);
-            holder.setText(R.id.taobao_discountPrice, "天猫价 ¥" + taobaoContentBean.getDiscountPrice());
+            holder.setText(R.id.taobao_discountPrice, "天猫价 ¥" + (String)object.get("discountPrice"));
         } else {
             holder.setImageResource(R.id.taobao_platform, R.drawable.taobao_logo_30);
-            holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + taobaoContentBean.getDiscountPrice());
+            holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + (String)object.get("discountPrice"));
         }
-        CouponsItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl(taobaoContentBean.getPicUrl(), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115)), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115), (ImageView) holder.getView(R.id.product_img));
+        CouponsItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String)object.get("picUrl"), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115)), ResourceUtil.Dp2Px(115), ResourceUtil.Dp2Px(115), (ImageView) holder.getView(R.id.product_img));
         doOther(holder, mDatasList.get(position), position);
         holder.itemView.setTag(position);
     }
 
 
-    public abstract void doOther(RecyclerViewHolder viewHolder, T item, int position);
+    public abstract void doOther(RecyclerViewHolder viewHolder, HashMap<String, Object> item, int position);
 
     public static void displayImageByResizeasBitmap(Context context, String url, int targetWidth, int targetHeight, ImageView targetView) {
 
@@ -68,5 +69,4 @@ public abstract class CouponsItemAdapter<T extends CouponsItemBean.ObjectsBean> 
 //                .animate(animationObject)
                 .into(targetView);
     }
-
 }

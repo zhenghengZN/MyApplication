@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/iv_go"
+                android:layout_width="@dimen/icon_small_height_icon"
+                android:layout_height="@dimen/icon_small_height_icon"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="22dp" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/iv_go"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="18px"
+                android:paddingBottom="7dp"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:paddingTop="7dp"
+                android:textColor="@android:color/black"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <View
+            style="@style/normal_line"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp" />
+
+        <FrameLayout
+            android:id="@+id/fl_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_select_bg">
+
+            <ImageView
+                android:id="@+id/iv_recommended"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/iv_no_img"
+                android:layout_width="@dimen/icon_no_img_empty"
+                android:layout_height="@dimen/icon_no_img_empty"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <so.bubu.cityguide.wiget.JustifyTextView
+            android:id="@+id/jtv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginTop="16dp"
+            android:gravity="left|right"
+            android:lineSpacingExtra="12px"
+            android:lineSpacingMultiplier="1.5"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <!--<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/etx_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="22dp"-->
+            <!--android:paddingRight="22dp"-->
+            <!--android:paddingTop="16dp"-->
+            <!--expandableTextView:animAlphaStart="1"-->
+            <!--expandableTextView:maxCollapsedLines="4">-->
+
+            <!--<so.bubu.cityguide.wiget.JustifyTextView-->
+                <!--android:id="@id/expandable_text"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="left|right"-->
+                <!--android:lineSpacingExtra="12px"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@id/expand_collapse"-->
+                <!--android:layout_width="122dp"-->
+                <!--android:layout_height="33dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="22dp"-->
+                <!--android:background="@drawable/btn_see_more"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/text_see_more"-->
+                <!--android:textColor="@color/color_tab_line"-->
+                <!--android:textSize="14dp" />-->
+        <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_tips"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="22dp"-->
+            <!--android:layout_marginRight="22dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="@drawable/bg_tips_content"-->
+            <!--android:lineSpacingMultiplier="1.5"-->
+            <!--android:padding="10dp"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="14sp"-->
+            <!--android:visibility="gone" />-->
+
+        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
+            <!--android:id="@+id/nsll_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="12dp"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="@android:color/white"-->
+            <!--android:divider="@android:color/white"-->
+            <!--android:dividerHeight="0dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:listSelector="@android:color/transparent"-->
+            <!--android:scrollbars="none" />-->
+
+        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
+            <!--android:id="@+id/nsll_data"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="22dp"-->
+            <!--android:layout_marginRight="22dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="@drawable/bg_data_content"-->
+            <!--android:divider="@android:color/white"-->
+            <!--android:dividerHeight="0dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:listSelector="@android:color/transparent"-->
+            <!--android:scrollbars="none" />-->
+
+        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
+            <!--android:id="@+id/nsll_web"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="12dp"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="22dp"-->
+            <!--android:background="@android:color/white"-->
+            <!--android:divider="@android:color/white"-->
+            <!--android:dividerHeight="0dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:listSelector="@android:color/transparent"-->
+            <!--android:scrollbars="none" />-->
+
+        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
+            <!--android:id="@+id/nsll_poi"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="22dp"-->
+            <!--android:layout_marginRight="22dp"-->
+            <!--android:layout_marginTop="22dp"-->
+            <!--android:background="@android:color/white"-->
+            <!--android:divider="@android:color/white"-->
+            <!--android:dividerHeight="12.5dp"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:listSelector="@android:color/transparent"-->
+            <!--android:scrollbars="none" />-->
+
+        <View
+            style="@style/normal_line"
+            android:layout_marginTop="22dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="@dimen/icon_mini_height_like"
+                android:layout_height="@dimen/icon_mini_height_like"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:id="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/iv_like"
+                android:ems="3"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/color_menu_infor"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/iv_comment"
+                android:layout_width="@dimen/icon_mini_height_like"
+                android:layout_height="@dimen/icon_mini_height_like"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/tv_like" />
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/iv_comment"
+                android:ems="3"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/color_menu_infor"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>
