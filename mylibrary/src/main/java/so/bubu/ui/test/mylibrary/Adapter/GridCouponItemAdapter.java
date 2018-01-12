@@ -38,20 +38,20 @@ public abstract class GridCouponItemAdapter extends ComRecyclerViewAdapter {
         HashMap<String, Object> object = mDatasList.get(position);
 
         holder.setText(R.id.taobao_pro_desc, (String) object.get("title"));
-        holder.setText(R.id.taobao_finalPrice, (String)object.get("finalPrice") + " ");
+        holder.setText(R.id.taobao_finalPrice, object.get("finalPrice") + " ");
 
         ViewGroup.LayoutParams layoutParams = holder.getView(R.id.rl_content).getLayoutParams();
 //        layoutParams.width = mGridWidth;
         layoutParams.height = mGridWidth + ResourceUtil.Dp2Px(110);
         holder.getView(R.id.rl_content).setLayoutParams(layoutParams);
-        holder.setText(R.id.biz30Day, "月销:" + (String)object.get("biz30Day"));
-        holder.setText(R.id.couponAmount, "立减 " + (String)object.get("couponAmount") + " 元");
+        holder.setText(R.id.biz30Day, "月销:" + object.get("biz30Day"));
+        holder.setText(R.id.couponAmount, "立减 " + object.get("couponAmount") + " 元");
         if (("天猫").equalsIgnoreCase((String) object.get("platform"))) {
             holder.setImageResource(R.id.taobao_platform, R.drawable.tmall_logo_30);
-            holder.setText(R.id.taobao_discountPrice, "天猫价 ¥" + (String)object.get("discountPrice"));
+            holder.setText(R.id.taobao_discountPrice, "天猫价 ¥" + object.get("discountPrice"));
         } else {
             holder.setImageResource(R.id.taobao_platform, R.drawable.taobao_logo_30);
-            holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + (String)object.get("discountPrice"));
+            holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + object.get("discountPrice"));
         }
         GridCouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String)object.get("picUrl"), mGridWidth, mGridWidth), mGridWidth, mGridWidth, (ImageView) holder.getView(R.id.iv_type));
         doOther(holder, mDatasList.get(position), position);

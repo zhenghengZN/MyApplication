@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import Utils.GlideHelper;
@@ -20,11 +21,11 @@ import so.bubu.ui.test.mylibrary.bean.GridBean;
 /**
  * Created by zhengheng on 18/1/10.
  */
-public abstract class GridItemAdapter<T extends GridBean> extends ComRecyclerViewAdapter {
+public abstract class GridItemAdapter extends ComRecyclerViewAdapter {
 
     private int mWidth, mHeight;
     private FrameLayout.LayoutParams leftLayoutParams, rightLayoutParams, nameLeft, nameRight;
-    private LinkedList<GridBean> mDatasList;
+    private LinkedList<HashMap<String, Object>> mDatasList;
     private Context mContext;
 
     public GridItemAdapter(Context context, LinkedList mDatas) {
@@ -49,14 +50,14 @@ public abstract class GridItemAdapter<T extends GridBean> extends ComRecyclerVie
         nameRight.gravity = Gravity.CENTER;
     }
 
-    public abstract void doOther(RecyclerViewHolder viewHolder, T item, int position);
+    public abstract void doOther(RecyclerViewHolder viewHolder, HashMap<String, Object> item, int position);
 
     @Override
     public void convert(RecyclerViewHolder viewHolder, Object item, int position) {
-        T gridBean = (T) mDatasList.get(position);
-        viewHolder.setText(R.id.tv_chine_name, gridBean.getTitle());
-        GlideHelper.displayRoundedCornersImageNoError(mContext, gridBean.getUrl(), mWidth, mHeight, ResourceUtil.Dp2Px(4), (ImageView) viewHolder.getView(R.id.iv_type));
-        doOther(viewHolder, (T) mDatasList.get(position), position);
+        HashMap<String, Object> gridBean = mDatasList.get(position);
+        viewHolder.setText(R.id.tv_chine_name, (String) gridBean.get("title"));
+        GlideHelper.displayRoundedCornersImageNoError(mContext, (String)gridBean.get("url"), mWidth, mHeight, ResourceUtil.Dp2Px(4), (ImageView) viewHolder.getView(R.id.iv_type));
+        doOther(viewHolder, mDatasList.get(position), position);
         viewHolder.itemView.setTag(position);
     }
 
