@@ -67,6 +67,8 @@ public class GlideHelper {
                 .with(context)
                 .load(url)
                 .override(targetWidth, targetHeight)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.loading)
                 .centerCrop()
                 .bitmapTransform(new RoundedCornersTransformation(context, radis, 0))
                 .into(targetView);

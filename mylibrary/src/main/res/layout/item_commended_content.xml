@@ -64,7 +64,7 @@
                 android:layout_gravity="center" />
         </FrameLayout>
 
-        <so.bubu.cityguide.wiget.JustifyTextView
+        <so.bubu.ui.test.mylibrary.wiget.JustifyTextView
             android:id="@+id/jtv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,111 +77,37 @@
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
-        <!--<com.ms.square.android.expandabletextview.ExpandableTextView xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"-->
-            <!--android:id="@+id/etx_content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:paddingLeft="22dp"-->
-            <!--android:paddingRight="22dp"-->
-            <!--android:paddingTop="16dp"-->
-            <!--expandableTextView:animAlphaStart="1"-->
-            <!--expandableTextView:maxCollapsedLines="4">-->
+        <so.bubu.ui.test.mylibrary.wiget.ExpandableTextView xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/etx_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingTop="16dp"
+            expandableTextView:animAlphaStart="1"
+            expandableTextView:maxCollapsedLines="4">
 
-            <!--<so.bubu.cityguide.wiget.JustifyTextView-->
-                <!--android:id="@id/expandable_text"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="left|right"-->
-                <!--android:lineSpacingExtra="12px"-->
-                <!--android:textColor="@android:color/black"-->
-                <!--android:textSize="14sp" />-->
+            <so.bubu.ui.test.mylibrary.wiget.JustifyTextView
+                android:id="@id/expandable_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|right"
+                android:lineSpacingExtra="12px"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
-            <!--<TextView-->
-                <!--android:id="@id/expand_collapse"-->
-                <!--android:layout_width="122dp"-->
-                <!--android:layout_height="33dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="22dp"-->
-                <!--android:background="@drawable/btn_see_more"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/text_see_more"-->
-                <!--android:textColor="@color/color_tab_line"-->
-                <!--android:textSize="14dp" />-->
-        <!--</com.ms.square.android.expandabletextview.ExpandableTextView>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tv_tips"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="22dp"-->
-            <!--android:layout_marginRight="22dp"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:background="@drawable/bg_tips_content"-->
-            <!--android:lineSpacingMultiplier="1.5"-->
-            <!--android:padding="10dp"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textSize="14sp"-->
-            <!--android:visibility="gone" />-->
-
-        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
-            <!--android:id="@+id/nsll_content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="12dp"-->
-            <!--android:layout_marginRight="12dp"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:divider="@android:color/white"-->
-            <!--android:dividerHeight="0dp"-->
-            <!--android:focusable="true"-->
-            <!--android:focusableInTouchMode="true"-->
-            <!--android:listSelector="@android:color/transparent"-->
-            <!--android:scrollbars="none" />-->
-
-        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
-            <!--android:id="@+id/nsll_data"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="22dp"-->
-            <!--android:layout_marginRight="22dp"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:background="@drawable/bg_data_content"-->
-            <!--android:divider="@android:color/white"-->
-            <!--android:dividerHeight="0dp"-->
-            <!--android:focusable="true"-->
-            <!--android:focusableInTouchMode="true"-->
-            <!--android:listSelector="@android:color/transparent"-->
-            <!--android:scrollbars="none" />-->
-
-        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
-            <!--android:id="@+id/nsll_web"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="12dp"-->
-            <!--android:layout_marginRight="12dp"-->
-            <!--android:layout_marginTop="22dp"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:divider="@android:color/white"-->
-            <!--android:dividerHeight="0dp"-->
-            <!--android:focusable="true"-->
-            <!--android:focusableInTouchMode="true"-->
-            <!--android:listSelector="@android:color/transparent"-->
-            <!--android:scrollbars="none" />-->
-
-        <!--<so.bubu.cityguide.wiget.NoScrollListView-->
-            <!--android:id="@+id/nsll_poi"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="22dp"-->
-            <!--android:layout_marginRight="22dp"-->
-            <!--android:layout_marginTop="22dp"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:divider="@android:color/white"-->
-            <!--android:dividerHeight="12.5dp"-->
-            <!--android:focusable="true"-->
-            <!--android:focusableInTouchMode="true"-->
-            <!--android:listSelector="@android:color/transparent"-->
-            <!--android:scrollbars="none" />-->
+            <TextView
+                android:id="@id/expand_collapse"
+                android:layout_width="122dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/btn_see_more"
+                android:gravity="center"
+                android:text="@string/text_see_more"
+                android:textColor="@color/color_tab_line"
+                android:textSize="14dp" />
+        </so.bubu.ui.test.mylibrary.wiget.ExpandableTextView>
 
         <View
             style="@style/normal_line"
@@ -236,6 +162,10 @@
                 android:textSize="12dp" />
 
         </RelativeLayout>
+
+        <View
+            style="@style/normal_line"
+            android:layout_height="5dp" />
     </LinearLayout>
 
 </FrameLayout>

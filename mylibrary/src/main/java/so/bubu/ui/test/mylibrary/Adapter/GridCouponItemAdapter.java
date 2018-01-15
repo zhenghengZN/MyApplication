@@ -53,7 +53,7 @@ public abstract class GridCouponItemAdapter extends ComRecyclerViewAdapter {
             holder.setImageResource(R.id.taobao_platform, R.drawable.taobao_logo_30);
             holder.setText(R.id.taobao_discountPrice, "淘宝价 ¥" + object.get("discountPrice"));
         }
-        GridCouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String)object.get("picUrl"), mGridWidth, mGridWidth), mGridWidth, mGridWidth, (ImageView) holder.getView(R.id.iv_type));
+        GridCouponItemAdapter.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String)object.get("picUrl"), mGridWidth, mGridWidth), mGridWidth, mGridWidth, (ImageView) holder.getView(R.id.product_img));
         doOther(holder, mDatasList.get(position), position);
         holder.itemView.setTag(position);
     }

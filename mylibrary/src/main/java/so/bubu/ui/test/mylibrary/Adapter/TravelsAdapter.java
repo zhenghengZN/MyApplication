@@ -23,7 +23,7 @@ public abstract class TravelsAdapter extends ComRecyclerViewAdapter {
     private LinkedList<HashMap<String, Object>> mDatasList;
 
     public TravelsAdapter(Context context, LinkedList mDatas) {
-        super(context, mDatas, R.layout.taobao_item);
+        super(context, mDatas, R.layout.travels_item);
         mWidth = ResourceUtil.Dp2Px(115);
         mHeight = ResourceUtil.Dp2Px(115);
         mDatasList = mDatas;

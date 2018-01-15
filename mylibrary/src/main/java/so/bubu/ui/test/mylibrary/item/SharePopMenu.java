@@ -10,15 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import Utils.CommonMethod;
 import Utils.DeviceHelper;
+import Utils.GlideHelper;
+import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.Adapter.common.ComRecyclerViewAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.common.RecyclerViewHolder;
 import so.bubu.ui.test.mylibrary.R;
@@ -28,14 +33,15 @@ import so.bubu.ui.test.mylibrary.page.common.BaseApplication;
 /**
  * @author linhuan on 2016/12/1 下午1:50
  */
-public abstract class SharePopMenu<T> extends PopupWindow {
+public abstract class SharePopMenu<T> extends PopupWindow implements ComRecyclerViewAdapter.OnItemClickLitener {
 
     private View view;
     private LinearLayout llContent;
-    private LinkedList<T> shareBeanList = new LinkedList<>();
+    private LinkedList<HashMap<String, Object>> shareBeanLists = new LinkedList<>();
+    private int width = ResourceUtil.Dp2Px(43);
 
-    public SharePopMenu(final Activity content) {
-        addList(shareBeanList);
+    public SharePopMenu(final Activity content, LinkedList<HashMap<String, Object>> shareBeanList) {
+        this.shareBeanLists = shareBeanList;
         view = LayoutInflater.from(content).inflate(R.layout.share_popup_menu, null); //ResourceHelper.loadLayout(content, R.layout.share_popup_menu, null);
         llContent = (LinearLayout) view.findViewById(R.id.ll_content);
         RecyclerView rcvContent = (RecyclerView) view.findViewById(R.id.rcv_content);
@@ -48,11 +54,20 @@ public abstract class SharePopMenu<T> extends PopupWindow {
         ComRecyclerViewAdapter adapter = new ComRecyclerViewAdapter(content, shareBeanList, R.layout.item_share_show) {
             @Override
             public void convert(RecyclerViewHolder viewHolder, Object item, int position) {
+                ((LinearLayout.LayoutParams) viewHolder.getView(R.id.ll_content).getLayoutParams()).width = DeviceHelper.getScreenWidth() / 4;
+                HashMap<String, Object> object = shareBeanLists.get(position);
+                viewHolder.setText(R.id.tv_share, (String) object.get("title"));
+//                viewHolder.setImageResource(R.id.iv_share, )
+                GlideHelper.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String) object.get("url"), width, width), width, width, (ImageView) viewHolder.getView(R.id.iv_share));
+
+
                 doSomethingInconvert(viewHolder, item, position);
             }
         };
 
         rcvContent.setAdapter(adapter);
+
+        adapter.setOnItemClickLitener(this);
 
         view.setOnClickListener(new View.OnClickListener() {
 
@@ -77,7 +92,34 @@ public abstract class SharePopMenu<T> extends PopupWindow {
         setContentView(view);
     }
 
-    public abstract void addList(LinkedList<T> shareBeanList);
+    @Override
+    public void onItemClick(View view, Object item, int position) {
+        if (itemClick != null) {
+            itemClick.onItemClick();
+        }
+    }
+
+    @Override
+    public void onItemLongClick(View view, Object item, int position) {
+        if (itemClick != null) {
+            itemClick.onItemLongClick();
+        }
+    }
+
+
+    public interface PopWindowItemClick {
+        void onItemClick();
+
+        void onItemLongClick();
+    }
+
+    private PopWindowItemClick itemClick;
+
+    public void setPopWindowItemClick(PopWindowItemClick itemClick) {
+        this.itemClick = itemClick;
+    }
+
+    //    public abstract void addList(LinkedList<HashMap<String, Object>> shareBeanList);
 
     public abstract void doSomethingInconvert(RecyclerViewHolder viewHolder, Object item, int position);
 

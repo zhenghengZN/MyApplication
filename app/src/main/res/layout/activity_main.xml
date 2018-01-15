@@ -34,4 +34,11 @@
         app:stroke_bg_pressed_color="@color/color_82cd6b"
         app:stroke_text_pressed_color="@android:color/black"
       />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_82cd6b"
+        android:id="@+id/rcv"/>
+
 </LinearLayout>
