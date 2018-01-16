@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import so.bubu.ui.test.mylibrary.page.TabBaseFragment;
+import so.bubu.ui.test.mylibrary.wiget.FatherViewPager;
 
 public class TabActivity extends AppCompatActivity {
 
@@ -23,20 +25,22 @@ public class TabActivity extends AppCompatActivity {
 //        FrameLayout view = (FrameLayout) findViewById(R.id.parent);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction bt = manager.beginTransaction();
-        bt.replace(R.id.parent, new TabBaseFragment() {
+        TabBaseFragment tabBaseFragment = new TabBaseFragment() {
             @Override
-            public View addBaseContenetView(View parent) {
-                TextView textView = new TextView(TabActivity.this);
-                textView.setText("aa");
-                return textView;
+            public PagerAdapter setPagerAdapter() {
+                MyPagerAdapter myPagerAdapter = new MyPagerAdapter(TabActivity.this.getSupportFragmentManager());
+                return myPagerAdapter;
             }
 
             @Override
-            public void doInOnCreateView(View view,ViewPager pager) {
+            public void doInOnCreateView(View view, FatherViewPager pager) {
 
             }
-        });
-        bt.commitAllowingStateLoss();
+        };
+
+        bt.add(R.id.parent, tabBaseFragment);
+        bt.commit();
+//        tabBaseFragment.tabViewSetViewPager();
     }
 
 

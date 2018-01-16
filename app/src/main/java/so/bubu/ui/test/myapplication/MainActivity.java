@@ -1,6 +1,7 @@
 package so.bubu.ui.test.myapplication;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,14 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 import Utils.ResourceUtil;
+import so.bubu.ui.test.mylibrary.Adapter.CommentItemAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.GridItemAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.RecommendedAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.TravelsAdapter;
@@ -107,7 +111,36 @@ public class MainActivity extends BaseActivity {
 //        layoutParams.setMargins(10,0,10,0);
 //        inflate.addView(editText.getView());
 
+        //评论
 
+        LinkedList<HashMap<String, Object>> mDatasList = new LinkedList<>();
+        LinkedList<String>  urls=new LinkedList<>();
+        urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+        urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+        urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+        for (int i = 0; i < 4; i++) {
+            HashMap<String, Object> objectHashMap = new HashMap<>();
+            objectHashMap.put("content", "desc");
+            objectHashMap.put("time", "2017-10-11'T'20:30:10");
+            objectHashMap.put("userName", "name");
+            objectHashMap.put("userPicUrl", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+            objectHashMap.put("urls", urls);
+
+            mDatasList.add(objectHashMap);
+        }
+        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rcv.setAdapter(new CommentItemAdapter(this, mDatasList) {
+            @Override
+            public void setGridItemOnclick(Activity mContext, int position, List<String> urls, AdapterView<?> parent, View view) {
+                ImageActivity.imageBrower((Activity) mContext, ImageActivity.class, position, urls.toArray(new String[urls.size()]));
+            }
+
+            @Override
+            public void doOther(RecyclerViewHolder viewHolder, HashMap<String, Object> item, int position) {
+
+            }
+
+        });
 
         return inflate;
     }
@@ -164,5 +197,6 @@ public class MainActivity extends BaseActivity {
 
     public void strokebtn(View view) {
         startActivity(new Intent(MainActivity.this,TabActivity.class));
+//        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
     }
 }

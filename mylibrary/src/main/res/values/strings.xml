@@ -7,7 +7,7 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="picker_cancel">取消</string>
     <string name="text_see_more">查看更多</string>
-
+    <string name="viewpager_indicator">%1$d/%2$d</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

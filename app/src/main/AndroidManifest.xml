@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="so.bubu.ui.test.myapplication" >
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="so.bubu.ui.test.mylibrary.page.common.BaseApplication"
         android:allowBackup="true"
@@ -21,6 +23,10 @@
             android:name=".TabActivity"
             android:label="@string/title_activity_tab" >
         </activity>
+        <activity android:name=".ImageActivity" />
+        <activity android:name=".PhotoActivity"/>
+        <activity android:name=".ImageTopActivity"/>
+        <!--<activity android:name="Activity.ImagePageActivity"/>-->
     </application>
 
 </manifest>

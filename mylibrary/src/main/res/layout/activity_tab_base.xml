@@ -24,7 +24,8 @@
             tl:tl_textUnselectColor="@android:color/black"
             tl:tl_textsize="15sp"
             tl:tl_underline_color="@color/color_d8d8d8"
-            tl:tl_underline_height="0.5dp" />
+            tl:tl_underline_height="0.5dp"
+            />
     </LinearLayout>
 
     <LinearLayout
