@@ -42,23 +42,32 @@ import so.bubu.ui.test.mylibrary.wiget.DrawableClearEditText;
 
 import static so.bubu.ui.test.mylibrary.Adapter.TypeDiffItemAdapter.*;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.a);
+//        LinearLayout viewById = findViewById(R.id.parent);
+//        viewById.addView(addBaseContenetView());
+//
+//
+//    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.a);
-        LinearLayout viewById = findViewById(R.id.parent);
-        viewById.addView(addBaseContenetView());
-
+    protected void doBack(int keyCode, KeyEvent event) {
 
     }
 
+    @Override
+    public void doInCreateView() {
+
+    }
 
     public View addBaseContenetView() {
-        LinearLayout inflate = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main, null);
-        RecyclerView rcv = (RecyclerView) inflate.findViewById(R.id.rcv);
+//        LinearLayout inflate = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+//        RecyclerView rcv = (RecyclerView) inflate.findViewById(R.id.rcv);
 
         //4ge  griditem
 //        rcv.setLayoutManager(new GridLayoutManager(this, 4));
@@ -153,7 +162,8 @@ public class MainActivity extends Activity {
 //            }
 //
 //        });
-
+        RecyclerView rcv = new RecyclerView(this);
+        rcv.setNestedScrollingEnabled(false);
         HashMap<String, Object> objectHashMap = new HashMap<>();
         objectHashMap.put("title", "title");
         objectHashMap.put("content", "subtitleahttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg" +
@@ -207,6 +217,14 @@ public class MainActivity extends Activity {
         multipleItems.add(multipleItem);
         multipleItems.add(multipleItem1);
         multipleItems.add(multipleItem);
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem);
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem);
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem);
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem);
 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -214,7 +232,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this,"onclick" + i,Toast.LENGTH_SHORT).show();
             }
         });
-        return inflate;
+        return rcv;
     }
 
 //    @Override
