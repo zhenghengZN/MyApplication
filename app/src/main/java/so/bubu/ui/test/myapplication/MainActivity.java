@@ -28,6 +28,7 @@ import java.util.List;
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.Adapter.CommentItemAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.GridItemAdapter;
+import so.bubu.ui.test.mylibrary.Adapter.MultipleItem;
 import so.bubu.ui.test.mylibrary.Adapter.RecommendedAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.TravelsAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.TypeDiffItemAdapter;
@@ -176,7 +177,7 @@ public class MainActivity extends Activity {
         object1.put("title", "title");
         object.put("url", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
 
-        LinkedList<TypeDiffItemAdapter.MultipleItem> multipleItems = new LinkedList<>();
+        LinkedList<MultipleItem> multipleItems = new LinkedList<>();
 
         GridLayoutManager manager = new GridLayoutManager(this, 4);
         rcv.setLayoutManager(manager);
@@ -194,8 +195,8 @@ public class MainActivity extends Activity {
             }
         };
         rcv.setAdapter(adapter);
-        TypeDiffItemAdapter.MultipleItem multipleItem = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.RECOMMEND, objectHashMap);
-        TypeDiffItemAdapter.MultipleItem multipleItem1 = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.GRIDCOUPONITEM, object);
+        MultipleItem multipleItem = new MultipleItem(MultipleItem.RECOMMEND, objectHashMap);
+        MultipleItem multipleItem1 =new MultipleItem(MultipleItem.GRIDCOUPONITEM, object);
 //        TypeDiffItemAdapter.MultipleItem multipleItem2 = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.GRIDITEM, object1);
 
 //        multipleItems.add(multipleItem2);

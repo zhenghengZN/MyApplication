@@ -34,11 +34,12 @@ import Utils.transformation.RoundedCornersTransformation;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.page.helper.Helper;
 import so.bubu.ui.test.mylibrary.wiget.CircleImageView;
+import so.bubu.ui.test.mylibrary.wiget.NoScrollGridview;
 
 /**
  * Created by zhengheng on 18/1/16.
  */
-public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<TypeDiffItemAdapter.MultipleItem, BaseViewHolder> {
+public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<MultipleItem, BaseViewHolder> {
 
 
     private List list;
@@ -165,7 +166,7 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Type
 
                 holder.setText(R.id.comment_user_name, (String) object.get("userName"));
 
-                GridView view = holder.getView(R.id.review_item_gridview);
+                NoScrollGridview view = holder.getView(R.id.review_item_gridview);
                 final List<String> urls = (LinkedList) object.get("urls");
                 view.setAdapter(new ReviewAdapter(mContext, urls));
                 view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -228,40 +229,40 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Type
     public abstract void setGridItemOnclick(Activity mContext, int position, List<String> urls, AdapterView<?> parent, View view);
 
 
-    public class MultipleItem implements MultiItemEntity {
-        public static final int COUPONITEM = 1;
-        public static final int GRIDCOUPONITEM = 2;
-        public static final int HOTITEM = 3;
-        public static final int VIDEOITEM = 4;
-        public static final int RECOMMEND = 5;
-        public static final int COMMENT = 6;
-        public static final int TRAVELS = 7;
-//        public static final int GRIDITEM = 8;
-
-        private int itemType;
-        private HashMap<String, Object> objects;
-
-        public MultipleItem(int itemType) {
-            this.itemType = itemType;
-        }
-
-        public MultipleItem(int itemType, HashMap<String, Object> objects) {
-            this.itemType = itemType;
-            this.objects = objects;
-        }
-
-        @Override
-        public int getItemType() {
-            return itemType;
-        }
-
-        public HashMap<String, Object> getObjects() {
-            return objects;
-        }
-
-        public void setObjects(HashMap<String, Object> objects) {
-            this.objects = objects;
-        }
-    }
+//    public class MultipleItem implements MultiItemEntity {
+//        public static final int COUPONITEM = 1;
+//        public static final int GRIDCOUPONITEM = 2;
+//        public static final int HOTITEM = 3;
+//        public static final int VIDEOITEM = 4;
+//        public static final int RECOMMEND = 5;
+//        public static final int COMMENT = 6;
+//        public static final int TRAVELS = 7;
+////        public static final int GRIDITEM = 8;
+//
+//        private int itemType;
+//        private HashMap<String, Object> objects;
+//
+//        public MultipleItem(int itemType) {
+//            this.itemType = itemType;
+//        }
+//
+//        public MultipleItem(int itemType, HashMap<String, Object> objects) {
+//            this.itemType = itemType;
+//            this.objects = objects;
+//        }
+//
+//        @Override
+//        public int getItemType() {
+//            return itemType;
+//        }
+//
+//        public HashMap<String, Object> getObjects() {
+//            return objects;
+//        }
+//
+//        public void setObjects(HashMap<String, Object> objects) {
+//            this.objects = objects;
+//        }
+//    }
 
 }
