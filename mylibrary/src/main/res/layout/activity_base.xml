@@ -9,7 +9,7 @@
         android:id="@+id/base_top"
         layout="@layout/common_activity_menu" />
 
-    <MyScrollview
+    <so.bubu.ui.test.mylibrary.wiget.MyScrollview
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,5 +21,5 @@
             android:orientation="vertical">
 
         </LinearLayout>
-    </MyScrollview>
+    </so.bubu.ui.test.mylibrary.wiget.MyScrollview>
 </LinearLayout>
