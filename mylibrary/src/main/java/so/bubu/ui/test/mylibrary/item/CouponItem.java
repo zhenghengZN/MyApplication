@@ -71,9 +71,9 @@ public class CouponItem {
         return textview;
     }
 
-    public View getLine(){
-       return view.findViewById(R.id.weight_line);
-    }
+//    public View getLine(){
+//       return view.findViewById(R.id.weight_line);
+//    }
 
 
 }

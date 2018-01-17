@@ -1,9 +1,9 @@
 package so.bubu.ui.test.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 
-import Activity.BrowseImageActivity;
+import myactivity.BrowseImageActivity;
+
 
 /**
  * Created by zhengheng on 18/1/15.

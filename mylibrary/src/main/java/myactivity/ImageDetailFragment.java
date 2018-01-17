@@ -1,4 +1,4 @@
-package Activity;
+package myactivity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

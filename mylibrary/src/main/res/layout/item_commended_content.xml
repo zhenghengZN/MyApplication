@@ -163,9 +163,9 @@
 
         </RelativeLayout>
 
-        <View
-            style="@style/normal_line"
-            android:layout_height="5dp" />
+        <!--<View-->
+            <!--style="@style/normal_line"-->
+            <!--android:layout_height="5dp" />-->
     </LinearLayout>
 
 </FrameLayout>

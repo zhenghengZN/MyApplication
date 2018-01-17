@@ -154,32 +154,63 @@ public class MainActivity extends Activity {
 //        });
 
         HashMap<String, Object> objectHashMap = new HashMap<>();
+        objectHashMap.put("title", "title");
+        objectHashMap.put("content", "subtitleahttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg" +
+                "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+        objectHashMap.put("like", "subtitle");
+        objectHashMap.put("comment", "subtitle");
+        objectHashMap.put("url", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
 
-        for (int i = 0; i < 4; i++) {
-            objectHashMap.put("title", "title");
-            objectHashMap.put("content", "subtitleahttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg" +
-                    "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
-            objectHashMap.put("like", "subtitle");
-            objectHashMap.put("comment", "subtitle");
-            objectHashMap.put("url", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
-//            mDatasList.add(objectHashMap);
-        }
+        HashMap<String, Object> object = new HashMap<>();
+        object.put("biz30Day", 37);
+        object.put("finalPrice", 15);
+        object.put("title", "火烈鸟 梦幻卷翘璀璨浓密精细纤长睫毛膏");
+        object.put("couponShareUrl", "https://uland.taobao.com/coupon/edetail?e=tqIfYdOhq%2BAN%2BoQUE6FNzGPHTcqQ4ufIGZPSe9jdjR088L0dUrFHspPccAg7n0MpqjwLHlkAIdkCVzRffmjsmRpywujSvOp2nUIklpPPqYLEXRJ%2BB1et7NS8cpu%2BWjLoqwE8NLNX5iBD%2FBmXgrUwH%2BYsfTfahS6g&pid=mm_119950409_20916506_70766512&af=1&tj1=1&tj2=1");
+        object.put("platform", "淘宝");
+        object.put("couponAmount", 10);
+        object.put("discountPrice", 25);
+        object.put("picUrl", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+
+
+        HashMap<String, Object> object1 = new HashMap<>();
+        object1.put("title", "title");
+        object.put("url", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+
         LinkedList<TypeDiffItemAdapter.MultipleItem> multipleItems = new LinkedList<>();
 
-        rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        GridLayoutManager manager = new GridLayoutManager(this, 4);
+        rcv.setLayoutManager(manager);
+//        rcv.addItemDecoration(new Deco);
         TypeDiffItemAdapter adapter = new TypeDiffItemAdapter(multipleItems) {
 
+            @Override
+            public void doOther(BaseViewHolder viewHolder, MultipleItem multipleItem) {
+
+            }
+
+            @Override
+            public void setGridItemOnclick(Activity mContext, int position, List<String> urls, AdapterView<?> parent, View view) {
+
+            }
         };
         rcv.setAdapter(adapter);
         TypeDiffItemAdapter.MultipleItem multipleItem = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.RECOMMEND, objectHashMap);
+        TypeDiffItemAdapter.MultipleItem multipleItem1 = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.GRIDCOUPONITEM, object);
+//        TypeDiffItemAdapter.MultipleItem multipleItem2 = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.GRIDITEM, object1);
 
+//        multipleItems.add(multipleItem2);
+//        multipleItems.add(multipleItem2);
+//        multipleItems.add(multipleItem2);
+//        multipleItems.add(multipleItem2);
+        multipleItems.add(multipleItem1);
         multipleItems.add(multipleItem);
+        multipleItems.add(multipleItem1);
         multipleItems.add(multipleItem);
 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-
+                Toast.makeText(MainActivity.this,"onclick" + i,Toast.LENGTH_SHORT).show();
             }
         });
         return inflate;
@@ -238,6 +269,6 @@ public class MainActivity extends Activity {
     public void strokebtn(View view) {
 //        startActivity(new Intent(MainActivity.this,TabActivity.class));
 //        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
-        startActivity(new Intent(MainActivity.this,MyBannerActivity.class));
+        startActivity(new Intent(MainActivity.this, MyBannerActivity.class));
     }
 }

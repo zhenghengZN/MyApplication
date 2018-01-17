@@ -3,7 +3,6 @@ package so.bubu.ui.test.mylibrary.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -16,9 +15,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import Activity.ImagePageActivity;
 import Utils.CommonMethod;
-import Utils.DeviceHelper;
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.Adapter.common.ComRecyclerViewAdapter;
 import so.bubu.ui.test.mylibrary.Adapter.common.RecyclerViewHolder;
