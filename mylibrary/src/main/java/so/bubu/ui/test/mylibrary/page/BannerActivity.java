@@ -43,7 +43,6 @@ public class BannerActivity extends AppCompatActivity{
         LinkedList<String> urls= new LinkedList<>();
         urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
         urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
-
         urls.add("http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
 
         View header = LayoutInflater.from(this).inflate(R.layout.banner_layout, rcv, false);

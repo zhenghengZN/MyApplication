@@ -79,4 +79,12 @@
         <item name="android:textColorHint">@color/color_b2b2b2</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+
+    <style name="searchText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_b2b2b2</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

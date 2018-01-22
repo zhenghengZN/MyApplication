@@ -164,6 +164,7 @@ public class MainActivity extends BaseActivity {
 //        });
         RecyclerView rcv = new RecyclerView(this);
         rcv.setNestedScrollingEnabled(false);
+        rcv.addItemDecoration(new DividerGridItemDecoration(this));
         HashMap<String, Object> objectHashMap = new HashMap<>();
         objectHashMap.put("title", "title");
         objectHashMap.put("content", "subtitleahttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpghttp://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg" +
@@ -213,18 +214,16 @@ public class MainActivity extends BaseActivity {
 //        multipleItems.add(multipleItem2);
 //        multipleItems.add(multipleItem2);
 //        multipleItems.add(multipleItem2);
+
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem1);
         multipleItems.add(multipleItem1);
         multipleItems.add(multipleItem);
-        multipleItems.add(multipleItem1);
+        multipleItems.add(multipleItem);
         multipleItems.add(multipleItem);
         multipleItems.add(multipleItem1);
-        multipleItems.add(multipleItem);
-        multipleItems.add(multipleItem1);
-        multipleItems.add(multipleItem);
-        multipleItems.add(multipleItem1);
-        multipleItems.add(multipleItem);
-        multipleItems.add(multipleItem1);
-        multipleItems.add(multipleItem);
+//        multipleItems.add(multipleItem1);
 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
