@@ -44,7 +44,7 @@ import android.widget.Toast;
 /**
  * Created by zhengheng on 18/1/19.
  */
-public class SeachActivity extends BaseCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
+public abstract class SeachActivity extends BaseCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
 
     private TagFlowLayout hotFlowLayout, historyFlowLayout;
     private ClearEditText mClearEditText;
@@ -119,7 +119,8 @@ public class SeachActivity extends BaseCompatActivity implements View.OnClickLis
             }
         };
 
-        initData();
+//        initData();
+        historyList.addAll(setHotStrings());
         hotFlowLayout = (TagFlowLayout) hotView.findViewById(R.id.id_flowlayout);
         setHotData();
 
@@ -189,6 +190,9 @@ public class SeachActivity extends BaseCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
     }
+
+
+    public abstract List<String> setHotStrings();
 
     @Override
     protected void doBack(int keyCode, KeyEvent event) {

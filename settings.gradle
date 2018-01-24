@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':banner'
+include ':app', ':mylibrary'
