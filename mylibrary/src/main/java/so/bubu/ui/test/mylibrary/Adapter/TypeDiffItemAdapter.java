@@ -58,7 +58,7 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
         addItemType(MultipleItem.VIDEOITEM, R.layout.video_item);
         addItemType(MultipleItem.COMMENT, R.layout.comment_list_item);
         addItemType(MultipleItem.TRAVELS, R.layout.travels_item);
-//        addItemType(MultipleItem.GRIDITEM, R.layout.item_main_type_disney);
+        addItemType(MultipleItem.GRIDITEM, R.layout.item_main_type_disney);
     }
 
     @Override
@@ -197,29 +197,30 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
                 }
                 break;
             case MultipleItem.TRAVELS:
-                GlideHelper.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String) object.get("url"), mWidth, mHeight), mWidth, mHeight, (ImageView) holder.getView(R.id.product_img));
+                mWidth = ResourceUtil.Dp2Px(115);
+                GlideHelper.displayImageByResizeasBitmap(mContext, CommonMethod.getThumbUrl((String) object.get("url"), mWidth, mWidth), mWidth, mWidth, (ImageView) holder.getView(R.id.product_img));
                 holder.setText(R.id.taobao_pro_desc, (String) object.get("subtitle"));
                 holder.setText(R.id.taobao_much, (String) object.get("title"));
                 break;
-//            case MultipleItem.GRIDITEM:
-//                mWidth = ResourceUtil.Dp2Px(48);
-//                mHeight = ResourceUtil.Dp2Px(40);
-//
-//                leftLayoutParams = new FrameLayout.LayoutParams(mWidth, mHeight);
-//                leftLayoutParams.rightMargin = ResourceUtil.Dp2Px(5f);
-//                rightLayoutParams = new FrameLayout.LayoutParams(mWidth, mHeight);
-//                rightLayoutParams.leftMargin = leftLayoutParams.rightMargin;
-//
-//                nameLeft = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                nameLeft.rightMargin = ResourceUtil.Dp2Px(2f);
-//                nameLeft.gravity = Gravity.CENTER;
-//                nameRight = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                nameRight.leftMargin = nameLeft.rightMargin;
-//                nameRight.gravity = Gravity.CENTER;
-//                holder.setText(R.id.tv_chine_name, (String) object.get("title"));
-//                GlideHelper.displayRoundedCornersImageNoError(mContext, (String) object.get("url"), mWidth, mHeight, ResourceUtil.Dp2Px(4), (ImageView) holder.getView(R.id.iv_type));
-//
-//                break;
+            case MultipleItem.GRIDITEM:
+                mWidth = ResourceUtil.Dp2Px(48);
+                mHeight = ResourceUtil.Dp2Px(40);
+
+                leftLayoutParams = new FrameLayout.LayoutParams(mWidth, mHeight);
+                leftLayoutParams.rightMargin = ResourceUtil.Dp2Px(5f);
+                rightLayoutParams = new FrameLayout.LayoutParams(mWidth, mHeight);
+                rightLayoutParams.leftMargin = leftLayoutParams.rightMargin;
+
+                nameLeft = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                nameLeft.rightMargin = ResourceUtil.Dp2Px(2f);
+                nameLeft.gravity = Gravity.CENTER;
+                nameRight = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                nameRight.leftMargin = nameLeft.rightMargin;
+                nameRight.gravity = Gravity.CENTER;
+                holder.setText(R.id.tv_chine_name, (String) object.get("title"));
+                GlideHelper.displayRoundedCornersImageNoError(mContext, (String) object.get("url"), mWidth, mHeight, ResourceUtil.Dp2Px(4), (ImageView) holder.getView(R.id.iv_type));
+
+                break;
         }
         doOther(holder, item);
     }

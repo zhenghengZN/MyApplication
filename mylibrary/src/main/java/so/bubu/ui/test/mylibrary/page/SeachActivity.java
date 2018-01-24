@@ -123,7 +123,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
         };
 
 //        initData();
-        historyList.addAll(setHotStrings());
+        hotList.addAll(setHotStrings());
         hotFlowLayout = (TagFlowLayout) hotView.findViewById(R.id.id_flowlayout);
         setHotData();
 
@@ -179,20 +179,20 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
 
     private List<String> hotList = new ArrayList<>();
 
-    public void initData() {
-        String hotSearch = MyJsonUtil.getJson(this, "HotSearch");
-        try {
-            JSONObject jsonObject = new JSONObject(hotSearch);
-            JSONArray array = jsonObject.getJSONArray("hotSearch");
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject jsonObject1 = array.getJSONObject(i);
-                String hotkey = jsonObject1.getString("hotkey");
-                hotList.add(hotkey);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void initData() {
+//        String hotSearch = MyJsonUtil.getJson(this, "HotSearch");
+//        try {
+//            JSONObject jsonObject = new JSONObject(hotSearch);
+//            JSONArray array = jsonObject.getJSONArray("hotSearch");
+//            for (int i = 0; i < array.length(); i++) {
+//                JSONObject jsonObject1 = array.getJSONObject(i);
+//                String hotkey = jsonObject1.getString("hotkey");
+//                hotList.add(hotkey);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public abstract List<String> setHotStrings();
