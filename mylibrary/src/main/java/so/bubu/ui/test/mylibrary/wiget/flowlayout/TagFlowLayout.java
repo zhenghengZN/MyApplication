@@ -21,6 +21,7 @@ public class TagFlowLayout extends FlowLayout
 
     private TagAdapter mTagAdapter;
     private int mSelectedMax = -1;//-1为不限制数量
+
     private static final String TAG = "TagFlowLayout";
 
     private Set<Integer> mSelectedView = new HashSet<Integer>();

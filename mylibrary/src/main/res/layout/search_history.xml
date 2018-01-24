@@ -14,7 +14,7 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <wiget.NoScrollListView
+        <so.bubu.ui.test.mylibrary.wiget.NoScrollListView
             android:id="@+id/nsll_select_history"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

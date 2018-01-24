@@ -22,8 +22,7 @@ import so.bubu.ui.test.mylibrary.page.helper.Helper;
  * 注意：
  * setOnFocusChangeListener换成setOnFocusChangeImpl
  * addTextChangedListener换成addTextWatcherImpl
- * 
- * @ author:linjunying
+ *
  */
 public class ClearEditText extends EditText
          				   implements OnFocusChangeListener, TextWatcher {

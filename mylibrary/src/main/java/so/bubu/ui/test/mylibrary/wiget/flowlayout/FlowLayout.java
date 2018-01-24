@@ -16,6 +16,12 @@ public class FlowLayout extends ViewGroup {
     private static final int LEFT = -1;
     private static final int CENTER = 0;
     private static final int RIGHT = 1;
+    private int mMaxLines = 3;//最大行数
+    private int mCurrLineNum = 0;//当前行数
+
+    public void setMaxLines(int maxLines) {
+        mMaxLines = maxLines;
+    }
 
     protected List<List<View>> mAllViews = new ArrayList<List<View>>();
     protected List<Integer> mLineHeight = new ArrayList<Integer>();
@@ -27,6 +33,7 @@ public class FlowLayout extends ViewGroup {
         super(context, attrs, defStyle);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TagFlowLayout);
         mGravity = ta.getInt(R.styleable.TagFlowLayout_tag_gravity, LEFT);
+        mMaxLines = ta.getInt(R.styleable.TagFlowLayout_max_line, Integer.MAX_VALUE);
         ta.recycle();
     }
 
@@ -53,6 +60,7 @@ public class FlowLayout extends ViewGroup {
         int lineHeight = 0;
 
         int cCount = getChildCount();
+        int currLineNum = 0;
 
         for (int i = 0; i < cCount; i++) {
             View child = getChildAt(i);
@@ -73,21 +81,29 @@ public class FlowLayout extends ViewGroup {
                     + lp.bottomMargin;
 
             if (lineWidth + childWidth > sizeWidth - getPaddingLeft() - getPaddingRight()) {
+                ++currLineNum;
+
                 width = Math.max(width, lineWidth);
                 lineWidth = childWidth;
                 height += lineHeight;
                 lineHeight = childHeight;
+
+                if (currLineNum >= mMaxLines) {
+                    break;
+                }
             } else {
                 lineWidth += childWidth;
                 lineHeight = Math.max(lineHeight, childHeight);
             }
-            if (i == cCount - 1) {
+            if (i == cCount - 1 && currLineNum != mMaxLines) {
                 width = Math.max(lineWidth, width);
                 height += lineHeight;
+//                isHiddenLines = false;
+            } else {
+//                isHiddenLines = true;
             }
         }
         setMeasuredDimension(
-                //
                 modeWidth == MeasureSpec.EXACTLY ? sizeWidth : width + getPaddingLeft() + getPaddingRight(),
                 modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom()//
         );
@@ -108,7 +124,7 @@ public class FlowLayout extends ViewGroup {
         int lineHeight = 0;
 
         int cCount = getChildCount();
-
+        int currLineNum = 0;
         for (int i = 0; i < cCount; i++) {
             View child = getChildAt(i);
             if (child.getVisibility() == View.GONE) continue;
@@ -119,6 +135,8 @@ public class FlowLayout extends ViewGroup {
             int childHeight = child.getMeasuredHeight();
 
             if (childWidth + lineWidth + lp.leftMargin + lp.rightMargin > width - getPaddingLeft() - getPaddingRight()) {
+                ++currLineNum;
+
                 mLineHeight.add(lineHeight);
                 mAllViews.add(lineViews);
                 mLineWidth.add(lineWidth);
@@ -126,6 +144,9 @@ public class FlowLayout extends ViewGroup {
                 lineWidth = 0;
                 lineHeight = childHeight + lp.topMargin + lp.bottomMargin;
                 lineViews = new ArrayList<View>();
+                if (currLineNum >= mMaxLines) {
+                    break;
+                }
             }
             lineWidth += childWidth + lp.leftMargin + lp.rightMargin;
             lineHeight = Math.max(lineHeight, childHeight + lp.topMargin

@@ -13,4 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_city_search">搜索</string>
     <string name="text_please_enter_key">请输入搜索词</string>
+    <string name="search_label_text_history">历史搜索</string>
+    <string name="search_label_text_hot">大家都在搜</string>
+
 </resources>

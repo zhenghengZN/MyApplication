@@ -62,7 +62,7 @@
                     android:layout_height="@dimen/icon_mini_height"
                     android:layout_gravity="center_vertical" />
 
-                <so.bubu.lib.wiget.ClearEditText
+                <so.bubu.ui.test.mylibrary.wiget.ClearEditText
                     android:id="@+id/et_content_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -84,6 +84,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/search_btn_bg"
                 android:gravity="center"
                 android:paddingBottom="5dp"
@@ -106,15 +108,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
 
-                <include
-                    android:id="@+id/history_label"
-                    layout="@layout/search_label" />
+                <LinearLayout
+                    android:id="@+id/history_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <View
-                    style="@style/normal_line"
-                    android:layout_height="3dp" />
+                    <include
+                        android:id="@+id/history_label"
+                        layout="@layout/search_label" />
+
+                    <View
+                        style="@style/normal_line"
+                        android:layout_height="10dp" />
+                </LinearLayout>
 
                 <include
                     android:id="@+id/hot_label"
@@ -123,12 +135,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/search_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/white"
                 android:visibility="gone">
 
                 <include
-                    android:id="@+id/search_history"
+                    android:id="@+id/search_list"
                     layout="@layout/search_history" />
             </LinearLayout>
 

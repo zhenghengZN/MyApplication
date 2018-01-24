@@ -184,6 +184,17 @@ public class MainActivity extends BaseActivity {
         object.put("picUrl", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
 
 
+        HashMap<String, Object> recomond = new HashMap<>();
+        object.put("biz30Day", 37);
+        object.put("finalPrice", 15);
+        object.put("title", "火烈鸟 梦幻卷翘璀璨浓密精细纤长睫毛膏");
+        object.put("couponShareUrl", "https://uland.taobao.com/coupon/edetail?e=tqIfYdOhq%2BAN%2BoQUE6FNzGPHTcqQ4ufIGZPSe9jdjR088L0dUrFHspPccAg7n0MpqjwLHlkAIdkCVzRffmjsmRpywujSvOp2nUIklpPPqYLEXRJ%2BB1et7NS8cpu%2BWjLoqwE8NLNX5iBD%2FBmXgrUwH%2BYsfTfahS6g&pid=mm_119950409_20916506_70766512&af=1&tj1=1&tj2=1");
+        object.put("platform", "淘宝");
+        object.put("couponAmount", 10);
+        object.put("discountPrice", 25);
+        object.put("picUrl", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
+
+
         HashMap<String, Object> object1 = new HashMap<>();
         object1.put("title", "title");
         object.put("url", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg");
@@ -207,7 +218,7 @@ public class MainActivity extends BaseActivity {
         };
         rcv.setAdapter(adapter);
         MultipleItem multipleItem = new MultipleItem(MultipleItem.RECOMMEND, objectHashMap);
-        MultipleItem multipleItem1 =new MultipleItem(MultipleItem.GRIDCOUPONITEM, object);
+        MultipleItem multipleItem1 = new MultipleItem(MultipleItem.GRIDCOUPONITEM, object);
 //        TypeDiffItemAdapter.MultipleItem multipleItem2 = adapter.new MultipleItem(TypeDiffItemAdapter.MultipleItem.GRIDITEM, object1);
 
 //        multipleItems.add(multipleItem2);
@@ -228,10 +239,32 @@ public class MainActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                Toast.makeText(MainActivity.this,"onclick" + i,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "onclick" + i, Toast.LENGTH_SHORT).show();
             }
         });
-        return rcv;
+
+        StrokeButton strokeButton = new StrokeButton(this);
+        strokeButton.setText("ddd");
+        strokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TestSearchActivity.class));
+            }
+        });
+        adapter.addHeaderView(strokeButton);
+
+
+        LinearLayout inflate = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.a, null, false);
+//        inflate.addView(rcv);
+
+
+        DrawableClearEditText drawableClearEditText = new DrawableClearEditText(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        drawableClearEditText.setLayoutParams(layoutParams);
+        drawableClearEditText.setmTextColor(0xffff0000);
+        drawableClearEditText.setmStrokeColor(0xff00ff00);
+        inflate.addView(drawableClearEditText);
+        return inflate;
     }
 
 //    @Override
@@ -287,6 +320,7 @@ public class MainActivity extends BaseActivity {
     public void strokebtn(View view) {
 //        startActivity(new Intent(MainActivity.this,TabActivity.class));
 //        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
-        startActivity(new Intent(MainActivity.this, MyBannerActivity.class));
+//        startActivity(new Intent(MainActivity.this, MyBannerActivity.class));
+        startActivity(new Intent(MainActivity.this, TestSearchActivity.class));
     }
 }
