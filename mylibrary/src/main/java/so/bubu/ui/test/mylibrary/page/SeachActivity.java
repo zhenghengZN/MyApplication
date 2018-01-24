@@ -212,8 +212,9 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
                 isAddHistory(s);
                 hideInputView();
             }
-
-            SearchButtonOnclick.searchOnclick(v);
+            if(SearchButtonOnclick != null) {
+                SearchButtonOnclick.searchOnclick(v);
+            }
             return;
         }
 
@@ -298,11 +299,11 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
     private ClearEditTextWatcherImpl ClearEditTextWatcherImpl;
     private SearchButtonOnclick SearchButtonOnclick;
 
-    interface SearchButtonOnclick {
+    public interface SearchButtonOnclick {
         void searchOnclick(View v);
     }
 
-    interface OnTagItemClickListener {
+    public interface OnTagItemClickListener {
         void onTagItemClick(View view, int position, FlowLayout parent);
     }
 
@@ -318,7 +319,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
         return mClearEditText;
     }
 
-    interface ClearEditTextWatcherImpl {
+    public interface ClearEditTextWatcherImpl {
         void afterTextChanged(Editable s);
 
         void beforeTextChanged(CharSequence s, int start, int count, int after);
