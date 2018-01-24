@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 import so.bubu.ui.test.mylibrary.page.SeachActivity;
 
 /**
@@ -18,5 +20,10 @@ public class TestSearchActivity extends SeachActivity {
 
 
 
+    }
+
+    @Override
+    public List<String> setHotStrings() {
+        return null;
     }
 }

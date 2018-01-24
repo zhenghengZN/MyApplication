@@ -80,7 +80,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
 
             @Override
             public void onTextChanged(CharSequence s, int start, int count, int after) {
-                if (s.toString().length() > 0 && s.toString().isEmpty()) {
+                if (s.toString().length() > 0 && !s.toString().isEmpty()) {
                     searchListLayout.setVisibility(View.VISIBLE);
                     if (ClearEditTextWatcherImpl != null) {
                         ClearEditTextWatcherImpl.onTextChangedListVisible(s, start, count, after, list);
@@ -112,7 +112,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
                 mClearEditText.setText(s);
                 mClearEditText.setSelection(s.length());
                 if (OnTagItemClickListener != null) {
-                    OnTagItemClickListener.onTagItemClick();
+                    OnTagItemClickListener.onTagItemClick(view,position,parent);
                 }
 
                 return false;
@@ -293,7 +293,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
     private ClearEditTextWatcherImpl ClearEditTextWatcherImpl;
 
     interface OnTagItemClickListener {
-        void onTagItemClick();
+        void onTagItemClick(View view, int position, FlowLayout parent);
     }
 
     public void setOnTagItemClickListener(OnTagItemClickListener OnTagItemClickListener) {
