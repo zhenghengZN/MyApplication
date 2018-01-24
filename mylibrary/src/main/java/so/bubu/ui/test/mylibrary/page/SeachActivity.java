@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 
 import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -53,11 +54,13 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
     private LinearLayout historyLayout;
     private TagFlowLayout.OnTagClickListener onTagClickListener;
     private NoScrollListView list;
+    private FrameLayout searchContent;
 
     @Override
     protected void onCreateView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_search);
         View hotView = findViewById(R.id.hot_label);
+        searchContent = (FrameLayout) findViewById(R.id.search_content);
         mClearEditText = (ClearEditText) findViewById(R.id.et_content_search);
         mClearEditText.setOnEditorActionListener(this);
         searchListLayout = findViewById(R.id.search_list_layout);
@@ -112,7 +115,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
                 mClearEditText.setText(s);
                 mClearEditText.setSelection(s.length());
                 if (OnTagItemClickListener != null) {
-                    OnTagItemClickListener.onTagItemClick(view,position,parent);
+                    OnTagItemClickListener.onTagItemClick(view, position, parent);
                 }
 
                 return false;
@@ -209,6 +212,8 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
                 isAddHistory(s);
                 hideInputView();
             }
+
+            SearchButtonOnclick.searchOnclick(v);
             return;
         }
 
@@ -236,7 +241,7 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
                 if (key.equals(s)) {
                     //若已经存在,看是否在第一个,否则添加到第一个
                     isAddHistory = false;
-                    if(i != 0){
+                    if (i != 0) {
                         HistorySqlLite.getInstance(this).deleteSingle(key);
                         HistorySqlLite.getInstance(this).insert(key);
                         ArrayList<String> query = HistorySqlLite.getInstance(this).query();
@@ -291,9 +296,18 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
 
     private OnTagItemClickListener OnTagItemClickListener;
     private ClearEditTextWatcherImpl ClearEditTextWatcherImpl;
+    private SearchButtonOnclick SearchButtonOnclick;
+
+    interface SearchButtonOnclick {
+        void searchOnclick(View v);
+    }
 
     interface OnTagItemClickListener {
         void onTagItemClick(View view, int position, FlowLayout parent);
+    }
+
+    public void setOnSearchButtonOnclick(SearchButtonOnclick SearchButtonOnclick) {
+        this.SearchButtonOnclick = SearchButtonOnclick;
     }
 
     public void setOnTagItemClickListener(OnTagItemClickListener OnTagItemClickListener) {
@@ -317,6 +331,10 @@ public abstract class SeachActivity extends BaseCompatActivity implements View.O
 
     public void addClearEditTextWatcherImpl(ClearEditTextWatcherImpl ClearEditTextWatcherImpl) {
         this.ClearEditTextWatcherImpl = ClearEditTextWatcherImpl;
+    }
+
+    public FrameLayout getSearchContent() {
+        return searchContent;
     }
 
     @Override
