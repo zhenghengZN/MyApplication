@@ -74,8 +74,8 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
                     switch (type) {
                         case MultipleItem.GRIDCOUPONITEM:
                             return gridManager.getSpanCount()/2;
-//                        case MultipleItem.GRIDITEM:
-//                            return 1;
+                        case MultipleItem.GRIDITEM:
+                            return gridManager.getSpanCount()/4;
                         default:
                             return gridManager.getSpanCount();
                     }
