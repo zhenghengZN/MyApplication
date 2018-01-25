@@ -60,6 +60,7 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
         addItemType(MultipleItem.COMMENT, R.layout.comment_list_item);
         addItemType(MultipleItem.TRAVELS, R.layout.travels_item);
         addItemType(MultipleItem.GRIDITEM, R.layout.item_main_type_disney);
+        addItemType(MultipleItem.GRIDITEM, R.layout.mine_cell);
     }
 
 
