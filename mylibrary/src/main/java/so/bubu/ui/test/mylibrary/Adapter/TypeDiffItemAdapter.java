@@ -224,6 +224,10 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
                 GlideHelper.displayRoundedCornersImageNoError(mContext, (String) object.get("url"), mWidth, mHeight, ResourceUtil.Dp2Px(4), (ImageView) holder.getView(R.id.iv_type));
 
                 break;
+            case MultipleItem.IMAGEANDTEXT:
+                holder.setText(R.id.tv_name, (String) object.get("title"));
+                holder.setText(R.id.tv_detail, (String) object.get("detail"));
+                break;
         }
         doOther(holder, item);
     }

@@ -16,6 +16,8 @@ public class MultipleItem implements MultiItemEntity {
     public static final int COMMENT = 6;
     public static final int TRAVELS = 7;
     public static final int GRIDITEM = 8;
+    public static final int IMAGEANDTEXT = 9;
+
 
     private int itemType;
     private HashMap<String, Object> objects;

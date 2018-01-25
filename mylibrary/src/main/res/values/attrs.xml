@@ -66,12 +66,18 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="BannerView">
-        <attr name="auto_play" format="boolean" />
-        <attr name="delaytime" format="integer"/>
-        <attr name="indicator_width" format="dimension" />
-        <attr name="indicator_height" format="dimension" />
-        <attr name="indicator_margin" format="dimension" />
+  <!--<declare-styleable name="BannerView">-->
+        <!--<attr name="auto_play" format="boolean" />-->
+        <!--<attr name="delaytime" format="integer"/>-->
+        <!--<attr name="indicator_width" format="dimension" />-->
+        <!--<attr name="indicator_height" format="dimension" />-->
+        <!--<attr name="indicator_margin" format="dimension" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="HotItemView">
+        <attr name="hot_image" format="reference"/>
+        <attr name="hot_title" format="string"/>
+        <attr name="hot_subtitle" format="string"/>
     </declare-styleable>
 
 </resources>
