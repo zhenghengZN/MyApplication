@@ -62,6 +62,6 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <!--<View-->
-        <!--android:id="@+id/weight_line" style="@style/normal_line" />-->
+    <View
+        android:id="@+id/weight_line" style="@style/normal_line" />
 </LinearLayout>

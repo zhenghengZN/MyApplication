@@ -87,4 +87,9 @@
         <item name="android:textColor">@color/color_b2b2b2</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+
+    <!--<style name="AppTheme" parent="AppBaseTheme">-->
+        <!--<item name="android:listDivider">@drawable/divider_bg</item>-->
+    <!--</style>-->
 </resources>

@@ -133,7 +133,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="3dp"
                 android:layout_toRightOf="@+id/iv_like"
-                android:ems="3"
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="@color/color_menu_infor"
@@ -155,7 +154,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="3dp"
                 android:layout_toRightOf="@+id/iv_comment"
-                android:ems="3"
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="@color/color_menu_infor"
@@ -163,9 +161,9 @@
 
         </RelativeLayout>
 
-        <!--<View-->
-            <!--style="@style/normal_line"-->
-            <!--android:layout_height="5dp" />-->
+        <View
+            style="@style/normal_line"
+            android:layout_height="5dp" />
     </LinearLayout>
 
 </FrameLayout>

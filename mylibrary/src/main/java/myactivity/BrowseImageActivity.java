@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 
+import Utils.DividerGridItemDecoration;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.page.common.BaseCompatActivity;
 
@@ -36,7 +37,7 @@ public abstract class BrowseImageActivity extends BaseCompatActivity {
         rcvImage = findView(R.id.rcv_image);
         rcvImage.setLayoutManager(new GridLayoutManager(this, 3));
 //        rcvImage.addOnScrollListener(new BaseOnRecyclerScrollListener());
-
+        rcvImage.addItemDecoration(new DividerGridItemDecoration(this));
 
         findViewById(R.id.iv_back_poi_imageview).setOnClickListener(new View.OnClickListener() {
             @Override

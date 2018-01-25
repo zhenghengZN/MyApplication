@@ -264,6 +264,8 @@ public class MainActivity extends BaseActivity {
         drawableClearEditText.setmTextColor(0xffff0000);
         drawableClearEditText.setmStrokeColor(0xff00ff00);
         inflate.addView(drawableClearEditText);
+
+        new SolidButton(this);
         return inflate;
     }
 
@@ -319,8 +321,8 @@ public class MainActivity extends BaseActivity {
 
     public void strokebtn(View view) {
 //        startActivity(new Intent(MainActivity.this,TabActivity.class));
-//        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
+        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
 //        startActivity(new Intent(MainActivity.this, MyBannerActivity.class));
-        startActivity(new Intent(MainActivity.this, TestSearchActivity.class));
+//        startActivity(new Intent(MainActivity.this, TestSearchActivity.class));
     }
 }

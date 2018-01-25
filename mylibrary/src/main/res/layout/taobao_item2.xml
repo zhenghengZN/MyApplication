@@ -132,6 +132,6 @@
 
         </RelativeLayout>
     </RelativeLayout>
-    <!--<View-->
-        <!--style="@style/normal_line"/>-->
+    <View
+        style="@style/normal_line"/>
 </LinearLayout>

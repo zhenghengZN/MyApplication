@@ -33,5 +33,7 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
-
+    compile ('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
 }
