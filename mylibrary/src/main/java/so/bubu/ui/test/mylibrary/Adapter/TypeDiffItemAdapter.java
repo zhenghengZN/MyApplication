@@ -19,6 +19,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
@@ -230,5 +231,4 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
     public abstract void doOther(BaseViewHolder viewHolder, MultipleItem multipleItem);
 
     public abstract void setGridItemOnclick(Activity mContext, int position, List<String> urls, AdapterView<?> parent, View view);
-
 }
