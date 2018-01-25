@@ -5,7 +5,7 @@
     <dimen name="activity_top_height">44dp</dimen>
     <dimen name="icon_small_height">18dp</dimen>
     <dimen name="icon_no_img_empty_img">64dp</dimen>
-    <dimen name="icon_mini_height">15dp</dimen>
+    <dimen name="icon_mini_height">20dp</dimen>
     <dimen name="icon_width_height">20dp</dimen>
     <dimen name="icon_small_height_icon">14dp</dimen>
     <dimen name="icon_no_img_empty">80dp</dimen>

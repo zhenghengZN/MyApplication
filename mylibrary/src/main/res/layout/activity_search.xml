@@ -60,6 +60,7 @@
                     android:id="@+id/iv_search_imageview"
                     android:layout_width="@dimen/icon_mini_height"
                     android:layout_height="@dimen/icon_mini_height"
+                    android:src="@drawable/search"
                     android:layout_gravity="center_vertical" />
 
                 <so.bubu.ui.test.mylibrary.wiget.ClearEditText

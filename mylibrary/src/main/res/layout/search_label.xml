@@ -14,6 +14,7 @@
             android:id="@+id/search_label_title"
             style="@style/searchText"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:text="@string/search_label_text_history" />
 
         <LinearLayout
@@ -26,7 +27,8 @@
                 android:id="@+id/delete_img"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/loading" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/delete" />
         </LinearLayout>
     </RelativeLayout>
 
