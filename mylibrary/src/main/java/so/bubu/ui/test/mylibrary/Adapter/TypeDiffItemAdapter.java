@@ -166,7 +166,8 @@ public abstract class TypeDiffItemAdapter extends BaseMultiItemQuickAdapter<Mult
 
             case MultipleItem.COMMENT:
                 holder.setText(R.id.comment_list_content, (String) object.get("content"));
-                holder.setText(R.id.comment_list_time, CommonMethod.showTime((String) object.get("time")));
+//                holder.setText(R.id.comment_list_time, CommonMethod.showTime((String) object.get("time")));
+                holder.setText(R.id.comment_list_time,  (String)object.get("time"));
 
                 holder.setText(R.id.comment_user_name, (String) object.get("userName"));
 

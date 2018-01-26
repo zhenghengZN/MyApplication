@@ -66,18 +66,41 @@
         </attr>
     </declare-styleable>
 
-  <!--<declare-styleable name="BannerView">-->
-        <!--<attr name="auto_play" format="boolean" />-->
-        <!--<attr name="delaytime" format="integer"/>-->
-        <!--<attr name="indicator_width" format="dimension" />-->
-        <!--<attr name="indicator_height" format="dimension" />-->
-        <!--<attr name="indicator_margin" format="dimension" />-->
+    <!--<declare-styleable name="BannerView">-->
+    <!--<attr name="auto_play" format="boolean" />-->
+    <!--<attr name="delaytime" format="integer"/>-->
+    <!--<attr name="indicator_width" format="dimension" />-->
+    <!--<attr name="indicator_height" format="dimension" />-->
+    <!--<attr name="indicator_margin" format="dimension" />-->
     <!--</declare-styleable>-->
 
     <declare-styleable name="HotItemView">
-        <attr name="hot_image" format="reference"/>
-        <attr name="hot_title" format="string"/>
-        <attr name="hot_subtitle" format="string"/>
+        <attr name="hot_image" format="reference" />
+        <attr name="hot_title" format="string" />
+        <attr name="hot_subtitle" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TextEditText">
+        <!--<attr name="field_margin" format="integer" />-->
+        <attr name="text_size" format="dimension" />
+        <attr name="hint_text_color" format="color" />
+        <attr name="content_text_color" format="color" />
+        <attr name="hint_ems" format="integer" />
+        <attr name="content_text_hint" format="string" />
+        <attr name="istitle" format="boolean" />
+        <attr name="title_text" format="string" />
+
+        <attr name="mode">
+            <!--<enum name="default" value="0" />-->
+            <enum name="number" value="1" />
+            <enum name="numbenrAnddecimal" value="2" />
+        </attr>
+
+        <attr name="bg_stroke_color" format="color" />
+        <attr name="bg_stroke_width" format="dimension" />
+        <attr name="radius" format="dimension" />
+
+        <attr name="hasStrokeBg" format="boolean" />
     </declare-styleable>
 
 </resources>

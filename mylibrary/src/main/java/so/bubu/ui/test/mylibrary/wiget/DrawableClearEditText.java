@@ -90,6 +90,7 @@ public class DrawableClearEditText extends LinearLayout {
         return mImageView;
     }
 
+
     public ClearEditText getClearEditText() {
         return mClearEditText;
     }

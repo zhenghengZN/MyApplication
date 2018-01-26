@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -256,7 +258,10 @@ public class MainActivity extends BaseActivity {
 
         LinearLayout inflate = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.a, null, false);
 //        inflate.addView(rcv);
-
+        View id = inflate.findViewById(R.id.mydcet);
+        ImageView view = id.findViewById(R.id.v_icon_user);
+        Log.e("zhengheng",""+view);
+        view.setImageResource(R.drawable.loading);
 
         DrawableClearEditText drawableClearEditText = new DrawableClearEditText(this);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
