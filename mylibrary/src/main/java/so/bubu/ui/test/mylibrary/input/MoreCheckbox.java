@@ -1,10 +1,7 @@
 package so.bubu.ui.test.mylibrary.input;
 
 import android.content.Context;
-import android.text.Layout;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +12,19 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Utils.ResourceUtil;
-import so.bubu.ui.test.mylibrary.Adapter.common.ViewHolder;
 import so.bubu.ui.test.mylibrary.R;
-import so.bubu.ui.test.mylibrary.wiget.NoScrollListView;
 
 /**
- * Created by zhengheng on 18/1/29.
+ * Created by zhengheng on 18/1/30.
  */
-public class ListSingleButton extends LinearLayout {
-    public ListSingleButton(Context context) {
-        this(context, null);
+public class MoreCheckbox extends LinearLayout {
+    public MoreCheckbox(Context context) {
+        super(context);
     }
 
     private ArrayList<String> titles = new ArrayList<>();
@@ -39,7 +33,7 @@ public class ListSingleButton extends LinearLayout {
     private Context ctx;
     private SingleChoiceAdapter singleChoiceAdapter;
 
-    public ListSingleButton(final Context context, AttributeSet attrs) {
+    public MoreCheckbox(final Context context, AttributeSet attrs) {
         super(context, attrs);
         this.setOrientation(VERTICAL);
         this.ctx = context;
@@ -137,8 +131,8 @@ public class ListSingleButton extends LinearLayout {
                 viewHolder = new ViewHolder();
                 convertView = layoutInflater.inflate(R.layout.singlecheckbox, parent, false);
                 viewHolder.textView = (TextView) convertView.findViewById(R.id.title);
-                convertView.findViewById(R.id.check_img).setVisibility(VISIBLE);
-                viewHolder.radioButton = (RadioButton) convertView.findViewById(R.id.check_img);
+                convertView.findViewById(R.id.more_checkbox).setVisibility(VISIBLE);
+                viewHolder.radioButton = (RadioButton) convertView.findViewById(R.id.more_checkbox);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -177,4 +171,3 @@ public class ListSingleButton extends LinearLayout {
         }
     }
 }
-

@@ -73,33 +73,33 @@
     <!--app:solid_radius="0dp" />-->
 
     <!--<so.bubu.ui.test.mylibrary.input.SwitchView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
 
     <!--<RadioGroup-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
 
-        <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:drawableRight="@drawable/single_button_bg"-->
-            <!--android:button="@null"-->
-            <!--android:text="a" />-->
+    <!--<RadioButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableRight="@drawable/single_button_bg"-->
+    <!--android:button="@null"-->
+    <!--android:text="a" />-->
 
-        <!--<RadioButton-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:drawableRight="@drawable/single_button_bg"-->
+    <!--<RadioButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableRight="@drawable/single_button_bg"-->
 
-            <!--android:button="@null"-->
-            <!--android:text="b" />-->
+    <!--android:button="@null"-->
+    <!--android:text="b" />-->
     <!--</RadioGroup>-->
 
     <!--<so.bubu.ui.test.mylibrary.input.SingleCheckbox-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:check_title="aaaaa">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:check_title="aaaaa">-->
 
     <!--</so.bubu.ui.test.mylibrary.input.SingleCheckbox>-->
 
@@ -116,13 +116,12 @@
 
     </so.bubu.ui.test.mylibrary.input.SwitchLayout>
 
-    <!--<so.bubu.ui.test.mylibrary.input.TextArea-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!-->-->
+    <so.bubu.ui.test.mylibrary.input.TextArea
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-    <!--</so.bubu.ui.test.mylibrary.input.TextArea>-->
+    </so.bubu.ui.test.mylibrary.input.TextArea>
 
     <so.bubu.ui.test.mylibrary.input.FormView
         android:layout_width="match_parent"
