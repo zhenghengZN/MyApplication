@@ -6,10 +6,15 @@ import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import so.bubu.ui.test.mylibrary.input.ListSingleButton;
 import so.bubu.ui.test.mylibrary.input.TextEditText;
+import so.bubu.ui.test.mylibrary.wiget.PickTimePopWindow;
 
 /**
  * Created by zhengheng on 18/1/26.
@@ -22,7 +27,7 @@ public class TestActivity extends Activity {
         setContentView(R.layout.test);
 
         LinearLayout view = findViewById(R.id.parent);
-        View submit = findViewById(R.id.submit);
+//        View submit = findViewById(R.id.submit);
 
         final TextEditText text = new TextEditText(this);
 
@@ -43,7 +48,7 @@ public class TestActivity extends Activity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 //                Toast.makeText(TestActivity.this, "beforeTextChanged", Toast.LENGTH_SHORT).show();
-                Log.e("zhengheng","beforeTextChanged");
+                Log.e("zhengheng", "beforeTextChanged");
             }
 
             @Override
@@ -59,13 +64,21 @@ public class TestActivity extends Activity {
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TestActivity.this, text.getText().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        ArrayList<String> lis = new ArrayList<>();
+        lis.add("aaa");
+        lis.add("bbbb");
+        final ListSingleButton listbutton = findViewById(R.id.listbutton);
+        listbutton.setTitles(lis);
+
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(TestActivity.this, text.getText().toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 //        Log.e("zhengheng", text.getText().toString());
+
+
         view.addView(text);
     }
 }

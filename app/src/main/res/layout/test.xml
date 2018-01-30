@@ -6,102 +6,133 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:title_text="联系电话"-->
+    <!--app:hint_ems="4"-->
+    <!--app:mode="number"-->
+    <!--app:content_text_hint="请输入手机号"/>-->
 
     <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="4dp"-->
-        <!--app:content_text_color="@color/color_82cd6b"-->
-        <!--app:content_text_hint="test"-->
-        <!--app:hint_ems="4"-->
-        <!--app:hint_text_color="@color/color_ff6f06"-->
-        <!--app:mode="number"-->
-        <!--app:text_size="16px"-->
-        <!--app:title_text="测试文本">-->
-
-    <!--</so.bubu.ui.test.mylibrary.input.TextEditText>-->
-
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:istitle="false"-->
+    <!--app:content_text_hint="测试"-->
+    <!--/>-->
 
     <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:istitle="false"-->
+    <!--app:content_text_hint="测试"-->
+    <!--app:hasStrokeBg="true"-->
+    <!--/>-->
+
+    <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:title_text="测试"-->
+    <!--app:content_text_hint="测试"-->
+    <!--/>-->
+
+    <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:hasStrokeBg="true"-->
+    <!--app:content_text_hint="测试"-->
+    <!--app:title_text="测试"-->
+    <!--app:bg_stroke_width="2dp"-->
+    <!--app:hint_text_color="#00ff00"-->
+    <!--app:content_text_color="#0000ff"-->
+    <!--app:bg_stroke_color="#ff0000"/>-->
+
+    <!--<so.bubu.ui.test.mylibrary.input.TextEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--app:hasStrokeBg="true"-->
+    <!--app:content_text_hint="测试"-->
+    <!--app:title_text="测试"-->
+    <!--app:bg_stroke_width="2dp"-->
+    <!--app:radius="6dp"-->
+    <!--app:mode="numbenrAnddecimal"-->
+    <!--app:bg_stroke_color="#ff0000"/>-->
+
+    <!--<so.bubu.ui.test.mylibrary.button.SolidButton-->
+    <!--android:id="@+id/submit"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:text="submit"-->
+    <!--app:solid_radius="0dp" />-->
+
+    <!--<so.bubu.ui.test.mylibrary.input.SwitchView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<RadioGroup-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<RadioButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableRight="@drawable/single_button_bg"-->
+            <!--android:button="@null"-->
+            <!--android:text="a" />-->
+
+        <!--<RadioButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableRight="@drawable/single_button_bg"-->
+
+            <!--android:button="@null"-->
+            <!--android:text="b" />-->
+    <!--</RadioGroup>-->
+
+    <!--<so.bubu.ui.test.mylibrary.input.SingleCheckbox-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="4dp"-->
-        <!--app:bg_stroke_color="#e2e2e2"-->
-        <!--app:bg_stroke_width="1dp"-->
-        <!--app:content_text_color="@color/color_82cd6b"-->
-        <!--app:content_text_hint="test"-->
-        <!--app:hasStrokeBg="true"-->
-        <!--app:hint_ems="4"-->
-        <!--app:hint_text_color="@color/color_ff6f06"-->
-        <!--app:mode="number"-->
-        <!--app:radius="10dp"-->
-        <!--app:text_size="16px"-->
-        <!--app:title_text="测试文本" />-->
+        <!--app:check_title="aaaaa">-->
 
-    <so.bubu.ui.test.mylibrary.input.TextEditText
+    <!--</so.bubu.ui.test.mylibrary.input.SingleCheckbox>-->
+
+    <so.bubu.ui.test.mylibrary.input.ListSingleButton
+        android:id="@+id/listbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:title_text="联系电话"
-        app:hint_ems="4"
-        app:mode="number"
-        app:content_text_hint="请输入手机号"/>
+        android:layout_height="wrap_content">
 
-    <so.bubu.ui.test.mylibrary.input.TextEditText
+    </so.bubu.ui.test.mylibrary.input.ListSingleButton>
+
+    <so.bubu.ui.test.mylibrary.input.SwitchLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:istitle="false"
-        app:content_text_hint="测试"
-        />
+        android:layout_height="wrap_content">
 
-    <so.bubu.ui.test.mylibrary.input.TextEditText
+    </so.bubu.ui.test.mylibrary.input.SwitchLayout>
+
+    <!--<so.bubu.ui.test.mylibrary.input.TextArea-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!-->-->
+
+    <!--</so.bubu.ui.test.mylibrary.input.TextArea>-->
+
+    <so.bubu.ui.test.mylibrary.input.FormView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:istitle="false"
-        app:content_text_hint="测试"
-        app:hasStrokeBg="true"
-        />
+        android:layout_height="wrap_content">
 
-    <so.bubu.ui.test.mylibrary.input.TextEditText
+    </so.bubu.ui.test.mylibrary.input.FormView>
+
+    <so.bubu.ui.test.mylibrary.input.ChooseInputView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:title_text="测试"
-        app:content_text_hint="测试"
-        />
+        android:layout_height="wrap_content">
 
-    <so.bubu.ui.test.mylibrary.input.TextEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:hasStrokeBg="true"
-        app:content_text_hint="测试"
-        app:title_text="测试"
-        app:bg_stroke_width="2dp"
-        app:hint_text_color="#00ff00"
-        app:content_text_color="#0000ff"
-        app:bg_stroke_color="#ff0000"/>
-
-    <so.bubu.ui.test.mylibrary.input.TextEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:hasStrokeBg="true"
-        app:content_text_hint="测试"
-        app:title_text="测试"
-        app:bg_stroke_width="2dp"
-        app:radius="6dp"
-        app:mode="numbenrAnddecimal"
-        app:bg_stroke_color="#ff0000"/>
-
-    <so.bubu.ui.test.mylibrary.button.SolidButton
-        android:id="@+id/submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="submit"
-        app:solid_radius="0dp" />
-
+    </so.bubu.ui.test.mylibrary.input.ChooseInputView>
 </LinearLayout>
