@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import Utils.ResourceUtil;
@@ -52,12 +54,15 @@ public class MoreCheckbox extends LinearLayout {
         View inflate = LayoutInflater.from(context).inflate(R.layout.listsinglebutton, null, false);
         ListView listView = (ListView) inflate.findViewById(R.id.list);
         singleChoiceAdapter = new SingleChoiceAdapter(context, titles);
-        singleChoiceAdapter.check(0);
+//        singleChoiceAdapter.check(0);
         listView.setAdapter(singleChoiceAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                singleChoiceAdapter.check(position);
+//                singleChoiceAdapter.check(position);
+                SingleChoiceAdapter.ViewHolder viewHolder = (SingleChoiceAdapter.ViewHolder) view.getTag();
+                viewHolder.radioButton.toggle();
+                singleChoiceAdapter.addCheckPosition(position, viewHolder.radioButton.isChecked());
                 if (listener != null) {
                     listener.CheckItem(parent, view, position, singleChoiceAdapter.getItem(position));
                 }
@@ -100,13 +105,22 @@ public class MoreCheckbox extends LinearLayout {
     private class SingleChoiceAdapter extends BaseAdapter {
         private final LayoutInflater layoutInflater;
         private List<String> data;
-        private int currentCheckedItemPosition = 0;
+
+        private HashMap<Integer, Boolean> isCheckMap = new HashMap<>();
 
         public SingleChoiceAdapter(Context context, List<String> data) {
             layoutInflater = LayoutInflater.from(context);
             this.data = data;
+            initMap();
             // 默认为-1，没有选择任何item
-            currentCheckedItemPosition = AbsListView.INVALID_POSITION; // -1
+//            currentCheckedItemPosition = AbsListView.INVALID_POSITION; // -1
+        }
+
+
+        public void initMap() {
+            for (int i = 0; i < data.size(); i++) {
+                isCheckMap.put(i, false);
+            }
         }
 
         @Override
@@ -132,42 +146,32 @@ public class MoreCheckbox extends LinearLayout {
                 convertView = layoutInflater.inflate(R.layout.singlecheckbox, parent, false);
                 viewHolder.textView = (TextView) convertView.findViewById(R.id.title);
                 convertView.findViewById(R.id.more_checkbox).setVisibility(VISIBLE);
-                viewHolder.radioButton = (RadioButton) convertView.findViewById(R.id.more_checkbox);
+                viewHolder.radioButton = (CheckBox) convertView.findViewById(R.id.more_checkbox);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            if (currentCheckedItemPosition == position) {
-                viewHolder.radioButton.setChecked(true);
-            } else {
-                viewHolder.radioButton.setChecked(false);
+//            isCheckMap.put(position, false);
+            if (isCheckMap.get(position) == null) {
+                isCheckMap.put(position, false);
             }
+            viewHolder.radioButton.setChecked(isCheckMap.get(position));
+
             viewHolder.textView.setText(getItem(position));
 
             return convertView;
         }
 
-        public void setDefaultCheckedItemPosition(int position) {
-            currentCheckedItemPosition = position;
-        }
 
-        public int getCheckedItemPosition() {
-            return currentCheckedItemPosition;
-        }
-
-        public void check(int position) {
-            if (currentCheckedItemPosition == position) {
-                return;
-            }
-            setDefaultCheckedItemPosition(position);
+        public void addCheckPosition(int i, boolean ischeck) {
+            isCheckMap.put(i, ischeck);
             notifyDataSetChanged();
         }
 
-
         class ViewHolder {
             TextView textView;
-            RadioButton radioButton;
+            CheckBox radioButton;
         }
     }
 }

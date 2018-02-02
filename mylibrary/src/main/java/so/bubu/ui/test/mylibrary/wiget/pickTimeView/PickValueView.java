@@ -30,6 +30,8 @@ public class PickValueView extends LinearLayout implements NumberPicker.OnValueC
      */
     private final int DATA_SIZE = 3;
 
+
+    public static final int TYPE_PICK_PHONE = 3;
     /**
      * 需要设置的值与默认值
      */

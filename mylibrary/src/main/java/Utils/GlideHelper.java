@@ -180,6 +180,18 @@ public class GlideHelper {
                 .into(tagetView);
     }
 
+
+    public static void display(Context context, String url,int width,int height ,ImageView tagetView) {
+
+        Glide
+                .with(context)
+                .load(url)
+                .override(width, height)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.loading)
+                .into(tagetView);
+    }
+
     public static void display(Context context, String url, ImageView tagetView) {
 
         Glide

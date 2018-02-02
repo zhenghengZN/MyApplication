@@ -4,7 +4,6 @@
     android:layout_height="40dp"
     android:orientation="vertical">
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -32,9 +31,11 @@
                 android:textSize="@dimen/weight_textsize" />
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:padding="10dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType="fitXY"
+                android:layout_margin="3dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/right" />
 
             <View
@@ -48,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@null"
+            android:layout_weight="1"
             android:paddingLeft="10dp"
             android:textSize="@dimen/weight_textsize"
             android:hint="请输入号码" />

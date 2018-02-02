@@ -1,11 +1,16 @@
 package so.bubu.ui.test.mylibrary.input;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
@@ -25,6 +30,7 @@ public class SwitchLayout extends LinearLayout {
     public SwitchLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.setOrientation(HORIZONTAL);
+        this.setBackgroundColor(Color.WHITE);
         view = LayoutInflater.from(context).inflate(R.layout.switchlayout, this, true);
         text = (TextView) view.findViewById(R.id.title);
         switchview = (SwitchView) view.findViewById(R.id.switchview);
@@ -45,11 +51,15 @@ public class SwitchLayout extends LinearLayout {
                 }
             }
         });
-        init();
     }
 
-    public void init() {
-
+    public void init(JSONObject objects) {
+        try {
+            String title = (String) objects.get("title");
+            setText(title);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setText(String s) {

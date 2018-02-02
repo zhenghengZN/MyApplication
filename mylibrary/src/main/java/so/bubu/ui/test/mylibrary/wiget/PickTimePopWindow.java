@@ -28,26 +28,16 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
     private SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
     private String date;
-    private String[] phoneVaule = {"+80", "+84", "+86", "+87"};
+//    private String[] phoneVaule = {"+80", "+84", "+86", "+87"};
 
     //    SimpleDateFormat sdfDate;
-    public PickTimePopWindow(Activity act, int type) {
+    public PickTimePopWindow(Activity act) {
         this.act = act;
         inflate = LayoutInflater.from(act).inflate(R.layout.picktime, null);
         pickDate = (PickTimeView) inflate.findViewById(R.id.pickDate);
         pickTime = (PickTimeView) inflate.findViewById(R.id.pickTime);
         pickPhone = (PickValueView) inflate.findViewById(R.id.pickPhone);
 
-        if (type == PickTimeView.TYPE_PICK_DATE) {
-            pickDate.setViewType(PickTimeView.TYPE_PICK_DATE);
-            pickDate.setVisibility(View.VISIBLE);
-        } else if (type == PickTimeView.TYPE_PICK_TIME) {
-            pickTime.setViewType(PickTimeView.TYPE_PICK_TIME);
-            pickTime.setVisibility(View.VISIBLE);
-        } else {
-            pickPhone.setVisibility(View.VISIBLE);
-            pickPhone.setValueData(phoneVaule, phoneVaule[2]);
-        }
         pickDate.setOnSelectedChangeListener(this);
         pickTime.setOnSelectedChangeListener(this);
         pickPhone.setOnSelectedChangeListener(this);
@@ -85,6 +75,24 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
 
     }
 
+
+    public void setType(int type) {
+        if (type == PickTimeView.TYPE_PICK_DATE) {
+            pickDate.setViewType(PickTimeView.TYPE_PICK_DATE);
+            pickDate.setVisibility(View.VISIBLE);
+        } else if (type == PickTimeView.TYPE_PICK_TIME) {
+            pickTime.setViewType(PickTimeView.TYPE_PICK_TIME);
+            pickTime.setVisibility(View.VISIBLE);
+        } else if (type == PickValueView.TYPE_PICK_PHONE) {
+            pickPhone.setVisibility(View.VISIBLE);
+//            pickPhone.setValueData(phoneVaule, phoneVaule[2]);
+        }
+    }
+
+
+    public void setPickViewValue(String[]  phoneVaule){
+        pickPhone.setValueData(phoneVaule, phoneVaule[0]);
+    }
 
     public void showPopWindow(View parent, Activity context) {
         if (!this.isShowing()) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<so.bubu.ui.test.mylibrary.wiget.checkBox.CheckBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    app:checkBoxHeight="20dp"
+    app:checkBoxWidth="20dp"
+    app:colorChecked="#aaffaa"
+    app:middlePadding="15dp"
+    app:text="aaa"
+    app:textSize="17sp"/>
+

@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 
@@ -23,6 +25,7 @@ public class SingleCheckbox extends LinearLayout {
     private RadioButton checkImage;
     private View view, parent;
     private String titleName;
+    private boolean ischeck;
 
     public SingleCheckbox(Context context) {
         this(context, null);
@@ -46,11 +49,17 @@ public class SingleCheckbox extends LinearLayout {
         view.setLayoutParams(lp);
         view.setBackgroundColor(getResources().getColor(R.color.color_e2e2e2));
         this.addView(view);
-        init();
+
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkImage.setChecked(!ischeck);
+            }
+        });
     }
 
-    public void init() {
-
+    public void init(HashMap<String,Object>  map) {
+        title.setText((String)map.get("title"));
     }
 
     public void setTitle(String s) {

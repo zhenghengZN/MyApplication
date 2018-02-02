@@ -13,6 +13,9 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.Button;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 
@@ -21,20 +24,19 @@ import so.bubu.ui.test.mylibrary.R;
  */
 public class SolidButton extends Button {
 
-    public static int[]	mNormalState		= new int[] {};
-    public static int[]	mPressState			= new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled };
-    public static int[]	mDisableState		= new int[] { -android.R.attr.state_enabled };
-    public static int[]	mSelectedState		= new int[] { android.R.attr.state_selected, android.R.attr.state_enabled };
+    public static int[] mNormalState = new int[]{};
+    public static int[] mPressState = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
+    public static int[] mDisableState = new int[]{-android.R.attr.state_enabled};
+    public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
     private int mRadius = ResourceUtil.Dp2Px(50);                                                                            //默认的圆角半径
 
     //默认文字和背景颜色
-    private int			mBgNormalColor		= getResources().getColor(R.color.color_82cd6b);
-    private int			mBgPressedColor		= getResources().getColor(R.color.color_82cd6b);
-    private int			mTextNormalColor	= Color.WHITE;
-    private int			mTextPressedColor	= Color.WHITE;
+    private int mBgNormalColor = getResources().getColor(R.color.color_82cd6b);
+    private int mBgPressedColor = getResources().getColor(R.color.color_82cd6b);
+    private int mTextNormalColor = Color.WHITE;
+    private int mTextPressedColor = Color.WHITE;
 
-    public SolidButton(Context context)
-    {
+    public SolidButton(Context context) {
         super(context);
         initUI();
     }
@@ -42,7 +44,7 @@ public class SolidButton extends Button {
     public SolidButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SolidButton);
-        mRadius = (int)ta.getDimension(R.styleable.SolidButton_solid_radius, ResourceUtil.Dp2Px(50));
+        mRadius = (int) ta.getDimension(R.styleable.SolidButton_solid_radius, ResourceUtil.Dp2Px(50));
         mBgNormalColor = ta.getColor(R.styleable.SolidButton_solid_bg_normal_color, getResources().getColor(R.color.color_82cd6b));
         mBgPressedColor = ta.getColor(R.styleable.SolidButton_solid_bg_pressed_color, getResources().getColor(R.color.color_82cd6b));
         mTextNormalColor = ta.getColor(R.styleable.SolidButton_solid_text_normal_color, Color.WHITE);
@@ -51,8 +53,16 @@ public class SolidButton extends Button {
         initUI();
     }
 
-    private void initUI()
-    {
+    public void init(JSONObject object) {
+        try {
+            String title = (String) object.get("title");
+            setText(title);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initUI() {
         setGravity(Gravity.CENTER);
         buildDraweableState();
         buildColorDrawableState();
@@ -61,20 +71,18 @@ public class SolidButton extends Button {
     /**
      * 构建图片drawble
      */
-    private void buildColorDrawableState()
-    {
-        ColorStateList colorStateList = new ColorStateList(new int[][] { mPressState, mNormalState },
-                new int[] { mTextPressedColor, mTextNormalColor });
+    private void buildColorDrawableState() {
+        ColorStateList colorStateList = new ColorStateList(new int[][]{mPressState, mNormalState},
+                new int[]{mTextPressedColor, mTextNormalColor});
         setTextColor(colorStateList);
     }
 
     /**
      * 构建背景Drawble
      */
-    private void buildDraweableState()
-    {
+    private void buildDraweableState() {
 
-        float outRectr[] = new float[] { mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius };
+        float outRectr[] = new float[]{mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius, mRadius};
         //创建状态管理器
         StateListDrawable drawable = new StateListDrawable();
         /**
@@ -107,8 +115,7 @@ public class SolidButton extends Button {
      *
      * @param radius
      */
-    public void setRadius(int radius)
-    {
+    public void setRadius(int radius) {
         this.mRadius = radius;
         buildDraweableState();
     }
@@ -119,8 +126,7 @@ public class SolidButton extends Button {
      * @param normalColor
      * @param prssedClor
      */
-    public void setBgNormalPressedcolor(int normalColor, int prssedClor)
-    {
+    public void setBgNormalPressedcolor(int normalColor, int prssedClor) {
 
         mBgNormalColor = normalColor;
         mBgPressedColor = prssedClor;
@@ -134,8 +140,7 @@ public class SolidButton extends Button {
      * @param normalColor
      * @param pressedColor
      */
-    public void setTextNormalPressedcolor(int normalColor, int pressedColor)
-    {
+    public void setTextNormalPressedcolor(int normalColor, int pressedColor) {
         mTextPressedColor = pressedColor;
         mTextNormalColor = normalColor;
         buildColorDrawableState();

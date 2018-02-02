@@ -14,12 +14,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
 
+import Utils.ResourceUtil;
 import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.PickTimePopWindow;
+import so.bubu.ui.test.mylibrary.wiget.form.FormDatePick;
+import so.bubu.ui.test.mylibrary.wiget.form.FormTextView;
+import so.bubu.ui.test.mylibrary.wiget.form.FormTextViewAndImage;
+import so.bubu.ui.test.mylibrary.wiget.form.FormTwoTextView;
 import so.bubu.ui.test.mylibrary.wiget.pickTimeView.PickTimeView;
 
 /**
@@ -30,142 +41,22 @@ public class FormView extends LinearLayout {
         this(context, null);
     }
 
-    private View view;
-    private TextView getCheck, date, time;
-    private EditText mQqNum, mPhoneNum, check;
-    private ImageView checkImg;
+    //    private View view;
+//    private TextView getCheck, date, time;
+//    private EditText mQqNum, mPhoneNum, check;
+//    private ImageView checkImg;
     private Context context;
+    private LinearLayout layout;
+    //    private View line;
+    private TextView instruction;
 
     public FormView(final Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        view = LayoutInflater.from(context).inflate(R.layout.form, this, true);
-        mQqNum = (EditText) view.findViewById(R.id.qq_num);
-        mPhoneNum = (EditText) view.findViewById(R.id.phone_num);
-        checkPhoneAndQq();
-        getCheck = (TextView) view.findViewById(R.id.getcheck);
-        date = (TextView) view.findViewById(R.id.date);
-        time = (TextView) view.findViewById(R.id.time);
-        check = (EditText) view.findViewById(R.id.check);
-        checkImg = (ImageView) view.findViewById(R.id.check_img);
-        Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH) + 1;
-        String months;
-        if (month < 10) {
-            months = "0" + month;
-        } else {
-            months = month + "";
-        }
-        date.setText(calendar.get(Calendar.YEAR) + "-" + months + "-" + calendar.get(Calendar.DAY_OF_MONTH));
-        time.setText(calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
-        checkImg.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onCheckCodeListener != null) {
-                    onCheckCodeListener.getPhoneCheckCode();
-                }
-            }
-        });
-
-        getCheck.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onCheckCodeListener != null) {
-                    onCheckCodeListener.getImageCheckCode();
-                }
-            }
-        });
-
-
-        final PickTimePopWindow datePick = new PickTimePopWindow((Activity) context, PickTimeView.TYPE_PICK_DATE);
-        final PickTimePopWindow timePick = new PickTimePopWindow((Activity) context, PickTimeView.TYPE_PICK_TIME);
-        datePick.setOnSucessClickListener(new PickTimePopWindow.OnSucessClickListener() {
-            @Override
-            public void sucessClick(String s, View v) {
-                date.setText(s);
-            }
-        });
-        timePick.setOnSucessClickListener(new PickTimePopWindow.OnSucessClickListener() {
-            @Override
-            public void sucessClick(String date, View v) {
-                time.setText(date);
-            }
-        });
-
-
-        date.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                datePick.showPopWindow(FormView.this, (Activity) context);
-            }
-        });
-
-        time.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePick.showPopWindow(FormView.this, (Activity) context);
-            }
-        });
-    }
-
-
-    public void checkPhoneAndQq() {
-        mPhoneNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean b = StringUtils.checkPhone(mPhoneNum.getText().toString());
-                if (!b) {
-                    Toast.makeText(context, "输入的手机号有误", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        mQqNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean b = StringUtils.checkQQ(mQqNum.getText().toString());
-                if (!b) {
-                    Toast.makeText(context, "输入的QQ号有误", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-    }
-
-
-    public ArrayList<String> getValue() {
-        ArrayList<String> strings = new ArrayList<>();
-        String qq = mQqNum.getText().toString();
-        String phone = mPhoneNum.getText().toString();
-        String dt = date.getText().toString();
-        String tm = time.getText().toString();
-        String check = getCheck.getText().toString();
-        strings.add(qq);
-        strings.add(phone);
-        strings.add(dt);
-        strings.add(tm);
-        strings.add(check);
-        return strings;
+        View view = LayoutInflater.from(context).inflate(R.layout.form, this, true);
+//        line = LayoutInflater.from(context).inflate(R.layout.wight_line, null, false);
+        layout = (LinearLayout) view.findViewById(R.id.diff_formview);
+        instruction = (TextView) view.findViewById(R.id.instruction);
     }
 
     private OnCheckCodeListener onCheckCodeListener;
@@ -180,6 +71,53 @@ public class FormView extends LinearLayout {
         this.onCheckCodeListener = onCheckCodeListener;
     }
 
+    public void init(JSONArray objects) {
+//        if(objects.length())
+        for (int i = 0; i < objects.length(); i++) {
+            try {
+                JSONObject o = (JSONObject) objects.get(i);
+                String type = (String) o.get("type");
+                switch (type) {
+                    case "FormTextView":
+                        FormTextView formTextView = new FormTextView(context);
+                        formTextView.init(o);
+                        layout.addView(formTextView);
+                        break;
+                    case "FormTwoTextView":
+                        FormTwoTextView formTwoTextView = new FormTwoTextView(context);
+                        formTwoTextView.init(o);
+                        layout.addView(formTwoTextView);
+                        break;
+                    case "FormDatePick":
+                        FormDatePick formDatePick = new FormDatePick(context);
+                        formDatePick.init(o);
+                        layout.addView(formDatePick);
+                        break;
+                    case "FormTextViewAndImage":
+                        FormTextViewAndImage viewAndImage = new FormTextViewAndImage(context);
+                        viewAndImage.init(o);
+                        layout.addView(viewAndImage);
+                        break;
+                }
+                if(i == objects.length() -1){
+                    return;
+                }
+                layout.addView(setLine());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public View setLine() {
+        View view = new View(context);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, ResourceUtil.Dp2Px(0.5f));
+        layoutParams.setMargins(ResourceUtil.Dp2Px(10), 0, 0, 0);
+        view.setLayoutParams(layoutParams);
+        view.setBackgroundColor(context.getResources().getColor(R.color.color_b2b2b2));
+        view.setPadding(ResourceUtil.Dp2Px(10), 0, 0, 0);
+        return view;
+    }
 //    public interface OnFormFinishListener {
 //        void OnFormFinish(String qq, String phone, String date, String time, String check);
 //    }

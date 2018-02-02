@@ -1,0 +1,161 @@
+{
+  "hasMore": true,
+  "widgets": [
+    {
+      "type": "SingleCheckList",
+      "paramName": "singleChoice",
+      "selectedValue": "cell standard",
+      "objects": [
+        {
+          "title": "cell standard",
+          "url": "/redirectAppPage?page=scrollPage&function=getCouponItems"
+        },
+        {
+          "title": "cell standard1",
+          "url": "/redirectAppPage?page=scrollPage&function=getCouponItems"
+        }
+      ]
+    },
+    {
+      "type": "MoreCheckList",
+      "paramName": "MoreChoice",
+      "selectedValue": [
+        {
+          "value": "cell standard"
+        },
+        {
+          "value": "cell standard1"
+        }
+      ],
+      "objects": [
+        {
+          "title": "cell standard",
+          "url": "/redirectAppPage?page=scrollPage&function=getCouponItems"
+        },
+        {
+          "title": "cell standard1",
+          "url": "/redirectAppPage?page=scrollPage&function=getCouponItems"
+        }
+      ]
+    },
+    {
+      "type": "Form",
+      "objects": [
+        {
+          "type": "FormTextView",
+          "title": "qq",
+          "paramName": "qq",
+          "selectedValue": ""
+        },
+        {
+          "type": "FormTwoTextView",
+          "title": "手机号",
+          "buttonTitle": "获取验证码",
+          "paramName": "phone",
+          "selectedValue": ""
+        },
+        {
+          "type": "FormDatePick",
+          "title": "日期",
+          "paramName": "date",
+          "pickType": 1,
+          "selectedValue": ""
+        },
+        {
+          "type": "FormDatePick",
+          "title": "时间",
+          "paramName": "time",
+          "pickType": 2,
+          "selectedValue": ""
+        },
+        {
+          "type": "FormTextViewAndImage",
+          "title": "验证码",
+          "paramName": "checkcode",
+          "selectedValue": ""
+        }
+      ]
+    },
+    {
+      "type": "SwitchView",
+      "paramName": "switch",
+      "selectedValue": [
+        {
+          "value": false
+        },
+        {
+          "value": true
+        }
+      ],
+      "objects": [
+        {
+          "title": "标题文字"
+        },
+        {
+          "title": "标题文字1"
+        }
+      ]
+    },
+    {
+      "type": "TextView",
+      "paramName": "switch",
+      "selectedValue": [
+        {
+          "value": false
+        },
+        {
+          "value": true
+        }
+      ],
+      "objects": [
+        {
+          "hint": "请输入文本"
+        },
+        {
+          "hint": "请输入文本"
+        }
+      ]
+    },
+    {
+      "type": "TextArea",
+      "objects": [
+        {
+          "hint": "请输入文本",
+          "maxNum": 100
+        }
+      ]
+    },
+    {
+      "type": "ChooseInputView",
+      "objects": [
+        {
+          "hint": "请输入号码",
+          "inputContent": [
+            {
+              "title": "+84"
+            },
+            {
+              "title": "+80"
+            },
+            {
+              "title": "+87"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "AboutCheckBox",
+      "objects": [
+      ]
+    },
+    {
+      "type": "SolidButton",
+      "objects": [
+        {
+          "title": "submit"
+        }
+      ]
+    }
+  ]
+}

@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 
@@ -94,6 +97,17 @@ public class TextEditText extends LinearLayout implements View.OnFocusChangeList
             setNumberStyle();
         } else if (style == 2) {
             setNumberDecimalStyle();
+        }
+    }
+
+
+    public void initView(JSONObject jsonObject){
+        try {
+            isTitle(false);
+            String hint = (String) jsonObject.get("hint");
+            setTextEditTextHint(hint);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
