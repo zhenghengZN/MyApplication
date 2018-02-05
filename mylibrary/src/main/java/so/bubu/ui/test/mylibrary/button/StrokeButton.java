@@ -120,7 +120,7 @@ public class StrokeButton extends Button {
      *
      * @param StrokeWidth
      */
-    public void setStrokeWidth(int StrokeWidth){
+    public void setStrokeWidth(int StrokeWidth) {
         this.mStrokeWidth = StrokeWidth;
         buildDraweableState();
     }
@@ -152,4 +152,11 @@ public class StrokeButton extends Button {
 
     }
 
+
+    @Override
+    public void setTextSize(float size) {
+        super.setTextSize(size);
+        this.setPadding(0, 0, 0, 0);
+        setGravity(Gravity.CENTER);
+    }
 }

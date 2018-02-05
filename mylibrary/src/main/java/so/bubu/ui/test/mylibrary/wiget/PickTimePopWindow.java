@@ -3,8 +3,11 @@ package so.bubu.ui.test.mylibrary.wiget;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -34,6 +37,7 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
     public PickTimePopWindow(Activity act) {
         this.act = act;
         inflate = LayoutInflater.from(act).inflate(R.layout.picktime, null);
+        View parent = inflate.findViewById(R.id.parent);
         pickDate = (PickTimeView) inflate.findViewById(R.id.pickDate);
         pickTime = (PickTimeView) inflate.findViewById(R.id.pickTime);
         pickPhone = (PickValueView) inflate.findViewById(R.id.pickPhone);
@@ -41,11 +45,11 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
         pickDate.setOnSelectedChangeListener(this);
         pickTime.setOnSelectedChangeListener(this);
         pickPhone.setOnSelectedChangeListener(this);
-        inflate.setOnClickListener(new View.OnClickListener() {
+        parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
-                setTransBg(false);
+
             }
         });
 
@@ -53,7 +57,7 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
             @Override
             public void onClick(View v) {
                 dismiss();
-                setTransBg(false);
+
             }
         });
 
@@ -68,7 +72,7 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
         });
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-        setBackgroundDrawable(new BitmapDrawable());
+        setBackgroundDrawable(new ColorDrawable(0x00000000));
         setFocusable(true);
         setOutsideTouchable(true);
         setContentView(inflate);
@@ -98,10 +102,8 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
     public void showPopWindow(View parent, Activity context) {
         if (!this.isShowing()) {
             this.showAtLocation(parent, Gravity.BOTTOM, 0, 0);
-            setTransBg(true);
         } else {
             this.dismiss();
-            setTransBg(false);
         }
     }
 
@@ -133,16 +135,4 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
         this.listener = listener;
     }
 
-
-    public void setTransBg(boolean isTrans) {
-        if (isTrans) {
-            WindowManager.LayoutParams attributes = act.getWindow().getAttributes();
-//            attributes.alpha = 0.7f;
-            act.getWindow().setAttributes(attributes);
-        } else {
-            WindowManager.LayoutParams attributes = act.getWindow().getAttributes();
-//            attributes.alpha = 1.0f;
-            act.getWindow().setAttributes(attributes);
-        }
-    }
 }

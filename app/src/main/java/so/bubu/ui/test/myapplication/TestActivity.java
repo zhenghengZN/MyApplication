@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -30,6 +32,7 @@ import so.bubu.ui.test.mylibrary.input.SingleCheckbox;
 import so.bubu.ui.test.mylibrary.input.SwitchLayout;
 import so.bubu.ui.test.mylibrary.input.TextArea;
 import so.bubu.ui.test.mylibrary.input.TextEditText;
+import so.bubu.ui.test.mylibrary.page.common.BaseActivity;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.AboutCheckBox;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
@@ -37,17 +40,17 @@ import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
 /**
  * Created by zhengheng on 18/1/26.
  */
-public class TestActivity extends Activity {
+public class TestActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.test);
+    public  View addBaseContenetView(LinearLayout view1) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.test);
 
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-        LinearLayout view = findViewById(R.id.parent);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        View layout = LayoutInflater.from(this).inflate(R.layout.test,null,false);
+        LinearLayout view = layout.findViewById(R.id.parent);
 //        View submit = findViewById(R.id.submit);
 
         final TextEditText text = new TextEditText(this);
@@ -251,7 +254,13 @@ public class TestActivity extends Activity {
         }
 
         //    LinkedHashMap<String, Object> paramAndSelect = new LinkedHashMap<String, Object>();
-        ArrayList<ParamAndSelect> paramAndSelect = new ArrayList<>();
+        return layout;
+
+    }
+
+    @Override
+    public void doInCreateView() {
+
     }
 
 //    public void getSelectValue(ArrayList<LinkedHashMap<String, Object>> array) {
@@ -303,5 +312,10 @@ public class TestActivity extends Activity {
             }
         }
         return jsonObjects;
+    }
+
+    @Override
+    protected void doBack(int keyCode, KeyEvent event) {
+
     }
 }

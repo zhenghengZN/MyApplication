@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -49,9 +51,11 @@ public class SolidButton extends Button {
     private int mTextNormalColor = Color.WHITE;
     private int mTextPressedColor = Color.WHITE;
     private int mTextDisableCollor = getResources().getColor(R.color.color_un_select);
+    private Context context;
 
     public SolidButton(Context context) {
         super(context);
+        this.context = context;
         initUI();
     }
 
@@ -64,6 +68,7 @@ public class SolidButton extends Button {
         mTextNormalColor = ta.getColor(R.styleable.SolidButton_solid_text_normal_color, Color.WHITE);
         mTextPressedColor = ta.getColor(R.styleable.SolidButton_solid_text_pressed_color, Color.WHITE);
         ta.recycle();
+
         initUI();
     }
 
@@ -167,6 +172,12 @@ public class SolidButton extends Button {
         return (int) (dipValue * scale + 0.5f);
     }
 
+    @Override
+    public void setTextSize(float size) {
+        super.setTextSize(size);
+        this.setPadding(0, 0, 0, 0);
+        setGravity(Gravity.CENTER);
+    }
 
     public void setSubmitButton(JSONObject object, final ArrayList<LinkedHashMap<String, Object>> inputWeight) {
         mRadius = 0;
@@ -178,8 +189,9 @@ public class SolidButton extends Button {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        setTextSize(dp2px(getContext(), 4));
-
+        setTextSize(dp2px(context, 6));
+//        setGravity(Gravity.CENTER);
+//        this.setPadding(0, 0, 0, 0);
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,6 +209,8 @@ public class SolidButton extends Button {
                         }
 
                     }
+
+                    //TODO 得到了所有控件的参数和值,接下来要传给服务器或做其他处理
                     Log.e("zhengheng paramandvalue", buffer.toString());
                     Toast.makeText(getContext(), buffer.toString(), Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
@@ -206,6 +220,7 @@ public class SolidButton extends Button {
         });
 
     }
+
 
     public ArrayList<ParamAndSelect> featchValue(ArrayList<LinkedHashMap<String, Object>> weights) throws JSONException {
 //        LinkedHashMap<String, ParamAndSelect> map = new LinkedHashMap<>();
@@ -314,7 +329,7 @@ public class SolidButton extends Button {
 
                 case "AboutCheckBox":
                     boolean value = (boolean) weight.get("selectedValue");
-                    String param = (String)weight.get("paramName");
+                    String param = (String) weight.get("paramName");
                     ParamAndSelect paramAndSelect = new ParamAndSelect(param, value);
                     list.add(paramAndSelect);
                     break;
