@@ -9,17 +9,18 @@
         android:id="@+id/base_top"
         layout="@layout/common_activity_menu" />
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
 
-        <LinearLayout
-            android:id="@+id/base_scroll_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/base_scroll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
