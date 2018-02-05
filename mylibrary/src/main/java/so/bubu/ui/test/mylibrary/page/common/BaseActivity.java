@@ -23,11 +23,11 @@ public abstract class BaseActivity extends BaseCompatActivity {
     protected void onCreateView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_base);
         view = (LinearLayout) findViewById(R.id.base_scroll_content);
-        view.addView(addBaseContenetView());
+        view.addView(addBaseContenetView(view));
         doInCreateView();
     }
 
-    public abstract View addBaseContenetView();
+    public abstract View addBaseContenetView(LinearLayout view);
 
 
     public abstract void doInCreateView();
