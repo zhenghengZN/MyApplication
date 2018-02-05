@@ -254,6 +254,44 @@ public class TestActivity extends Activity {
         ArrayList<ParamAndSelect> paramAndSelect = new ArrayList<>();
     }
 
+//    public void getSelectValue(ArrayList<LinkedHashMap<String, Object>> array) {
+//        for (LinkedHashMap<String, Object> object : array) {
+//            String type = (String) object.get("type");
+//            String paramName = (String) object.get("paramName");
+////            if (paramName != null && paramName.isEmpty())
+//            switch (type) {
+//                case "SingleCheckList":
+//                    String selectedValue = (String) object.get("selectedValue");
+//                    ParamAndSelect pas = new ParamAndSelect(paramName, selectedValue);
+//                    paramAndSelect.add(pas);
+////                    this.paramAndSelect.put(paramName, selectedValue);
+//                    break;
+//                case "MoreCheckList":
+//                    List<CharSequence> selectValueList = (List<CharSequence>) object.get("selectedValue");
+//                    ArrayList<CharSequence> strings = new ArrayList<>();
+//                    strings.addAll(selectValueList);
+////                    for (int i = 0; i < selectvalue.length(); i++) {
+////                        try {
+////                            JSONObject jsonObject = selectvalue.getJSONObject(i);
+////                            String value = (String) jsonObject.get("value");
+////                            strings.add(value);
+////                        } catch (JSONException e) {
+////                            e.printStackTrace();
+////                        }
+////                    }
+//
+////                    String[] strings1 = strings.toArray(new String[strings.size()]);
+//                    StringBuffer sb = new StringBuffer();
+//                    for(CharSequence title: strings){
+//                        sb.append(title+ " " );
+//                    }
+//                    ParamAndSelect paramAndSelect = new ParamAndSelect(paramName, sb.toString());
+//                    this.paramAndSelect.add(paramAndSelect);
+//                    break;
+//            }
+//        }
+//    }
+
     public ArrayList<JSONObject> JsonArray2JsonObject(JSONArray objects) {
         ArrayList<JSONObject> jsonObjects = new ArrayList<>();
         for (int i = 0; i < objects.length(); i++) {

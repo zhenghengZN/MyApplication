@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public View addBaseContenetView() {
+    public View addBaseContenetView(LinearLayout view11) {
 //        LinearLayout inflate = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main, null);
 //        RecyclerView rcv = (RecyclerView) inflate.findViewById(R.id.rcv);
 
@@ -260,7 +260,7 @@ public class MainActivity extends BaseActivity {
 //        inflate.addView(rcv);
         View id = inflate.findViewById(R.id.mydcet);
         ImageView view = id.findViewById(R.id.v_icon_user);
-        Log.e("zhengheng",""+view);
+        Log.e("zhengheng", "" + view);
         view.setImageResource(R.drawable.loading);
 
         DrawableClearEditText drawableClearEditText = new DrawableClearEditText(this);
@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity {
 
     public void strokebtn(View view) {
 //        startActivity(new Intent(MainActivity.this,TabActivity.class));
-        startActivity(new Intent(MainActivity.this,ImageTopActivity.class));
+        startActivity(new Intent(MainActivity.this, ImageTopActivity.class));
 //        startActivity(new Intent(MainActivity.this, MyBannerActivity.class));
 //        startActivity(new Intent(MainActivity.this, TestSearchActivity.class));
     }
