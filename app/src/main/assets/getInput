@@ -45,74 +45,60 @@
           "type": "FormTextView",
           "title": "qq",
           "paramName": "qq",
-          "selectedValue": ""
+          "placeholder": "请输入qq"
         },
         {
           "type": "FormTwoTextView",
           "title": "手机号",
           "buttonTitle": "获取验证码",
           "paramName": "phone",
-          "selectedValue": ""
+          "placeholder": "请输入手机号"
         },
         {
           "type": "FormDatePick",
           "title": "日期",
-          "paramName": "date",
           "pickType": 1,
-          "selectedValue": ""
+          "paramName": "date"
         },
         {
           "type": "FormDatePick",
           "title": "时间",
-          "paramName": "time",
           "pickType": 2,
-          "selectedValue": ""
+          "paramName": "time"
         },
         {
           "type": "FormTextViewAndImage",
           "title": "验证码",
           "paramName": "checkcode",
-          "selectedValue": ""
+          "placeholder": "请输入验证码"
         }
       ]
     },
     {
       "type": "SwitchView",
-      "paramName": "switch",
-      "selectedValue": [
-        {
-          "value": false
-        },
-        {
-          "value": true
-        }
-      ],
       "objects": [
         {
-          "title": "标题文字"
+          "paramName": "switch",
+          "title": "标题文字",
+          "selectedValue": false
         },
         {
-          "title": "标题文字1"
+          "paramName": "switch1",
+          "title": "标题文字1",
+          "selectedValue": false
         }
       ]
     },
     {
       "type": "TextView",
-      "paramName": "switch",
-      "selectedValue": [
-        {
-          "value": false
-        },
-        {
-          "value": true
-        }
-      ],
       "objects": [
         {
-          "hint": "请输入文本"
+          "paramName": "textview",
+          "placeholder": "请输入文本"
         },
         {
-          "hint": "请输入文本"
+          "paramName": "textview1",
+          "placeholder": "请输入文本"
         }
       ]
     },
@@ -120,7 +106,8 @@
       "type": "TextArea",
       "objects": [
         {
-          "hint": "请输入文本",
+          "paramName": "textArea",
+          "placeholder": "请输入文本",
           "maxNum": 100
         }
       ]
@@ -129,7 +116,9 @@
       "type": "ChooseInputView",
       "objects": [
         {
-          "hint": "请输入号码",
+          "paramName": "phone",
+          "selectedValue": "+84",
+          "placeholder": "请输入号码",
           "inputContent": [
             {
               "title": "+84"
@@ -139,6 +128,9 @@
             },
             {
               "title": "+87"
+            },
+            {
+              "title": "+86"
             }
           ]
         }
@@ -146,14 +138,19 @@
     },
     {
       "type": "AboutCheckBox",
+      "paramName": "aboutcheck",
+      "selectedValue":false,
       "objects": [
+        {
+          "url":""
+        }
       ]
     },
     {
       "type": "SolidButton",
       "objects": [
         {
-          "title": "submit"
+          "title": "提 交"
         }
       ]
     }

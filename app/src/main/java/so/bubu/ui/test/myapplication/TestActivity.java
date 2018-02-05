@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -106,7 +109,7 @@ public class TestActivity extends Activity {
 //        });
 //        Log.e("zhengheng", text.getText().toString());
 
-        ArrayList<LinkedHashMap<String, Object>> array = new ArrayList<>();
+        final ArrayList<LinkedHashMap<String, Object>> array = new ArrayList<>();
         String input = MyJsonUtil.getJson(this, "getInput");
         try {
             JSONObject jsonObject = new JSONObject(input);
@@ -165,17 +168,12 @@ public class TestActivity extends Activity {
 //        }
 
 
-        ArrayList<String> params = new ArrayList<>();
         for (LinkedHashMap<String, Object> object : array) {
             String type = (String) object.get("type");
 
 
-
-
 //            Object selectedValue = object.get("selectedValue");
-//            String paramName = (String) object.get("paramName");
-//            if (paramName != null && paramName.isEmpty())
-//                params.add(paramName);
+
 //
 //            if(selectedValue instanceof String){
 //                String value = (String) selectedValue;
@@ -190,17 +188,17 @@ public class TestActivity extends Activity {
             switch (type) {
                 case "SingleCheckList":
                     CheckGroup checkGroup = new CheckGroup(this);
-                    checkGroup.init(objects, CheckGroup.TYPE_SINGLE);
+                    checkGroup.init(object, CheckGroup.TYPE_SINGLE);
                     view.addView(checkGroup);
                     break;
                 case "MoreCheckList":
                     CheckGroup checkGroup1 = new CheckGroup(this);
-                    checkGroup1.init(objects, CheckGroup.TYPE_MORE);
+                    checkGroup1.init(object, CheckGroup.TYPE_MORE);
                     view.addView(checkGroup1);
                     break;
                 case "Form":
                     FormView formView = new FormView(this);
-                    formView.init(objects);
+                    formView.init(object);
                     view.addView(formView);
                     break;
                 case "SwitchView":
@@ -237,24 +235,73 @@ public class TestActivity extends Activity {
                     break;
                 case "AboutCheckBox":
                     AboutCheckBox aboutCheckBox = new AboutCheckBox(this);
+                    aboutCheckBox.init(object);
                     view.addView(aboutCheckBox);
                     break;
 
                 case "SolidButton":
+//                    ArrayList<JSONObject> SolidButtonObject = JsonArray2JsonObject(objects);
+//                    for (JSONObject jsonObject : SolidButtonObject) {
+//                        SolidButton solidButton = new SolidButton(this);
+//                        solidButton.init(jsonObject);
+//                        view.addView(solidButton);
+//                    }
                     ArrayList<JSONObject> SolidButtonObject = JsonArray2JsonObject(objects);
                     for (JSONObject jsonObject : SolidButtonObject) {
                         SolidButton solidButton = new SolidButton(this);
-                        solidButton.init(jsonObject);
+                        solidButton.setSubmitButton(jsonObject, array);
+//                    solidButton.init(jsonObject);
                         view.addView(solidButton);
+                        break;
+
+
                     }
-                    break;
-
-
             }
-        }
 
 //        view.addView(text);
+        }
+
+        //    LinkedHashMap<String, Object> paramAndSelect = new LinkedHashMap<String, Object>();
+        ArrayList<ParamAndSelect> paramAndSelect = new ArrayList<>();
     }
+
+//    public void getSelectValue(ArrayList<LinkedHashMap<String, Object>> array) {
+//        for (LinkedHashMap<String, Object> object : array) {
+//            String type = (String) object.get("type");
+//            String paramName = (String) object.get("paramName");
+////            if (paramName != null && paramName.isEmpty())
+//            switch (type) {
+//                case "SingleCheckList":
+//                    String selectedValue = (String) object.get("selectedValue");
+//                    ParamAndSelect pas = new ParamAndSelect(paramName, selectedValue);
+//                    paramAndSelect.add(pas);
+////                    this.paramAndSelect.put(paramName, selectedValue);
+//                    break;
+//                case "MoreCheckList":
+//                    List<CharSequence> selectValueList = (List<CharSequence>) object.get("selectedValue");
+//                    ArrayList<CharSequence> strings = new ArrayList<>();
+//                    strings.addAll(selectValueList);
+////                    for (int i = 0; i < selectvalue.length(); i++) {
+////                        try {
+////                            JSONObject jsonObject = selectvalue.getJSONObject(i);
+////                            String value = (String) jsonObject.get("value");
+////                            strings.add(value);
+////                        } catch (JSONException e) {
+////                            e.printStackTrace();
+////                        }
+////                    }
+//
+////                    String[] strings1 = strings.toArray(new String[strings.size()]);
+//                    StringBuffer sb = new StringBuffer();
+//                    for(CharSequence title: strings){
+//                        sb.append(title+ " " );
+//                    }
+//                    ParamAndSelect paramAndSelect = new ParamAndSelect(paramName, sb.toString());
+//                    this.paramAndSelect.add(paramAndSelect);
+//                    break;
+//            }
+//        }
+//    }
 
     public ArrayList<JSONObject> JsonArray2JsonObject(JSONArray objects) {
         ArrayList<JSONObject> jsonObjects = new ArrayList<>();

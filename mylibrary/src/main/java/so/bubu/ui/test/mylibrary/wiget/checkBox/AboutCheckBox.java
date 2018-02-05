@@ -12,11 +12,17 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.LinkedHashMap;
 
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckBox;
@@ -38,6 +44,7 @@ public class AboutCheckBox extends LinearLayout {
         this.setBackgroundColor(Color.WHITE);
         inflate = LayoutInflater.from(context).inflate(R.layout.aboutcheckbox, null, false);
         checkbox = (CheckBox) inflate.findViewById(R.id.aboutcheckbox);
+        checkbox.setBackgroundColor(Color.WHITE);
         final TextView textView = checkbox.getTextView();
 //        textView.setBackground(context.getResources().getDrawable(R.drawable.text_clickable_span));
 
@@ -50,7 +57,7 @@ public class AboutCheckBox extends LinearLayout {
             public void onClick(View widget) {
                 Toast.makeText(context, "xgtk", Toast.LENGTH_SHORT).show();
 //                checkbox.toggle();
-                textView.requestFocus();
+//                textView.requestFocus();
             }
 
             @Override
@@ -68,23 +75,30 @@ public class AboutCheckBox extends LinearLayout {
             @Override
             public void onClick(View v) {
                 checkbox.toggle();
+                objects.put("selectedValue", true);
+
             }
         });
         textView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkbox.toggle();
+                objects.put("selectedValue", true);
+
             }
         });
-        init();
+
     }
 
+    private LinkedHashMap<String, Object> objects;
+
+    public void init(LinkedHashMap<String, Object> objects) {
+        this.objects = objects;
+//        object.put("value")
+    }
 
     public boolean isCheck() {
         return checkbox.isChecked();
     }
 
-    public void init() {
-
-    }
 }

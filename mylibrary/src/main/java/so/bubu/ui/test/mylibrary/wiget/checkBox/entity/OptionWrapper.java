@@ -35,6 +35,7 @@ public class OptionWrapper {
     public void set(OptionWrapper wrapper) {
         mOptions.clear();
         mOptions.addAll(wrapper.getOptions());
+//        mOptions = wrapper.getOptions();
         enabled = wrapper.isEnabled();
         isSingleChoice = wrapper.isSingleChoice;
     }
@@ -103,6 +104,9 @@ public class OptionWrapper {
             if (isSingleChoice) break;
         }
     }
+
+
+
 
     /**
      * @return 所有选项
@@ -173,5 +177,9 @@ public class OptionWrapper {
 
     public boolean isSingleChoice() {
         return isSingleChoice;
+    }
+
+    public  void setSingleChoice(boolean isSingleChoice){
+        this.isSingleChoice = isSingleChoice;
     }
 }

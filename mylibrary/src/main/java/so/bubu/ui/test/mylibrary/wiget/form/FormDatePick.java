@@ -55,18 +55,27 @@ public class FormDatePick extends LinearLayout {
             public void sucessClick(String date, View v) {
                 if (date != null && !date.isEmpty()) {
                     pick.setText(date);
+                    try {
+                        object.put("value",date);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
     }
 
+    private JSONObject object;
     public void init(JSONObject object) {
+        this.object = object;
         try {
             String title = (String) object.get("title");
             setTitle(title);
 
             int pickType = (int) object.get("pickType");
             setType(pickType);
+
+            object.put("value", pick.getText());
         } catch (JSONException e) {
             e.printStackTrace();
         }

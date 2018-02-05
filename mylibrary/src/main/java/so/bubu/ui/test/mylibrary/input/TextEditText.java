@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -49,6 +51,31 @@ public class TextEditText extends LinearLayout implements View.OnFocusChangeList
         View view = LayoutInflater.from(context).inflate(R.layout.textedittext, this, true);
         mHintText = (TextView) view.findViewById(R.id.hint_text);
         mContentEditText = (EditText) view.findViewById(R.id.content_text);
+        mContentEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (delayRun != null) {
+                    //每次editText有变化的时候，则移除上次发出的延迟线程
+                    handler.removeCallbacks(delayRun);
+                }
+
+                handler.postDelayed(delayRun, 200);
+
+                //延迟800ms，如果不再输入字符，则执行该线程的run方法
+//                if (!TextUtils.isEmpty(mContentEditText.getText())) {
+//                }
+            }
+        });
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TextEditText);
 //        mMargin = ta.getInt(R.styleable.TextEditText_field_margin, ResourceUtil.Dp2Px(5));
         mTextSize = ta.getDimensionPixelSize(R.styleable.TextEditText_text_size, 16);
@@ -100,11 +127,16 @@ public class TextEditText extends LinearLayout implements View.OnFocusChangeList
         }
     }
 
+    private JSONObject jsonObject;
 
-    public void initView(JSONObject jsonObject){
+    public void initView(JSONObject jsonObject) {
+        mContentEditText.setTextColor(Color.BLACK);
+        this.jsonObject = jsonObject;
         try {
             isTitle(false);
-            String hint = (String) jsonObject.get("hint");
+            String hint = (String) jsonObject.get("placeholder");
+            jsonObject.put("value", "");
+
             setTextEditTextHint(hint);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -257,6 +289,26 @@ public class TextEditText extends LinearLayout implements View.OnFocusChangeList
     }
 
     public void setTextWatcherImpl(TextWatcherImpl textWatcher) {
+
         this.textWatcher = textWatcher;
     }
+
+    private Handler handler = new Handler();
+
+    /**
+     * 延迟线程，看是否还有下一个字符输入
+     */
+    private Runnable delayRun = new Runnable() {
+
+        @Override
+        public void run() {
+            //在这里调用服务器的接口，获取数据
+//            getSearchResult(editString, "all", 1, "true");
+            try {
+                jsonObject.put("value", mContentEditText.getText().toString().trim());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }

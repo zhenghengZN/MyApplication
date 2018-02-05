@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 import Utils.ResourceUtil;
 import Utils.StringUtils;
@@ -71,8 +72,10 @@ public class FormView extends LinearLayout {
         this.onCheckCodeListener = onCheckCodeListener;
     }
 
-    public void init(JSONArray objects) {
-//        if(objects.length())
+    public void init(LinkedHashMap<String, Object> object) {
+//        if(objects.length
+
+        JSONArray objects = (JSONArray) object.get("objects");
         for (int i = 0; i < objects.length(); i++) {
             try {
                 JSONObject o = (JSONObject) objects.get(i);

@@ -85,34 +85,55 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
     public static final int TYPE_SINGLE = 1;
     public static final int TYPE_MORE = 2;
 
-    public void init(JSONArray objects, int type) {
+    //    private Object selectedValue;
+    private ArrayList<String> selectedValues = new ArrayList<>();
+    private Object selectedValue;
+    private ArrayList<Integer> seletItem = new ArrayList<>();
+        private LinkedHashMap<String, Object> object;
+    public void init(LinkedHashMap<String, Object> object, int type) {
+        this.object = object;
+        selectedValue = object.get("selectedValue");
+//        String paramName = (String) object.get("paramName");
+//        if (paramName != null && paramName.isEmpty())
+//            params.add(paramName);
 
-//        Object selectedValue = object.get("selectedValue");
-////        String paramName = (String) object.get("paramName");
-////        if (paramName != null && paramName.isEmpty())
-////            params.add(paramName);
-//
-//        if (selectedValue instanceof String) {
-//            String value = (String) selectedValue;
-//        } else if (selectedValue instanceof JSONArray) {
-//            JSONArray value = (JSONArray) selectedValue;
-//            ArrayList<String> list = new ArrayList<>();
-//            for (int i = 0; i < value.length(); i++){
-//                try {
-//                    JSONObject jsonObject = value.getJSONObject(i);
-//                    String value1 = (String) jsonObject.get("value");
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-////                list.add()
-//            }
+//        ArrayList<String> selectedValues = new ArrayList<>();
+
+        //初始化添加选中的值
+        if (selectedValue instanceof String) {
+            String value = (String) selectedValue;
+            selectedValues.add(value);
+        } else if (selectedValue instanceof JSONArray) {
+            JSONArray value = (JSONArray) selectedValue;
+            for (int i = 0; i < value.length(); i++) {
+                try {
+                    JSONObject jsonObject = value.getJSONObject(i);
+                    String value1 = (String) jsonObject.get("value");
+                    selectedValues.add(value1);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                list.add()
+            }
+        }
+        JSONArray objects = (JSONArray) object.get("objects");
+
+
+        //初始化适配器
+        OptionWrapper optionWrapper = new OptionWrapper(type == CheckGroup.TYPE_SINGLE);
+        optionWrapper.setSingleChoice(type == CheckGroup.TYPE_SINGLE);
+        if (type == CheckGroup.TYPE_SINGLE) {
+            isLeftCheckBox = false;
+        }
+
+//        optionWrapper.setOptions(titles);
+//        if (type == CheckGroup.TYPE_SINGLE) {
+////            optionWrapper.setChecked(0);
 //        }
-//
-//
-//        JSONArray objects = (JSONArray) object.get("objects");
+//        setOptionWrapper(optionWrapper);
 
 
+        //初始化titles
         for (int i = 0; i < objects.length(); i++) {
             try {
                 JSONObject o = (JSONObject) objects.get(i);
@@ -122,6 +143,13 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
                     Object o1 = o.get(next);
                     if ("title".equalsIgnoreCase(next)) {
                         titles.add((String) o1);
+                        for (String title : selectedValues) {
+                            if (title.equalsIgnoreCase((String) o1)) {
+                                //初始化设置选中项
+//                                mOptionWrapper.setChecked(i);
+                                seletItem.add(i);
+                            }
+                        }
                     }
                     if ("url".equalsIgnoreCase(next)) {
                         clickUrls.add((String) o1);
@@ -132,18 +160,11 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
             }
         }
 
+        optionWrapper.setOptions(titles);
+        optionWrapper.setChecked(seletItem);
+        setOptionWrapper(optionWrapper);
+        mAdapter.notifyDataSetChanged();
 
-        if (titles.size() > 0) {
-            OptionWrapper optionWrapper = new OptionWrapper(type == CheckGroup.TYPE_SINGLE);
-            if (type == CheckGroup.TYPE_SINGLE) {
-                isLeftCheckBox = false;
-            }
-            optionWrapper.setOptions(titles);
-            if (type == CheckGroup.TYPE_SINGLE) {
-                optionWrapper.setChecked(0);
-            }
-            setOptionWrapper(optionWrapper);
-        }
     }
 
     /**
@@ -171,8 +192,25 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
 
     private void handleMultiChoice(CheckBox checkBox, int position) {
         checkBox.toggle(false);
-
         mOptionWrapper.getOptionAt(position).toggle();
+
+        List<CharSequence> checkedText = mOptionWrapper.getCheckedText();
+
+//        for (int i = 0; i < checkedText.size(); i++) {
+//            String s = selectedValues.get(i);
+//            s = checkedText.get(i).toString();
+//        }
+
+        object.put("selectedValue",checkedText);
+//        JSONArray selectedValue = (JSONArray) this.selectedValue;
+//        for (int i = 0; i < selectedValue.length(); i++) {
+//            try {
+//                JSONObject jsonObject = selectedValue.getJSONObject(i);
+//                jsonObject.get("value");
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     /**
@@ -213,6 +251,10 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
             checkBox.setRightCheck(true);
             mOptionWrapper.getOptionAt(position).setCheck(true);
         }
+
+        List<CharSequence> checkedText = mOptionWrapper.getCheckedText();
+
+        object.put("selectedValue",checkedText.get(0).toString());
     }
 
     /**

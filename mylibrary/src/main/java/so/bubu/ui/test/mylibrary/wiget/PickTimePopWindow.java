@@ -90,8 +90,9 @@ public class PickTimePopWindow extends PopupWindow implements PickTimeView.onSel
     }
 
 
-    public void setPickViewValue(String[]  phoneVaule){
-        pickPhone.setValueData(phoneVaule, phoneVaule[0]);
+    public void setPickViewValue(String[] phoneVaule, Object defaultValue) {
+        pickPhone.setValueData(phoneVaule, defaultValue);
+
     }
 
     public void showPopWindow(View parent, Activity context) {

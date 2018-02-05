@@ -10,14 +10,26 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
+import so.bubu.ui.test.mylibrary.bean.ParamAndSelect;
 
 /**
  * Created by zhengheng on 18/1/3.
@@ -27,14 +39,16 @@ public class SolidButton extends Button {
     public static int[] mNormalState = new int[]{};
     public static int[] mPressState = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
     public static int[] mDisableState = new int[]{-android.R.attr.state_enabled};
-    public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
-    private int mRadius = ResourceUtil.Dp2Px(50);                                                                            //默认的圆角半径
+    //    public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
+    private int mRadius = ResourceUtil.Dp2Px(10);                                                                            //默认的圆角半径
 
     //默认文字和背景颜色
     private int mBgNormalColor = getResources().getColor(R.color.color_82cd6b);
     private int mBgPressedColor = getResources().getColor(R.color.color_82cd6b);
+    private int mBgDisableColor = getResources().getColor(R.color.color_disable);
     private int mTextNormalColor = Color.WHITE;
     private int mTextPressedColor = Color.WHITE;
+    private int mTextDisableCollor = getResources().getColor(R.color.color_un_select);
 
     public SolidButton(Context context) {
         super(context);
@@ -72,8 +86,8 @@ public class SolidButton extends Button {
      * 构建图片drawble
      */
     private void buildColorDrawableState() {
-        ColorStateList colorStateList = new ColorStateList(new int[][]{mPressState, mNormalState},
-                new int[]{mTextPressedColor, mTextNormalColor});
+        ColorStateList colorStateList = new ColorStateList(new int[][]{mPressState, mNormalState, mDisableState},
+                new int[]{mTextPressedColor, mTextNormalColor, mTextDisableCollor});
         setTextColor(colorStateList);
     }
 
@@ -98,10 +112,10 @@ public class SolidButton extends Button {
         //添加到状态管理里面
         drawable.addState(mPressState, pressedDrawable);
 
-        //		ShapeDrawable disableDrawable = new ShapeDrawable(rectShape);
-        //		disableDrawable.getPaint().setColor(prssedClor);
-        //		disableDrawable.getPaint().setAlpha(125);
-        //		drawable.addState(mDisableState, disableDrawable);
+        ShapeDrawable disableDrawable = new ShapeDrawable(rectShape);
+        disableDrawable.getPaint().setColor(mBgDisableColor);
+        disableDrawable.getPaint().setAlpha(125);
+        drawable.addState(mDisableState, disableDrawable);
 
         ShapeDrawable normalDrawable = new ShapeDrawable(rectShape);
         normalDrawable.getPaint().setColor(mBgNormalColor);
@@ -146,5 +160,171 @@ public class SolidButton extends Button {
         buildColorDrawableState();
 
     }
+
+
+    public int dp2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+
+    public void setSubmitButton(JSONObject object, final ArrayList<LinkedHashMap<String, Object>> inputWeight) {
+        mRadius = 0;
+        mBgPressedColor = getResources().getColor(R.color.color_press);
+        buildDraweableState();
+        try {
+            String title = (String) object.get("title");
+            setText(title);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        setTextSize(dp2px(getContext(), 4));
+
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append("?");
+                try {
+                    ArrayList<ParamAndSelect> list = featchValue(inputWeight);
+
+                    for (int i = 0; i < list.size(); i++) {
+                        ParamAndSelect weight = list.get(i);
+                        String s = weight.toString();
+                        buffer.append(s);
+                        if (i != list.size() - 1) {
+                            buffer.append("&");
+                        }
+
+                    }
+                    Log.e("zhengheng paramandvalue", buffer.toString());
+                    Toast.makeText(getContext(), buffer.toString(), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    public ArrayList<ParamAndSelect> featchValue(ArrayList<LinkedHashMap<String, Object>> weights) throws JSONException {
+//        LinkedHashMap<String, ParamAndSelect> map = new LinkedHashMap<>();
+//        ArrayList<HashMap<String, ParamAndSelect>> list = new ArrayList<>();
+        ArrayList<ParamAndSelect> list = new ArrayList<>();
+        for (LinkedHashMap<String, Object> weight : weights) {
+            String type = (String) weight.get("type");
+            switch (type) {
+
+                //paramName,value为String类型
+                case "Form":
+                    JSONArray formobject = (JSONArray) weight.get("objects");
+                    ArrayList<ParamAndSelect> objects1 = new ArrayList<>();
+                    for (int i = 0; i < formobject.length(); i++) {
+
+                        JSONObject object = (JSONObject) formobject.get(i);
+                        String paramName = (String) object.get("paramName");
+                        String value = (String) object.get("value");
+                        if (value == null || value.isEmpty()) {
+                            break;
+                        }
+                        ParamAndSelect paramAndSelect = new ParamAndSelect(paramName, value);
+                        objects1.add(paramAndSelect);
+//                        HashMap<String, ParamAndSelect> pas = new HashMap<>();
+//                        pas.put(type, paramAndSelect);
+//                        objects1.add(pas);
+                    }
+                    list.addAll(objects1);
+
+                    break;
+                case "TextView":
+                case "TextArea":
+                case "ChooseInputView":
+                case "SwitchView":
+                    JSONArray objects = (JSONArray) weight.get("objects");
+                    for (int i = 0; i < objects.length(); i++) {
+//                        HashMap<String, ParamAndSelect> map = new HashMap<>();
+                        ArrayList<ParamAndSelect> map = new ArrayList<>();
+                        JSONObject o = (JSONObject) objects.get(i);
+                        String paramName = (String) o.get("paramName");
+                        if (type.equalsIgnoreCase("SwitchView")) {
+                            Boolean value = (Boolean) o.get("selectedValue");
+//                            map.put(type, new ParamAndSelect(paramName, value));
+                            map.add(new ParamAndSelect(paramName, value));
+                        } else {
+                            String value = (String) o.get("value");
+                            if (value != null && !value.isEmpty()) {
+//                                map.put(type, new ParamAndSelect(paramName, value));
+                                map.add(new ParamAndSelect(paramName, value));
+                            } else {
+                                if (type.equalsIgnoreCase("Form")) {
+                                    break;
+                                }
+                            }
+
+                        }
+                        list.addAll(map);
+                    }
+                    break;
+
+                //paramName可能是String,JsonArray,selectedValue可能是String,JsonArray,ArrayList
+                case "SingleCheckList":
+                case "MoreCheckList":
+                    Object paramName = weight.get("paramName");
+                    Object selectedValue = weight.get("selectedValue");
+
+                    if (paramName instanceof String && selectedValue instanceof String) {
+//                        HashMap<String, ParamAndSelect> map = new HashMap<>();
+                        ArrayList<ParamAndSelect> map = new ArrayList<>();
+                        String param = (String) paramName;
+                        String value = (String) selectedValue;
+//                        map.put(type, new ParamAndSelect(param, value));
+                        map.add(new ParamAndSelect(param, value));
+                        list.addAll(map);
+                    } else if (paramName instanceof String) {
+
+//                        JSONArray paramNameArray = (JSONArray) paramName;
+                        String param = (String) paramName;
+                        if (selectedValue instanceof JSONArray) {
+
+                            JSONArray values = (JSONArray) selectedValue;
+                            for (int i = 0; i < values.length(); i++) {
+                                ArrayList<ParamAndSelect> map = new ArrayList<>();
+                                JSONObject valueObject = (JSONObject) values.get(i);
+                                String value = (String) valueObject.get("value");
+//                                String param = (String) paramNameArray.get(i);
+                                map.add(new ParamAndSelect(param, value));
+                                list.addAll(map);
+                            }
+
+                        } else if (selectedValue instanceof ArrayList) {
+
+                            ArrayList values = (ArrayList) selectedValue;
+                            for (int i = 0; i < values.size(); i++) {
+                                ArrayList<ParamAndSelect> map = new ArrayList<>();
+                                String value = (String) values.get(i);
+//                                String param = (String) paramNameArray.get(i);
+                                map.add(new ParamAndSelect(param, value));
+                                list.addAll(map);
+                            }
+                        }
+
+                    }
+
+                    break;
+
+                case "AboutCheckBox":
+                    boolean value = (boolean) weight.get("selectedValue");
+                    String param = (String)weight.get("paramName");
+                    ParamAndSelect paramAndSelect = new ParamAndSelect(param, value);
+                    list.add(paramAndSelect);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        return list;
+    }
+
 
 }

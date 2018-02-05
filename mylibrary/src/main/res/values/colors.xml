@@ -19,7 +19,9 @@
     <color name="color_82cd6b">#82cd6b</color>
     <color name="color_menu_infor">#999999</color>
     <color name="color_tab_line">#82CD6B</color>
+    <color name="color_press">#82cdaa</color>
     <color name="text_tips_bg">#FEE6AA</color>
     <color name="color_d8d8d8">#d8d8d8</color>
     <color name="color_un_select">#CFCFCF</color>
+    <color name="color_disable">#7782CD6B</color>
 </resources>

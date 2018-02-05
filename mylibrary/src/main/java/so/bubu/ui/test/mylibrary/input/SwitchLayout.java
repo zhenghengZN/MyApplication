@@ -38,24 +38,39 @@ public class SwitchLayout extends LinearLayout {
             @Override
             public void toggleToOn(SwitchView view) {
                 view.setOpened(true);
-                if (listener != null) {
-                    listener.StateOn();
+//                if (listener != null) {
+//                    listener.StateOn();
+//
+//                }
+                try {
+                    objects.put("selectedValue",true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
 
             @Override
             public void toggleToOff(SwitchView view) {
                 view.setOpened(false);
-                if (listener != null) {
-                    listener.StateOff();
+//                if (listener != null) {
+//                    listener.StateOff();
+//                }
+                try {
+                    objects.put("selectedValue",false);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
     }
 
+    private JSONObject objects;
     public void init(JSONObject objects) {
+        this.objects = objects;
         try {
             String title = (String) objects.get("title");
+            Boolean value = (Boolean) objects.get("selectedValue");
+            switchview.setOpened(value);
             setText(title);
         } catch (JSONException e) {
             e.printStackTrace();

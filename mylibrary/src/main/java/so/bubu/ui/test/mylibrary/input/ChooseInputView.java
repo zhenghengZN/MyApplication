@@ -2,7 +2,9 @@ package so.bubu.ui.test.mylibrary.input;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -44,6 +46,31 @@ public class ChooseInputView extends LinearLayout {
         View addressPnum = view.findViewById(R.id.address_pnum);
         num = (TextView) view.findViewById(R.id.address);
         phoneNum = (EditText) view.findViewById(R.id.phone_num);
+        phoneNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (delayRun != null) {
+                    //每次editText有变化的时候，则移除上次发出的延迟线程
+                    handler.removeCallbacks(delayRun);
+                }
+
+                handler.postDelayed(delayRun, 200);
+
+                //延迟800ms，如果不再输入字符，则执行该线程的run方法
+//                if (!TextUtils.isEmpty(phoneNum.getText())) {
+//                }
+            }
+        });
 //        checkPhone();
 
         pickTimePopWindow = new PickTimePopWindow((Activity) context);
@@ -60,9 +87,9 @@ public class ChooseInputView extends LinearLayout {
         addressPnum.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = ((Activity)context).getWindow().peekDecorView();
+                View view = ((Activity) context).getWindow().peekDecorView();
                 if (view != null) {
-                    InputMethodManager inputmanger = (InputMethodManager) ((Activity)context).getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager inputmanger = (InputMethodManager) ((Activity) context).getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
                 pickTimePopWindow.showPopWindow(ChooseInputView.this, (Activity) context);
@@ -71,48 +98,53 @@ public class ChooseInputView extends LinearLayout {
     }
 
     private ArrayList<String> titles = new ArrayList<>();
+    private JSONObject object;
 
     public void init(JSONObject object) {
+        this.object = object;
         try {
-            String hint = (String) object.get("hint");
+            String hint = (String) object.get("placeholder");
             phoneNum.setHint(hint);
             JSONArray inputContent = (JSONArray) object.get("inputContent");
+            String selectValue = (String) object.get("selectedValue");
+            object.put("value","");
             for (int i = 0; i < inputContent.length(); i++) {
                 JSONObject jsonObject = inputContent.getJSONObject(i);
                 String title = (String) jsonObject.get("title");
                 titles.add(title);
             }
-            if (titles.size() > 0) {
-                num.setText(titles.get(0));
-            }
+//            if (titles.size() > 0) {
+//                num.setText(titles.get(0));
+//            }
+            num.setText(selectValue);
             String[] values = titles.toArray(new String[titles.size()]);
-            Log.e("zhengheng",""+ values.toString());
-            pickTimePopWindow.setPickViewValue(values);
+            Log.e("zhengheng", "" + values.toString());
+            pickTimePopWindow.setPickViewValue(values, selectValue);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void checkPhone() {
-        phoneNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    private Handler handler = new Handler();
 
-            }
+    /**
+     * 延迟线程，看是否还有下一个字符输入
+     */
+    private Runnable delayRun = new Runnable() {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                boolean b = StringUtils.checkPhone(phoneNum.getText().toString());
-                if (!b) {
-                    Toast.makeText(context, "输入的手机号有误", Toast.LENGTH_SHORT).show();
+        @Override
+        public void run() {
+            try {
+                if(phoneNum.getText().toString().trim().isEmpty()){
+                    object.put("value","");
+                }else{
+                    object.put("value", num.getText() + phoneNum.getText().toString().trim());
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        });
-    }
+        }
+    };
+
 }
