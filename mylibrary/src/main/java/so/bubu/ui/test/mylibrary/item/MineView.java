@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -43,7 +44,9 @@ public class MineView extends LinearLayout {
 
     private JSONObject objects;
 
+    private ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     public void init(JSONObject objects) {
+        this.setLayoutParams(lp);
         this.objects = objects;
         try {
             String title = (String) objects.get("title");
@@ -51,18 +54,20 @@ public class MineView extends LinearLayout {
                 name.setVisibility(VISIBLE);
                 name.setText(title);
             }
-            String leftUrl = (String) objects.get("iconFontCode");
+            String leftUrl = (String) objects.get("picUrl");
             if (leftUrl != null && !leftUrl.isEmpty()) {
-                leftIcon.setVisibility(VISIBLE);
-                leftIcon.setImageBitmap(GlideHelper.getHttpBitmap(leftUrl));
+                layout.setVisibility(VISIBLE);
+                GlideHelper.display(getContext(),leftUrl,leftIcon);
             }
             String detail = (String) objects.get("detail");
             if (detail != null && !detail.isEmpty()) {
                 this.detail.setVisibility(VISIBLE);
-                this.detail.setText(title);
+                this.detail.setText(detail);
             }
             String url = (String) objects.get("url");
-
+            if (url != null && !url.isEmpty()) {
+                rightIcon.setVisibility(VISIBLE);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

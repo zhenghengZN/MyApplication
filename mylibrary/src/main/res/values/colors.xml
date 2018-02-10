@@ -21,7 +21,35 @@
     <color name="color_tab_line">#82CD6B</color>
     <color name="color_press">#82cdaa</color>
     <color name="text_tips_bg">#FEE6AA</color>
-    <color name="color_d8d8d8">#d8d8d8</color>
+    <color name="color_d8d8d8">#33d8d8d8</color>
     <color name="color_un_select">#CFCFCF</color>
     <color name="color_disable">#7782CD6B</color>
+    <color name="color_008b00">#008B00</color>
+    <color name="color_006400">#006400</color>
+    <color name="color_43CD80">#43CD80</color>
+    <color name="red">#ff0000</color>
+
+    <color name="warning">#F43530</color>
+    <color name="success">#09BB07</color>
+    <color name="circle">#C9C9C9</color>
+
+    <color name="btn_default_active">#DEDEDE</color>
+    <color name="btn_default_disable">#F7F7F7</color>
+    <color name="btn_default_bg">#F8F8F8</color>
+    <color name="btn_default_border_color">#11DEDEDE</color>
+    <color name="btn_default_activie_border_color">#66DEDEDE</color>
+
+    <color name="btn_primary_bg">#1AAD19</color>
+    <color name="btn_primary_active">#179B16</color>
+    <color name="btn_primary_disable">#9ED99D</color>
+    <color name="btn_primary_border_color">#111AAD19</color>
+    <color name="btn_primary_activie_border_color">#661AAD19</color>
+    
+    <color name="btn_warn_bg">#E64340</color>
+    <color name="btn_warn_active">#CE3C39</color>
+    <color name="btn_warn_disable">#EC8B89</color>
+    <color name="btn_warn_border_color">#11E64340</color>
+    <color name="btn_warn_activie_border_color">#66E64340</color>
+
+    <color name="link_color">#586C94</color>
 </resources>

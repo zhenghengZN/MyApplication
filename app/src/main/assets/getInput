@@ -2,6 +2,23 @@
   "hasMore": true,
   "widgets": [
     {
+      "type": "TypeTitleView",
+      "objects": [
+        {
+          "title": "Input",
+          "titleName": "表单输入"
+        }
+      ]
+    },
+    {
+      "type": "TitleView",
+      "objects": [
+        {
+          "title": "单选列表项"
+        }
+      ]
+    },
+    {
       "type": "SingleCheckList",
       "paramName": "singleChoice",
       "selectedValue": "cell standard",
@@ -13,6 +30,14 @@
         {
           "title": "cell standard1",
           "url": "/redirectAppPage?page=scrollPage&function=getCouponItems"
+        }
+      ]
+    },
+    {
+      "type": "TitleView",
+      "objects": [
+        {
+          "title": "复选列表项"
         }
       ]
     },
@@ -39,7 +64,16 @@
       ]
     },
     {
+      "type": "TitleView",
+      "objects": [
+        {
+          "title": "表单"
+        }
+      ]
+    },
+    {
       "type": "Form",
+      "placeholder":"底部说明文字底部说明文字",
       "objects": [
         {
           "type": "FormTextView",
@@ -75,17 +109,28 @@
       ]
     },
     {
+      "type": "TitleView",
+      "objects": [
+        {
+          "title": "开关"
+        }
+      ]
+    },
+    {
       "type": "SwitchView",
       "objects": [
         {
           "paramName": "switch",
           "title": "标题文字",
           "selectedValue": false
-        },
+        }
+      ]
+    },
+    {
+      "type": "TitleView",
+      "objects": [
         {
-          "paramName": "switch1",
-          "title": "标题文字1",
-          "selectedValue": false
+          "title": "文本框"
         }
       ]
     },
@@ -95,10 +140,14 @@
         {
           "paramName": "textview",
           "placeholder": "请输入文本"
-        },
+        }
+      ]
+    },
+    {
+      "type": "TitleView",
+      "objects": [
         {
-          "paramName": "textview1",
-          "placeholder": "请输入文本"
+          "title": "文本域"
         }
       ]
     },
@@ -109,6 +158,14 @@
           "paramName": "textArea",
           "placeholder": "请输入文本",
           "maxNum": 100
+        }
+      ]
+    },
+    {
+      "type": "TitleView",
+      "objects": [
+        {
+          "title": "选择"
         }
       ]
     },
@@ -139,10 +196,10 @@
     {
       "type": "AboutCheckBox",
       "paramName": "aboutcheck",
-      "selectedValue":false,
+      "selectedValue": false,
       "objects": [
         {
-          "url":""
+          "url": ""
         }
       ]
     },

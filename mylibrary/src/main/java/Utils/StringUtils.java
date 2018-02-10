@@ -51,6 +51,7 @@ public class StringUtils {
 
     /**
      * 判断是否是手机号
+     *
      * @param phone
      * @return
      */
@@ -66,7 +67,7 @@ public class StringUtils {
     }
 
 
-    public static boolean checkQQ(String s){
+    public static boolean checkQQ(String s) {
         Pattern pattern = Pattern
                 .compile("[1-9][0-9]{4,14}");
         Matcher matcher = pattern.matcher(s);
@@ -88,7 +89,7 @@ public class StringUtils {
         return "";
     }
 
-    public static int getNumber(String content){
+    public static int getNumber(String content) {
 
         String numbers = getNumbers(content);
 
@@ -103,7 +104,19 @@ public class StringUtils {
 
     }
 
-
+    //半角字符转全角字符
+    public static String ToDBC(String input) {
+        char[] c = input.toCharArray();
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] == 12288) {
+                c[i] = (char) 32;
+                continue;
+            }
+            if (c[i] > 65280 && c[i] < 65375)
+                c[i] = (char) (c[i] - 65248);
+        }
+        return new String(c);
+    }
 
 
 }

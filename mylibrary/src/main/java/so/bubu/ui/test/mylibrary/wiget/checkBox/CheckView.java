@@ -99,7 +99,7 @@ class CheckView extends View implements Checkable {
         mFloorColor = ta.getColor(R.styleable.CheckBox_colorUncheckedStroke, COLOR_FLOOR_UNCHECKED);
         mCheckedColor = ta.getColor(R.styleable.CheckBox_colorChecked, COLOR_CHECKED);
         mUnCheckedColor = ta.getColor(R.styleable.CheckBox_colorUnchecked, COLOR_UNCHECKED);
-        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.CheckBox_strokeWidth, dp2px(getContext(), 0));
+        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.CheckBox_strokeWidth, dp2px(getContext(), 1));
         mShape = ta.getInt(R.styleable.CheckBox_shape, 0);
         ta.recycle();
 

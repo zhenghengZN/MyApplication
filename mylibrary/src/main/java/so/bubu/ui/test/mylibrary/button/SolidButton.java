@@ -1,5 +1,6 @@
 package so.bubu.ui.test.mylibrary.button;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -13,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,6 +45,10 @@ public class SolidButton extends Button {
     public static int[] mDisableState = new int[]{-android.R.attr.state_enabled};
     //    public static int[] mSelectedState = new int[]{android.R.attr.state_selected, android.R.attr.state_enabled};
     private int mRadius = ResourceUtil.Dp2Px(10);                                                                            //默认的圆角半径
+
+    private final String BIG = "big";
+    private final String MIDDLE = "middle";
+    private final String SMALL = "small";
 
     //默认文字和背景颜色
     private int mBgNormalColor = getResources().getColor(R.color.color_82cd6b);
@@ -75,10 +81,47 @@ public class SolidButton extends Button {
     public void init(JSONObject object) {
         try {
             String title = (String) object.get("title");
+            boolean state = (boolean) object.get("state");
+            String size = (String) object.get("size");
+
+            setSize(size);
+
             setText(title);
+            if (state) {
+                String normalBackground = (String) object.get("normalBackground");
+                String pressBackground = (String) object.get("pressBackground");
+                this.mBgNormalColor = Color.parseColor(normalBackground);
+                this.mBgPressedColor = Color.parseColor(pressBackground);
+            }
+            this.setEnabled(state);
+            buildColorDrawableState();
+            buildDraweableState();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void setSize(String size) {
+        if (size == null || size.isEmpty()) {
+            return;
+        }
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        switch (size) {
+            case BIG:
+                lp.width = (int) (ResourceUtil.getDeviceWidth((Activity) context) * 0.9);
+                lp.height = ResourceUtil.Dp2Px(50);
+                break;
+            case MIDDLE:
+                lp.width = (int) (ResourceUtil.getDeviceWidth((Activity) context) * 0.5);
+                lp.height = ResourceUtil.Dp2Px(50);
+                break;
+            case SMALL:
+                lp.width = ResourceUtil.Dp2Px(50);
+                lp.height = ResourceUtil.Dp2Px(20);
+                break;
+        }
+        setLayoutParams(lp);
     }
 
     private void initUI() {
@@ -166,7 +209,6 @@ public class SolidButton extends Button {
 
     }
 
-
     public int dp2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
@@ -180,8 +222,8 @@ public class SolidButton extends Button {
     }
 
     public void setSubmitButton(JSONObject object, final ArrayList<LinkedHashMap<String, Object>> inputWeight) {
-        mRadius = 0;
-        mBgPressedColor = getResources().getColor(R.color.color_press);
+        mRadius = 5;
+        mBgPressedColor = getResources().getColor(R.color.color_006400);
         buildDraweableState();
         try {
             String title = (String) object.get("title");

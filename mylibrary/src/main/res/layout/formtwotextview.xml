@@ -37,6 +37,6 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:text="获取验证码"
-        android:textColor="#00ff00"
+        android:textColor="@color/color_43CD80"
         android:textSize="@dimen/weight_textsize" />
 </LinearLayout>

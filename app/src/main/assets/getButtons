@@ -1,0 +1,167 @@
+{
+  "widgets": [
+    {
+      "type": "TypeTitleView",
+      "objects": [
+        {
+          "title": "Button",
+          "titleName": "按钮",
+          "backgroundColor":"#ffffff"
+        }
+      ]
+    }, {
+      "type": "StrokeButton",
+      "objects": [
+        {
+          "state": true,
+          "title": "页面主操作 Normal",
+          "size":"big",
+          "noramlTextColor": "#F2F2F2",
+          "pressTextColor":"#F2F2F2",
+          "normalStrokeColor": "#008B00",
+          "pressStrokeColor":"#008B00",
+          "normalBackground":"#008B00",
+          "pressBackground": "#006400"
+        },
+        {
+          "state": false,
+          "title": "页面主操作 Disabled",
+          "size":"big",
+          "noramlTextColor": "#F2F2F2",
+          "pressTextColor":"#F2F2F2",
+          "normalStrokeColor": "#006400",
+          "pressStrokeColor":"#006400",
+          "normalBackground":"#006400",
+          "pressBackground": "#008B00"
+        }, {
+          "state": true,
+          "title": "页面次要操作 Normal",
+          "size":"big",
+          "noramlTextColor": "#000000",
+          "pressTextColor":"#000000",
+          "normalStrokeColor": "#cfcfcf",
+          "pressStrokeColor":"#cfcfcf",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#cfcfcf"
+        },
+        {
+          "state": false,
+          "title": "页面次要操作 Disabled",
+          "size":"big",
+          "noramlTextColor": "#000000",
+          "pressTextColor":"#000000",
+          "normalStrokeColor": "#cfcfcf",
+          "pressStrokeColor":"#cfcfcf",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#ffffff"
+        },
+
+
+        {
+          "state": true,
+          "title": "警告类操作 Normal",
+          "size":"big",
+          "noramlTextColor": "#ffffff",
+          "pressTextColor":"#ffffff",
+          "normalStrokeColor": "#ff0000",
+          "pressStrokeColor":"#ff0000",
+          "normalBackground":"#f50449",
+          "pressBackground": "#ff0000"
+        },
+        {
+          "state": false,
+          "title": "警告类操作 Disabled",
+          "size":"big",
+          "noramlTextColor": "#ffffff",
+          "pressTextColor":"#ffffff",
+          "normalStrokeColor": "#ff0000",
+          "pressStrokeColor":"#ff0000",
+          "normalBackground":"#f50449",
+          "pressBackground": "#ff0000"
+        },
+
+        {
+          "state": true,
+          "title": "按钮",
+          "size":"middle",
+          "noramlTextColor": "#008B00",
+          "pressTextColor":"#008B00",
+          "normalStrokeColor": "#008B00",
+          "pressStrokeColor":"#008B00",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#ffffff"
+        },
+        {
+          "state": false,
+          "title": "按钮",
+          "size":"middle",
+          "noramlTextColor": "#008B00",
+          "pressTextColor":"#008B00",
+          "normalStrokeColor": "#008B00",
+          "pressStrokeColor":"#008B00",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#ffffff"
+        }
+
+        ,
+        {
+          "state": true,
+          "title": "按钮",
+          "size":"middle",
+          "noramlTextColor": "#000000",
+          "pressTextColor":"#000000",
+          "normalStrokeColor": "#000000",
+          "pressStrokeColor":"#000000",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#ffffff"
+        },
+        {
+          "state": false,
+          "title": "按钮",
+          "size":"middle",
+          "noramlTextColor": "#000000",
+          "pressTextColor":"#000000",
+          "normalStrokeColor": "#000000",
+          "pressStrokeColor":"#000000",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#ffffff"
+        }
+        ,
+
+
+        {
+          "state": true,
+          "title": "按钮",
+          "size":"small",
+          "noramlTextColor": "#ffffff",
+          "pressTextColor":"#ffffff",
+          "normalStrokeColor": "#006400",
+          "pressStrokeColor":"#006400",
+          "normalBackground":"#008B00",
+          "pressBackground": "#006400"
+        },
+        {
+          "state": true,
+          "title": "按钮",
+          "size":"small",
+          "noramlTextColor": "#000000",
+          "pressTextColor":"#000000",
+          "normalStrokeColor": "#cfcfcf",
+          "pressStrokeColor":"#cfcfcf",
+          "normalBackground":"#ffffff",
+          "pressBackground": "#cfcfcf"
+        },{
+          "state": true,
+          "title": "按钮",
+          "size":"small",
+          "noramlTextColor": "#ffffff",
+          "pressTextColor":"#ffffff",
+          "normalStrokeColor": "#f50449",
+          "pressStrokeColor":"#ff0000",
+          "normalBackground":"#f50449",
+          "pressBackground": "#ff0000"
+        }
+      ]
+    }
+  ]
+}

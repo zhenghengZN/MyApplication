@@ -23,8 +23,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import Utils.StringUtils;
+import so.bubu.ui.test.mylibrary.Dialog.PickerDialog;
 import so.bubu.ui.test.mylibrary.R;
-import so.bubu.ui.test.mylibrary.wiget.PickTimePopWindow;
 
 /**
  * Created by zhengheng on 18/1/30.
@@ -37,7 +37,7 @@ public class ChooseInputView extends LinearLayout {
     private TextView num;
     private EditText phoneNum;
     private Context context;
-    private PickTimePopWindow pickTimePopWindow;
+    private PickerDialog pickTimePopWindow;
 
     public ChooseInputView(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -73,9 +73,9 @@ public class ChooseInputView extends LinearLayout {
         });
 //        checkPhone();
 
-        pickTimePopWindow = new PickTimePopWindow((Activity) context);
+        pickTimePopWindow = new PickerDialog((Activity) context);
         pickTimePopWindow.setType(3);
-        pickTimePopWindow.setOnSucessClickListener(new PickTimePopWindow.OnSucessClickListener() {
+        pickTimePopWindow.setOnSucessClickListener(new PickerDialog.OnSucessClickListener() {
             @Override
             public void sucessClick(String date, View v) {
                 if (date != null && !date.isEmpty()) {
@@ -92,7 +92,7 @@ public class ChooseInputView extends LinearLayout {
                     InputMethodManager inputmanger = (InputMethodManager) ((Activity) context).getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
-                pickTimePopWindow.showPopWindow(ChooseInputView.this, (Activity) context);
+                pickTimePopWindow.show();
             }
         });
     }
@@ -107,7 +107,7 @@ public class ChooseInputView extends LinearLayout {
             phoneNum.setHint(hint);
             JSONArray inputContent = (JSONArray) object.get("inputContent");
             String selectValue = (String) object.get("selectedValue");
-            object.put("value","");
+            object.put("value", "");
             for (int i = 0; i < inputContent.length(); i++) {
                 JSONObject jsonObject = inputContent.getJSONObject(i);
                 String title = (String) jsonObject.get("title");
@@ -136,9 +136,9 @@ public class ChooseInputView extends LinearLayout {
         @Override
         public void run() {
             try {
-                if(phoneNum.getText().toString().trim().isEmpty()){
-                    object.put("value","");
-                }else{
+                if (phoneNum.getText().toString().trim().isEmpty()) {
+                    object.put("value", "");
+                } else {
                     object.put("value", num.getText() + phoneNum.getText().toString().trim());
                 }
             } catch (JSONException e) {

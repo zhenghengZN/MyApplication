@@ -88,8 +88,52 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="btn_default">
+        <!--<item name="android:stateListAnimator">@null</item>-->
+        <item name="stroke_radius">3dp</item>
+        <item name="stroke_text_normal_color">@android:color/black</item>
+        <item name="stroke_solid_normal_color">@color/btn_default_bg</item>
+        <item name="stroke_solid_pressed_color">@color/btn_default_active</item>
+        <item name="stroke_solid_disable_color">@color/btn_default_disable</item>
+        <item name="stroke_bg_normal_color">@color/color_b2b2b2</item>
+        <item name="stroke_bg_pressed_color">@color/color_b2b2b2</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
+    <style name="btn_primary">
+        <!--<item name="android:stateListAnimator">@null</item>-->
+        <item name="stroke_radius">3dp</item>
+        <item name="stroke_text_normal_color">@android:color/white</item>
+        <item name="stroke_solid_normal_color">@color/btn_primary_bg</item>
+        <item name="stroke_solid_pressed_color">@color/btn_primary_active</item>
+        <item name="stroke_solid_disable_color">@color/btn_primary_disable</item>
+        <item name="stroke_bg_normal_color">@color/color_008b00</item>
+        <item name="stroke_bg_pressed_color">@color/color_008b00</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="btn_warn">
+        <!--<item name="android:stateListAnimator">@null</item>-->
+        <item name="stroke_radius">3dp</item>
+        <item name="stroke_text_normal_color">@android:color/white</item>
+        <item name="stroke_solid_normal_color">@color/btn_warn_bg</item>
+        <item name="stroke_solid_pressed_color">@color/btn_warn_active</item>
+        <item name="stroke_solid_disable_color">@color/btn_warn_disable</item>
+        <item name="stroke_bg_normal_color">@color/red</item>
+        <item name="stroke_bg_pressed_color">@color/red</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="PickDialog" >
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>//必须还要再加上这一句才能看起来是满的
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
     <!--<style name="AppTheme" parent="AppBaseTheme">-->
-        <!--<item name="android:listDivider">@drawable/divider_bg</item>-->
+    <!--<item name="android:listDivider">@drawable/divider_bg</item>-->
     <!--</style>-->
 </resources>

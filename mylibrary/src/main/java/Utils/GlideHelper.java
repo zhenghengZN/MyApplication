@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -30,13 +31,43 @@ import so.bubu.ui.test.mylibrary.R;
  */
 public class GlideHelper {
 
-    public static Bitmap getHttpBitmap(String url){
+
+    public void BitmapTask(ImageView img, String url) {
+        new BitmapAsyncTask(img).execute(url);
+    }
+
+
+    class BitmapAsyncTask extends AsyncTask<String, String, Bitmap> {
+
+        private ImageView imageView;
+
+        public BitmapAsyncTask(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap httpBitmap = getHttpBitmap(params[0]);
+            return httpBitmap;
+        }
+
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            if(bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            }
+        }
+    }
+
+    public static Bitmap getHttpBitmap(String url) {
         URL myFileURL;
-        Bitmap bitmap=null;
-        try{
+        Bitmap bitmap = null;
+        try {
             myFileURL = new URL(url);
             //获得连接
-            HttpURLConnection conn=(HttpURLConnection)myFileURL.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) myFileURL.openConnection();
             //设置超时时间为6000毫秒，conn.setConnectionTiem(0);表示没有时间限制
             conn.setConnectTimeout(6000);
             //连接设置获得数据流
@@ -51,7 +82,7 @@ public class GlideHelper {
             bitmap = BitmapFactory.decodeStream(is);
             //关闭数据流
             is.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -214,7 +245,7 @@ public class GlideHelper {
     }
 
 
-    public static void display(Context context, String url,int width,int height ,ImageView tagetView) {
+    public static void display(Context context, String url, int width, int height, ImageView tagetView) {
 
         Glide
                 .with(context)
@@ -424,7 +455,7 @@ public class GlideHelper {
                 .into(targetView);
     }
 
-    public static void displayGridByResizeasBitmap(Context context, String url, int targetWidth, int targetHeight, ImageView targetView, int errorRsid , int placeholderRsid) {
+    public static void displayGridByResizeasBitmap(Context context, String url, int targetWidth, int targetHeight, ImageView targetView, int errorRsid, int placeholderRsid) {
 
         Glide
                 .with(context)

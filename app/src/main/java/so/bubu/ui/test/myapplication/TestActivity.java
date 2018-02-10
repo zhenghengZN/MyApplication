@@ -8,6 +8,7 @@ import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 
 import Utils.MyJsonUtil;
+import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.button.SolidButton;
 import so.bubu.ui.test.mylibrary.input.ChooseInputView;
 import so.bubu.ui.test.mylibrary.input.FormView;
@@ -33,8 +35,11 @@ import so.bubu.ui.test.mylibrary.input.SwitchLayout;
 import so.bubu.ui.test.mylibrary.input.TextArea;
 import so.bubu.ui.test.mylibrary.input.TextEditText;
 import so.bubu.ui.test.mylibrary.page.common.BaseActivity;
+import so.bubu.ui.test.mylibrary.wiget.TitleView;
+import so.bubu.ui.test.mylibrary.wiget.TypeTitleView;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.AboutCheckBox;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup;
+import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckListLayout;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
 
 /**
@@ -43,13 +48,13 @@ import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
 public class TestActivity extends BaseActivity {
 
     @Override
-    public  View addBaseContenetView(LinearLayout view1) {
+    public View addBaseContenetView(LinearLayout view1) {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.test);
 
 
 //        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        View layout = LayoutInflater.from(this).inflate(R.layout.test,null,false);
+        View layout = LayoutInflater.from(this).inflate(R.layout.test, null, false);
         LinearLayout view = layout.findViewById(R.id.parent);
 //        View submit = findViewById(R.id.submit);
 
@@ -179,12 +184,12 @@ public class TestActivity extends BaseActivity {
 
             switch (type) {
                 case "SingleCheckList":
-                    CheckGroup checkGroup = new CheckGroup(this);
+                    CheckListLayout checkGroup = new CheckListLayout(this);
                     checkGroup.init(object, CheckGroup.TYPE_SINGLE);
                     view.addView(checkGroup);
                     break;
                 case "MoreCheckList":
-                    CheckGroup checkGroup1 = new CheckGroup(this);
+                    CheckListLayout checkGroup1 = new CheckListLayout(this);
                     checkGroup1.init(object, CheckGroup.TYPE_MORE);
                     view.addView(checkGroup1);
                     break;
@@ -230,7 +235,22 @@ public class TestActivity extends BaseActivity {
                     aboutCheckBox.init(object);
                     view.addView(aboutCheckBox);
                     break;
-
+                case "TitleView":
+                    ArrayList<JSONObject> titleViewObject = JsonArray2JsonObject(objects);
+                    for (JSONObject jsonObject : titleViewObject) {
+                        TitleView titleview = new TitleView(this);
+                        titleview.init(jsonObject);
+                        view.addView(titleview);
+                    }
+                    break;
+                case "TypeTitleView":
+                    ArrayList<JSONObject> typeTitleObject = JsonArray2JsonObject(objects);
+                    for (JSONObject jsonObject : typeTitleObject) {
+                        TypeTitleView titleview = new TypeTitleView(this);
+                        titleview.init(jsonObject);
+                        view.addView(titleview);
+                    }
+                    break;
                 case "SolidButton":
 //                    ArrayList<JSONObject> SolidButtonObject = JsonArray2JsonObject(objects);
 //                    for (JSONObject jsonObject : SolidButtonObject) {
@@ -241,6 +261,8 @@ public class TestActivity extends BaseActivity {
                     ArrayList<JSONObject> SolidButtonObject = JsonArray2JsonObject(objects);
                     for (JSONObject jsonObject : SolidButtonObject) {
                         SolidButton solidButton = new SolidButton(this);
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        lp.setMargins(ResourceUtil.Dp2Px(10),ResourceUtil.Dp2Px(20),ResourceUtil.Dp2Px(10),ResourceUtil.Dp2Px(10));
                         solidButton.setSubmitButton(jsonObject, array);
 //                    solidButton.init(jsonObject);
                         view.addView(solidButton);

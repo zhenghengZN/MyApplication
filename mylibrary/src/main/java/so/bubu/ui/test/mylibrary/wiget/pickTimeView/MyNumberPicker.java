@@ -17,9 +17,7 @@ import android.widget.NumberPicker;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by Moore on 2016/10/20.
- */
+import Utils.ResourceUtil;
 
 public class MyNumberPicker extends NumberPicker {
     private Context mContext;
@@ -63,8 +61,8 @@ public class MyNumberPicker extends NumberPicker {
 
     private void updateView(View view) {
         if (view instanceof EditText) {
-            ((EditText) view).setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
-            ((EditText) view).setTextColor(Color.parseColor("#6495ED"));
+            ((EditText) view).setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+            ((EditText) view).setTextColor(Color.parseColor("#000000"));
         }
     }
 
@@ -293,10 +291,10 @@ public class MyNumberPicker extends NumberPicker {
             String scrollSelectorValue = mSelectorIndexToStringCache.get(selectorIndex);
             if (i != 1) {
                 mSelectorWheelPaint.setColor(Color.BLACK);
-                mSelectorWheelPaint.setTextSize(sp2px(16));
+                mSelectorWheelPaint.setTextSize(sp2px(14));
             } else {
-                mSelectorWheelPaint.setColor(Color.parseColor("#6495ED"));
-                mSelectorWheelPaint.setTextSize(sp2px(20));
+                mSelectorWheelPaint.setColor(Color.parseColor("#000000"));
+                mSelectorWheelPaint.setTextSize(sp2px(14));
             }
 
             if ((showSelectorWheel && i != 1) ||
@@ -310,23 +308,23 @@ public class MyNumberPicker extends NumberPicker {
 
         // draw the selection dividers
         if (showSelectorWheel && mSelectionDivider != null) {
-            mSelectionDivider = new ColorDrawable(Color.parseColor("#a0c4c4c4"));
+            mSelectionDivider = new ColorDrawable(Color.parseColor("#1AAD19"));
             // draw the top divider
             int topOfTopDivider = mTopSelectionDividerTop;
-            int bottomOfTopDivider = topOfTopDivider + 2;
+            int bottomOfTopDivider = topOfTopDivider + ResourceUtil.Dp2Px(2);
             mSelectionDivider.setBounds(0, topOfTopDivider, mRight, bottomOfTopDivider);
             mSelectionDivider.draw(canvas);
 
             // draw the bottom divider
             int bottomOfBottomDivider = mBottomSelectionDividerBottom;
-            int topOfBottomDivider = bottomOfBottomDivider - 2;
+            int topOfBottomDivider = bottomOfBottomDivider - ResourceUtil.Dp2Px(2);
             mSelectionDivider.setBounds(0, topOfBottomDivider, mRight, bottomOfBottomDivider);
             mSelectionDivider.draw(canvas);
         }
     }
 
-    private int sp2px(int sp){
+    private int sp2px(int sp) {
         float scale = mContext.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (scale*sp+0.5f);
+        return (int) (scale * sp + 0.5f);
     }
 }

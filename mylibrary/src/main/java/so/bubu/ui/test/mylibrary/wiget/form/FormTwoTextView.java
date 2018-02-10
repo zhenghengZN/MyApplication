@@ -34,7 +34,7 @@ public class FormTwoTextView extends LinearLayout {
         content = (WarningEditText) view.findViewById(R.id.warin_edittext);
         getCheck = (TextView) view.findViewById(R.id.getcheck);
 
-
+        content.setTextSize(17);
         content.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

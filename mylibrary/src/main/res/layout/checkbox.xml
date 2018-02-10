@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    app:checkBoxHeight="20dp"
-    app:checkBoxWidth="20dp"
-    app:colorChecked="#aaffaa"
-    app:middlePadding="15dp"
+    app:checkBoxHeight="22dp"
+    app:checkBoxWidth="22dp"
+    app:colorChecked="@color/color_43CD80"
+    app:middlePadding="12dp"
     app:text="aaa"
     app:textSize="17sp"/>
 

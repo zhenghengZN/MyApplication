@@ -7,8 +7,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 
 
 import org.json.JSONArray;
@@ -20,6 +22,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.NoScrollListView;
 import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.Option;
@@ -48,7 +51,8 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
 
     private int leftPadding;
     private boolean isLeftCheckBox;
-    private View footerView;
+
+    private int mDivider = ResourceUtil.Dp2Px(0.5f);
 
     public CheckGroup(Context context) {
         this(context, null);
@@ -59,7 +63,7 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
         mContext = context;
         Drawable drawable = context.getResources().getDrawable(R.drawable.list_divider);
         setDivider(drawable);
-        setDividerHeight(1);
+        setDividerHeight(mDivider);
         setOnItemClickListener(this);
         mOptionWrapper = new OptionWrapper();
         mAdapter = new OptionsAdapter(mOptionWrapper.getOptions(), attrs);
@@ -67,17 +71,15 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CheckBox);
         mShape = typedArray.getInt(R.styleable.CheckBox_shape, CIRCLE);
         isLeftCheckBox = typedArray.getBoolean(R.styleable.CheckBox_isleftcheckbox, true);
-
-//        footerView = LayoutInflater.from(context).inflate(R.layout.more, null, false);
-//        this.addFooterView(footerView);
-//        footerView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mOptionWrapper.setOptions("cell standard");
-//                mAdapter.notifyDataSetChanged();
-//            }
-//        });
         typedArray.recycle();
+
+
+//        View view = new View(context);
+//        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ResourceUtil.Dp2Px(0.5f));
+//        view.setLayoutParams(layoutParams);
+//        view.setBackgroundColor(getResources().getColor(R.color.color_b2b2b2));
+//        this.addFooterView(view);
+//        this.addHeaderView(view);
     }
 
     private ArrayList<String> titles = new ArrayList<>();
@@ -89,15 +91,11 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
     private ArrayList<String> selectedValues = new ArrayList<>();
     private Object selectedValue;
     private ArrayList<Integer> seletItem = new ArrayList<>();
-        private LinkedHashMap<String, Object> object;
+    private LinkedHashMap<String, Object> object;
+
     public void init(LinkedHashMap<String, Object> object, int type) {
         this.object = object;
         selectedValue = object.get("selectedValue");
-//        String paramName = (String) object.get("paramName");
-//        if (paramName != null && paramName.isEmpty())
-//            params.add(paramName);
-
-//        ArrayList<String> selectedValues = new ArrayList<>();
 
         //初始化添加选中的值
         if (selectedValue instanceof String) {
@@ -195,22 +193,7 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
         mOptionWrapper.getOptionAt(position).toggle();
 
         List<CharSequence> checkedText = mOptionWrapper.getCheckedText();
-
-//        for (int i = 0; i < checkedText.size(); i++) {
-//            String s = selectedValues.get(i);
-//            s = checkedText.get(i).toString();
-//        }
-
-        object.put("selectedValue",checkedText);
-//        JSONArray selectedValue = (JSONArray) this.selectedValue;
-//        for (int i = 0; i < selectedValue.length(); i++) {
-//            try {
-//                JSONObject jsonObject = selectedValue.getJSONObject(i);
-//                jsonObject.get("value");
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        object.put("selectedValue", checkedText);
     }
 
     /**
@@ -223,9 +206,7 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
         CheckBox checkBox;
         boolean isSet = false;//用于判断有没有将当前单击的item设为true
         int chileCount = parent.getChildCount();//得到item条数
-        if (footerView != null) {
-            chileCount = chileCount - 1;
-        }
+
         for (int i = 0; i < chileCount; i++) {
             View v = parent.getChildAt(i);
             checkBox = (CheckBox) v;
@@ -254,7 +235,7 @@ public class CheckGroup extends NoScrollListView implements AdapterView.OnItemCl
 
         List<CharSequence> checkedText = mOptionWrapper.getCheckedText();
 
-        object.put("selectedValue",checkedText.get(0).toString());
+        object.put("selectedValue", checkedText.get(0).toString());
     }
 
     /**

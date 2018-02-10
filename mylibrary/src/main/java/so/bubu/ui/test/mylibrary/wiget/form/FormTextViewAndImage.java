@@ -39,6 +39,7 @@ public class FormTextViewAndImage extends LinearLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.formtextviewandimage, this, true);
         title = (TextView) view.findViewById(R.id.title);
         content = (WarningEditText) view.findViewById(R.id.warin_edittext);
+        content.setTextSize(17);
         checkCodeImg = (ImageView) view.findViewById(R.id.checkcode_img);
         content.addTextChangedListener(new TextWatcher() {
             @Override

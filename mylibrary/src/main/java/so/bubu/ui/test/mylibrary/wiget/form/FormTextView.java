@@ -33,7 +33,7 @@ public class FormTextView extends LinearLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.formtextview, this, true);
         mTitle = (TextView) view.findViewById(R.id.title);
         content = (WarningEditText) view.findViewById(R.id.warin_edittext);
-
+        content.setTextSize(17);
         content.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

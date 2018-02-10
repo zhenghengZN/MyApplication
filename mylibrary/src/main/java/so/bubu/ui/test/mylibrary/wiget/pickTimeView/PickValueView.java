@@ -9,9 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-/**
- * Created by Moore on 2016/10/21.
- */
+import Utils.ResourceUtil;
 
 public class PickValueView extends LinearLayout implements NumberPicker.OnValueChangeListener {
     private Context mContext;
@@ -20,7 +18,7 @@ public class PickValueView extends LinearLayout implements NumberPicker.OnValueC
      */
     private TextView mTitleLeft, mTitleMiddle, mTitleRight;
     private TextView mUnitLeft, mUnitMiddle, mUnitRight;
-    private MyNumberPicker mNpLeft, mNpMiddle, mNpRight;
+    private MyValuePicker mNpLeft, mNpMiddle, mNpRight;
     /**
      * 数据个数  1列 or 2列 or 3列
      */
@@ -91,7 +89,7 @@ public class PickValueView extends LinearLayout implements NumberPicker.OnValueC
         mTitleMiddle = new TextView(mContext);
         mTitleRight = new TextView(mContext);
 
-        LayoutParams params = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        LayoutParams params = new LayoutParams(ResourceUtil.Dp2Px(100), ViewGroup.LayoutParams.WRAP_CONTENT);
         TextView[] titles = new TextView[]{mTitleLeft, mTitleMiddle, mTitleRight};
         for (int i = 0; i < titles.length; i++) {
             titles[i].setLayoutParams(params);
@@ -106,14 +104,14 @@ public class PickValueView extends LinearLayout implements NumberPicker.OnValueC
         contentLayout.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         contentLayout.setOrientation(HORIZONTAL);
         contentLayout.setGravity(Gravity.CENTER);
-        mNpLeft = new MyNumberPicker(mContext);
-        mNpMiddle = new MyNumberPicker(mContext);
-        mNpRight = new MyNumberPicker(mContext);
+        mNpLeft = new MyValuePicker(mContext);
+        mNpMiddle = new MyValuePicker(mContext);
+        mNpRight = new MyValuePicker(mContext);
         mUnitLeft = new TextView(mContext);
         mUnitMiddle = new TextView(mContext);
         mUnitRight = new TextView(mContext);
 
-        MyNumberPicker[] nps = new MyNumberPicker[]{mNpLeft, mNpMiddle, mNpRight};
+        MyValuePicker[] nps = new MyValuePicker[]{mNpLeft, mNpMiddle, mNpRight};
         for (int i = 0; i < nps.length; i++) {
             nps[i].setLayoutParams(params);
             nps[i].setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
@@ -243,7 +241,7 @@ public class PickValueView extends LinearLayout implements NumberPicker.OnValueC
      */
     private void updateValue(Object value, int index) {
         String showStr[] = new String[DATA_SIZE];
-        MyNumberPicker picker;
+        MyValuePicker picker;
         Object[] showingValue;
         Object[] values;
         int step;

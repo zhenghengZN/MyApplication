@@ -27,7 +27,7 @@ import java.util.LinkedHashMap;
 import Utils.ResourceUtil;
 import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
-import so.bubu.ui.test.mylibrary.wiget.PickTimePopWindow;
+import so.bubu.ui.test.mylibrary.wiget.TitleView;
 import so.bubu.ui.test.mylibrary.wiget.form.FormDatePick;
 import so.bubu.ui.test.mylibrary.wiget.form.FormTextView;
 import so.bubu.ui.test.mylibrary.wiget.form.FormTextViewAndImage;
@@ -49,7 +49,7 @@ public class FormView extends LinearLayout {
     private Context context;
     private LinearLayout layout;
     //    private View line;
-    private TextView instruction;
+    private TitleView instruction;
 
     public FormView(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -57,7 +57,7 @@ public class FormView extends LinearLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.form, this, true);
 //        line = LayoutInflater.from(context).inflate(R.layout.wight_line, null, false);
         layout = (LinearLayout) view.findViewById(R.id.diff_formview);
-        instruction = (TextView) view.findViewById(R.id.instruction);
+        instruction = (TitleView) view.findViewById(R.id.instruction);
     }
 
     private OnCheckCodeListener onCheckCodeListener;
@@ -76,6 +76,11 @@ public class FormView extends LinearLayout {
 //        if(objects.length
 
         JSONArray objects = (JSONArray) object.get("objects");
+        String placeholder = (String) object.get("placeholder");
+        if (placeholder != null && !placeholder.isEmpty()) {
+            instruction.setVisibility(VISIBLE);
+            instruction.setText(placeholder);
+        }
         for (int i = 0; i < objects.length(); i++) {
             try {
                 JSONObject o = (JSONObject) objects.get(i);
@@ -102,7 +107,7 @@ public class FormView extends LinearLayout {
                         layout.addView(viewAndImage);
                         break;
                 }
-                if(i == objects.length() -1){
+                if (i == objects.length() - 1) {
                     return;
                 }
                 layout.addView(setLine());

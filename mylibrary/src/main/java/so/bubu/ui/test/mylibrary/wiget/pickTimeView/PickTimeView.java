@@ -12,9 +12,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by Moore on 2016/10/19.
- */
+import Utils.ResourceUtil;
 
 public class PickTimeView extends LinearLayout implements NumberPicker.OnValueChangeListener {
     private final String TAG = getClass().getSimpleName();
@@ -28,7 +26,7 @@ public class PickTimeView extends LinearLayout implements NumberPicker.OnValueCh
     /**
      * 选择框之间距离（dp）
      */
-    private int mOffsetMargin = 12;
+    private int mOffsetMargin = ResourceUtil.Dp2Px(0.5f);
 
     /**
      * 一组数据长度

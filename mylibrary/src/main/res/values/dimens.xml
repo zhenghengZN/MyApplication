@@ -12,4 +12,9 @@
     <dimen name="icon_mini_height_like">12dp</dimen>
 
     <dimen name="weight_textsize">17sp</dimen>
+
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_15">15sp</dimen>
 </resources>

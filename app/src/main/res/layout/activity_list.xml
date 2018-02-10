@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="so.bubu.ui.test.myapplication.ListActivity">
+
+
+    <so.bubu.ui.test.mylibrary.item.MineViewLayout
+        android:id="@+id/mineLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </so.bubu.ui.test.mylibrary.item.MineViewLayout>
+
+</LinearLayout>

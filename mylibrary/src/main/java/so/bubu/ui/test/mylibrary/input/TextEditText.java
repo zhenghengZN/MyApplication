@@ -44,9 +44,9 @@ public class TextEditText extends LinearLayout implements View.OnFocusChangeList
 
     public TextEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setOrientation(LinearLayout.HORIZONTAL);
-        this.setPadding(ResourceUtil.Dp2Px(15), ResourceUtil.Dp2Px(10), ResourceUtil.Dp2Px(15), ResourceUtil.Dp2Px(10));
-        this.setBackgroundColor(Color.WHITE);
+        this.setOrientation(LinearLayout.VERTICAL);
+//        this.setPadding(ResourceUtil.Dp2Px(15), ResourceUtil.Dp2Px(10), ResourceUtil.Dp2Px(15), ResourceUtil.Dp2Px(10));
+//        this.setBackgroundColor(Color.WHITE);
 
         View view = LayoutInflater.from(context).inflate(R.layout.textedittext, this, true);
         mHintText = (TextView) view.findViewById(R.id.hint_text);
