@@ -46,14 +46,6 @@ public class ButtonActivity extends BaseActivity {
                         parent.addView(titleview);
                     }
                     break;
-                case "SolidButton":
-                    ArrayList<JSONObject> solidbuttonObject = MyJsonUtil.JsonArray2JsonObject(objects);
-                    for (JSONObject jsonObject : solidbuttonObject) {
-                        SolidButton solidButton = new SolidButton(this);
-                        solidButton.init(jsonObject);
-                        parent.addView(solidButton);
-                    }
-                    break;
                 case "StrokeButton":
                     ArrayList<JSONObject> strokebuttonObject = MyJsonUtil.JsonArray2JsonObject(objects);
                     for (JSONObject jsonObject : strokebuttonObject) {

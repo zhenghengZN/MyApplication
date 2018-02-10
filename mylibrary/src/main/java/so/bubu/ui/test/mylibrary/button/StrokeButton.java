@@ -24,6 +24,7 @@ import java.util.Iterator;
 
 import Utils.MyJsonUtil;
 import Utils.ResourceUtil;
+import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
@@ -42,7 +43,7 @@ public class StrokeButton extends Button {
     private int mBgPressedColor = getResources().getColor(R.color.color_un_select);
     private int mTextNormalColor = getResources().getColor(R.color.colorPrimaryDark);
     //    private int mTextPressedColor = getResources().getColor(R.color.color_82cd6b);
-    private int mStrokeDisableColor = getResources().getColor(R.color.color_un_select);
+    private int mBgDisableColor = getResources().getColor(R.color.color_un_select);
     private int mTextDisableColor = getResources().getColor(R.color.color_ff5000);
     private int mSolidPressColor = getResources().getColor(R.color.color_d8d8d8);
     private int mSolidNormalColor = Color.WHITE;
@@ -123,7 +124,7 @@ public class StrokeButton extends Button {
         drawable.addState(mPressState, pressedDrawable);
 
         GradientDrawable disableDrawable = new GradientDrawable();
-        disableDrawable.setStroke(mStrokeWidth, mBgNormalColor);
+        disableDrawable.setStroke(mStrokeWidth, mBgDisableColor);
         disableDrawable.setCornerRadii(outRectr);
         disableDrawable.setColor(mSolidDisableColor);
         drawable.addState(mDisableState, disableDrawable);
@@ -241,7 +242,7 @@ public class StrokeButton extends Button {
     public void init(JSONObject objects) {
 
         HashMap<String, Object> object = MyJsonUtil.JSONObject2HashMap(objects);
-        boolean state = (boolean) object.get("state");
+        Boolean state = (Boolean) object.get("state");
         String title = (String) object.get("title");
         String size = (String) object.get("size");
         String type = (String) object.get("type");
@@ -253,34 +254,32 @@ public class StrokeButton extends Button {
         String normalBackground = (String) object.get("normalBackground");
         String pressBackground = (String) object.get("pressBackground");
 
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mTextNormalColor = Color.parseColor(noramlTextColor);
         }
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mBgNormalColor = Color.parseColor(normalStrokeColor);
         }
 
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mBgPressedColor = Color.parseColor(pressStrokeColor);
         }
 
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mSolidNormalColor = Color.parseColor(normalBackground);
         }
 
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mSolidPressColor = Color.parseColor(pressBackground);
         }
 
-        if (isStringEmpty(noramlTextColor)) {
+        if (StringUtils.isNull(noramlTextColor)) {
             this.mSolidDisableColor = Color.parseColor(normalBackground);
         }
 
 
-        if (!state) {
-            this.mTextNormalColor = getResources().getColor(R.color.color_un_select);
-            setAlpha(0.4f);
-
+        if (state != null) {
+            setEnabled(state);
         }
         setTypeStyle(type);
         buildDraweableState();
@@ -290,11 +289,13 @@ public class StrokeButton extends Button {
 
     }
 
-    public boolean isStringEmpty(String color) {
-        if (color != null && !color.isEmpty()) {
-            return true;
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (!enabled) {
+            this.mTextNormalColor = getResources().getColor(R.color.color_un_select);
+            setAlpha(0.4f);
         }
-        return false;
     }
 
     public int getColor(int ResId) {
@@ -331,6 +332,11 @@ public class StrokeButton extends Button {
                 mBgPressedColor = getColor(R.color.color_008b00);
 //                this.setTextAppearance(getContext(), R.style.btn_primary);
                 break;
+
+            default:
+                mSolidDisableColor = getColor(R.color.btn_default_disable);
+                mTextDisableColor = getColor(R.color.btn_default_active);
+                mBgDisableColor = getColor(R.color.btn_default_active);
         }
         setTextSize(18);
     }

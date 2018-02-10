@@ -23,13 +23,17 @@ public class ToastDialog extends Dialog {
         this.mDuration = duration;
     }
 
+    public ToastDialog(Context context) {
+        super(context);
+    }
+
     private static String loadString = "数据加载中";
     private static String successString = "已完成";
 
     public final static int TYPE_SUCCESS = 1;
     public final static int TYPE_LOAD = 2;
 
-    private int mDuration = -1;//不关闭
+    private int mDuration = 3 * 1000;//不关闭
     private Handler mHandle = new Handler();
 
 

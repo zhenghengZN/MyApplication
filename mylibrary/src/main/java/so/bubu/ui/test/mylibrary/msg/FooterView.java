@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.item;
+package so.bubu.ui.test.mylibrary.msg;
 
 import android.content.Context;
 import android.util.AttributeSet;

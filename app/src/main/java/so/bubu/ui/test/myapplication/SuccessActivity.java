@@ -15,7 +15,7 @@ import java.util.LinkedHashMap;
 import Utils.MyJsonUtil;
 import so.bubu.ui.test.mylibrary.Toast.ToastDialog;
 import so.bubu.ui.test.mylibrary.button.StrokeButton;
-import so.bubu.ui.test.mylibrary.item.msg.MsgView;
+import so.bubu.ui.test.mylibrary.msg.MsgView;
 
 /**
  * Created by zhengheng on 18/2/9.

@@ -12,6 +12,18 @@ public class StringUtils {
 
     private final static Pattern emailer = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
 
+
+    public static boolean isNull(String s) {
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+//    public static boolean isBnull(Boolean s){
+//        if()
+//    }
+
     /**
      * 判断是不是一个合法的电子邮件地址
      *

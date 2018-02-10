@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.item.msg;
+package so.bubu.ui.test.mylibrary.msg;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

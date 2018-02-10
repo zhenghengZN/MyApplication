@@ -10,14 +10,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import Utils.GlideHelper;
+import Utils.MyJsonUtil;
+import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
@@ -40,36 +44,41 @@ public class MineView extends LinearLayout {
         detail = (TextView) view.findViewById(R.id.tv_detail);
         rightIcon = (ImageView) view.findViewById(R.id.right_icon);
         layout = (RelativeLayout) view.findViewById(R.id.img_icon);
+
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), url, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
-    private JSONObject objects;
+    //    private JSONObject objects;
+    private String url;
+    private ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    private ViewGroup.LayoutParams lp=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    public void init(JSONObject objects) {
+    public void init(JSONObject object) {
+        HashMap<String, Object> objects = MyJsonUtil.JSONObject2HashMap(object);
         this.setLayoutParams(lp);
-        this.objects = objects;
-        try {
-            String title = (String) objects.get("title");
-            if (title != null && !title.isEmpty()) {
-                name.setVisibility(VISIBLE);
-                name.setText(title);
-            }
-            String leftUrl = (String) objects.get("picUrl");
-            if (leftUrl != null && !leftUrl.isEmpty()) {
-                layout.setVisibility(VISIBLE);
-                GlideHelper.display(getContext(),leftUrl,leftIcon);
-            }
-            String detail = (String) objects.get("detail");
-            if (detail != null && !detail.isEmpty()) {
-                this.detail.setVisibility(VISIBLE);
-                this.detail.setText(detail);
-            }
-            String url = (String) objects.get("url");
-            if (url != null && !url.isEmpty()) {
-                rightIcon.setVisibility(VISIBLE);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+//        this.objects = object;
+        String title = (String) objects.get("title");
+        if (StringUtils.isNull(title)) {
+            name.setVisibility(VISIBLE);
+            name.setText(title);
+        }
+        String leftUrl = (String) objects.get("picUrl");
+        if (StringUtils.isNull(leftUrl)) {
+            layout.setVisibility(VISIBLE);
+            GlideHelper.display(getContext(), leftUrl, leftIcon);
+        }
+        String detail = (String) objects.get("detail");
+        if (StringUtils.isNull(detail)) {
+            this.detail.setVisibility(VISIBLE);
+            this.detail.setText(detail);
+        }
+        url = (String) objects.get("url");
+        if (StringUtils.isNull(url)) {
+            rightIcon.setVisibility(VISIBLE);
         }
     }
 
