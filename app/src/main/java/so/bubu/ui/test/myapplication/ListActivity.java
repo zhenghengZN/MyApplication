@@ -1,11 +1,7 @@
 package so.bubu.ui.test.myapplication;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -16,24 +12,19 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import Utils.MyJsonUtil;
-import so.bubu.ui.test.mylibrary.item.MineViewLayout;
-import so.bubu.ui.test.mylibrary.item.MineViewList;
+import so.bubu.ui.test.mylibrary.item.inputlist.MineViewLayout;
 import so.bubu.ui.test.mylibrary.page.common.BaseActivity;
+import so.bubu.ui.test.mylibrary.wiget.TitleView;
 import so.bubu.ui.test.mylibrary.wiget.TypeTitleView;
 
 public class ListActivity extends BaseActivity {
 
     private LinearLayout parent;
-    private MineViewLayout layoutView;
 
     @Override
     public View addBaseContenetView(LinearLayout view) {
         View inflate = LayoutInflater.from(this).inflate(R.layout.activity_list, null, false);
         parent = inflate.findViewById(R.id.parent);
-        layoutView = inflate.findViewById(R.id.mineLayout);
-
-//        MineViewList list = new MineViewList(this);
-//        list.setList();
         return parent;
     }
 
@@ -54,11 +45,18 @@ public class ListActivity extends BaseActivity {
                     }
                     break;
                 case "MineViewList":
-                    MineViewList list = new MineViewList(this);
+                    MineViewLayout list = new MineViewLayout(this);
                     list.init(objects);
                     parent.addView(list);
-                    layoutView.init(objects);
+                    break;
 
+                case "TitleView":
+                    ArrayList<JSONObject> titleViewObject = MyJsonUtil.JsonArray2JsonObject(objects);
+                    for (JSONObject jsonObject : titleViewObject) {
+                        TitleView titleview = new TitleView(this);
+                        titleview.init(jsonObject);
+                        parent.addView(titleview);
+                    }
                     break;
             }
         }

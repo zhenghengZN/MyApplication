@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.item;
+package so.bubu.ui.test.mylibrary.item.inputlist;
 
 import android.content.Context;
 import android.graphics.Bitmap;

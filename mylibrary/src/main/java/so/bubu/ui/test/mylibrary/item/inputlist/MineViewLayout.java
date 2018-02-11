@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.item;
+package so.bubu.ui.test.mylibrary.item.inputlist;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,21 +11,23 @@ import org.json.JSONArray;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
- * Created by zhengheng on 18/2/8.
+ * Created by zhengheng on 18/2/11.
  */
 public class MineViewLayout extends LinearLayout {
     public MineViewLayout(Context context) {
         this(context, null);
     }
-    private MineViewList mineViewList ;
+
+    private MineViewList mineviewlist;
+
     public MineViewLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
-        View view = LayoutInflater.from(context).inflate(R.layout.mineviewlayout, this, true);
-        mineViewList = (MineViewList) view.findViewById(R.id.mineViewList);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.mineviewlayout, this, true);
+        mineviewlist = (MineViewList) inflate.findViewById(R.id.mineViewList);
     }
 
-    public void init(JSONArray list){
-        mineViewList.init(list);
+    public void init(JSONArray list) {
+        mineviewlist.init(list);
     }
 }

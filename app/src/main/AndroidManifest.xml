@@ -34,16 +34,16 @@
         <!-- <activity android:name="Activity.ImagePageActivity"/> -->
         <activity
             android:name=".ButtonActivity"
-            android:label="@string/title_activity_button">
+            android:label="@string/title_activity_button"></activity>
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/title_activity_list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ListActivity"
-            android:label="@string/title_activity_list"></activity>
         <activity android:name=".DialogActivity"></activity>
         <activity android:name=".SuccessActivity"></activity>
     </application>

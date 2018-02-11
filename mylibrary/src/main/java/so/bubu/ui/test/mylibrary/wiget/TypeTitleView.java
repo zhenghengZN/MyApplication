@@ -12,8 +12,10 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import Utils.MyJsonUtil;
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 
@@ -66,18 +68,15 @@ public class TypeTitleView extends LinearLayout {
         this.addView(titleName);
     }
 
-    public void init(JSONObject objects) {
+    public void init(JSONObject object) {
         this.setLayoutParams(lp);
-        try {
-            String title = (String) objects.get("title");
-            String titleName = (String) objects.get("titleName");
-            String backgroundColor = (String) objects.get("backgroundColor");
-            int color = Color.parseColor(backgroundColor);
-            this.title.setText(title);
-            this.titleName.setText(titleName);
-            setBackgroundColor(color);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        HashMap<String, Object> objects = MyJsonUtil.JSONObject2HashMap(object);
+        String title = (String) objects.get("title");
+        String titleName = (String) objects.get("titleName");
+        String backgroundColor = (String) objects.get("backgroundColor");
+        int color = Color.parseColor(backgroundColor);
+        this.title.setText(title);
+        this.titleName.setText(titleName);
+        setBackgroundColor(color);
     }
 }

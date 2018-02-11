@@ -7,11 +7,4 @@
     tools:context="so.bubu.ui.test.myapplication.ListActivity">
 
 
-    <so.bubu.ui.test.mylibrary.item.MineViewLayout
-        android:id="@+id/mineLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </so.bubu.ui.test.mylibrary.item.MineViewLayout>
-
 </LinearLayout>
