@@ -373,12 +373,7 @@ public class StrokeButton extends Button {
         mRadius = 5;
         mBgPressedColor = getResources().getColor(R.color.color_006400);
         buildDraweableState();
-        try {
-            String title = (String) object.get("title");
-            setText(title);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        init(object);
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
