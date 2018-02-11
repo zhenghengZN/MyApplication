@@ -58,7 +58,7 @@ public class ConfirmDialog extends Dialog implements View.OnClickListener {
     }
 
     public void setContentColor() {
-        if (StringUtils.isNull(title)) {
+        if (!StringUtils.isNull(title)) {
             sup.setVisibility(View.GONE);
             content.setTextColor(Color.BLACK);
             dialogTitle.setVisibility(View.GONE);

@@ -50,8 +50,6 @@ public class SuccessActivity extends Activity {
         getData();
     }
 
-
-    //    pri
     public void getData() {
         String msg = MyJsonUtil.getJson(this, "getMsg");
         ArrayList<LinkedHashMap<String, Object>> weightList = MyJsonUtil.getWeightList(msg);
