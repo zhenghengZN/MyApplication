@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.page;
+package so.bubu.ui.test.mylibrary.page.tab;
 
 
 import android.os.Bundle;
@@ -14,6 +14,13 @@ import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import Utils.MyJsonUtil;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.FatherViewPager;
 
@@ -24,38 +31,43 @@ public abstract class TabBaseFragment extends Fragment {
 
 
     public TabBaseFragment() {
-        // Required empty public constructor
     }
-
 
     private View view;
     private SlidingTabLayout tab;
     private FatherViewPager pager;
-
+    private ArrayList<Fragment> list = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        if (view == null) {
+
         view = inflater.inflate(R.layout.tabview_layout, null);
-//            LinearLayout content = (LinearLayout) view.findViewById(R.id.content);
         pager = (FatherViewPager) view.findViewById(R.id.tab_viewpager);
-        pager.setAdapter(setPagerAdapter());
-//            content.addView(addBaseContenetView(view));
+        TabAdapter tabAdapter = new TabAdapter(getChildFragmentManager(), titles);
+        tabAdapter.setFragment(list);
+        pager.setAdapter(tabAdapter);
         tab = (SlidingTabLayout) view.findViewById(R.id.taobao_slidingTabLayout);
         tab.setViewPager(pager);
         doInOnCreateView(view, pager);
-//        }
         return view;
     }
 
-    public abstract PagerAdapter setPagerAdapter();
+    private ArrayList<String> titles = new ArrayList<>();
 
-//    public abstract View addBaseContenetView(View parentView);
+    public void init(JSONArray array) {
+        ArrayList<JSONObject> jsonObjects = MyJsonUtil.JsonArray2JsonObject(array);
+        for (JSONObject object : jsonObjects) {
+            try {
+                String title = (String) object.get("title");
+                titles.add(title);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public void setFragment(ArrayList<Fragment> list){
+        this.list = list;
+    }
 
     public abstract void doInOnCreateView(View parentView, FatherViewPager pager);
-
-
-    public void tabViewSetViewPager() {
-
-    }
 }

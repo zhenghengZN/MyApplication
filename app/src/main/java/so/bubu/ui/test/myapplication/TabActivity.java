@@ -1,19 +1,13 @@
 package so.bubu.ui.test.myapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import so.bubu.ui.test.mylibrary.page.TabBaseFragment;
+import so.bubu.ui.test.mylibrary.page.tab.TabBaseFragment;
 import so.bubu.ui.test.mylibrary.wiget.FatherViewPager;
 
 public class TabActivity extends AppCompatActivity {
