@@ -1,46 +1,35 @@
 package so.bubu.ui.test.myapplication;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import Utils.MyJsonUtil;
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.button.SolidButton;
 import so.bubu.ui.test.mylibrary.input.ChooseInputView;
 import so.bubu.ui.test.mylibrary.input.FormView;
-import so.bubu.ui.test.mylibrary.input.SingleCheckbox;
 import so.bubu.ui.test.mylibrary.input.SwitchLayout;
 import so.bubu.ui.test.mylibrary.input.TextArea;
 import so.bubu.ui.test.mylibrary.input.TextEditText;
 import so.bubu.ui.test.mylibrary.page.common.BaseActivity;
 import so.bubu.ui.test.mylibrary.wiget.TitleView;
 import so.bubu.ui.test.mylibrary.wiget.TypeTitleView;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.AboutCheckBox;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckListLayout;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
+import so.bubu.ui.test.mylibrary.input.checkBox.AboutCheckBox;
+import so.bubu.ui.test.mylibrary.input.checkBox.CheckGroup;
+import so.bubu.ui.test.mylibrary.input.checkBox.CheckListLayout;
 
 /**
  * Created by zhengheng on 18/1/26.
@@ -152,28 +141,6 @@ public class TestActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-//        HashMap<String, Object> weights = new HashMap<>();
-
-//        JSONArray jsonArray = new JSONArray();
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            try {
-//                JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                Iterator<String> keys = jsonObject.keys();
-//                LinkedHashMap<String, Object> weights = new LinkedHashMap<>();
-//                while (keys.hasNext()) {
-//                    String key = keys.next();
-//                    Object o = jsonObject.get(key);
-//                    weights.put(key, o);
-//                    //保存了所有控件, 去除控件红的object,内部可能会有不同
-////                    SparseArray
-//                }
-//                array.add(weights);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
 
 
         for (LinkedHashMap<String, Object> object : array) {

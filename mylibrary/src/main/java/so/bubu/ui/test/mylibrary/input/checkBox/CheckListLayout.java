@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.wiget.checkBox;
+package so.bubu.ui.test.mylibrary.input.checkBox;
 
 import android.content.Context;
 import android.util.AttributeSet;

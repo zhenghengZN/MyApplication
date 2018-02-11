@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package so.bubu.ui.test.mylibrary.wiget.checkBox;
+package so.bubu.ui.test.mylibrary.input.checkBox;
 
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;

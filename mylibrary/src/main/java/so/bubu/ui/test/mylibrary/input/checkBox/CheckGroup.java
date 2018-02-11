@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.wiget.checkBox;
+package so.bubu.ui.test.mylibrary.input.checkBox;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,10 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 
 
 import org.json.JSONArray;
@@ -25,8 +23,8 @@ import java.util.List;
 import Utils.ResourceUtil;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.NoScrollListView;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.Option;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.entity.OptionWrapper;
+import so.bubu.ui.test.mylibrary.input.checkBox.entity.Option;
+import so.bubu.ui.test.mylibrary.input.checkBox.entity.OptionWrapper;
 
 public class CheckGroup extends NoScrollListView implements AdapterView.OnItemClickListener {
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <so.bubu.ui.test.mylibrary.wiget.checkBox.CheckBox
+    <so.bubu.ui.test.mylibrary.input.checkBox.CheckBox
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/aboutcheckbox"
         android:layout_width="match_parent"

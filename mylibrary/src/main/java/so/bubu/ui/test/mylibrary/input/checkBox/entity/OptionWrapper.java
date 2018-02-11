@@ -1,4 +1,4 @@
-package so.bubu.ui.test.mylibrary.wiget.checkBox.entity;
+package so.bubu.ui.test.mylibrary.input.checkBox.entity;
 
 import android.text.TextUtils;
 

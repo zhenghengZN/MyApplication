@@ -130,19 +130,19 @@
 
     <!--</so.bubu.ui.test.mylibrary.input.TextArea>-->
 
-    <!--<so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup-->
+    <!--<so.bubu.ui.test.mylibrary.input.checkBox.CheckGroup-->
     <!--android:id="@+id/CheckGroup"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
     <!--app:isleftcheckbox="false">-->
 
-    <!--</so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup>-->
+    <!--</so.bubu.ui.test.mylibrary.input.checkBox.CheckGroup>-->
 
-    <!--<so.bubu.ui.test.mylibrary.wiget.checkBox.AboutCheckBox-->
+    <!--<so.bubu.ui.test.mylibrary.input.checkBox.AboutCheckBox-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content">-->
 
-    <!--</so.bubu.ui.test.mylibrary.wiget.checkBox.AboutCheckBox>-->
+    <!--</so.bubu.ui.test.mylibrary.input.checkBox.AboutCheckBox>-->
 
     <!--<so.bubu.ui.test.mylibrary.wiget.form.FormDatePick-->
         <!--android:layout_width="match_parent"-->

@@ -9,12 +9,12 @@
         android:layout_height="0.5dp"
         android:background="@color/color_b2b2b2" />
 
-    <so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup
+    <so.bubu.ui.test.mylibrary.input.checkBox.CheckGroup
         android:id="@+id/checkgroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </so.bubu.ui.test.mylibrary.wiget.checkBox.CheckGroup>
+    </so.bubu.ui.test.mylibrary.input.checkBox.CheckGroup>
 
     <View
         android:layout_width="match_parent"

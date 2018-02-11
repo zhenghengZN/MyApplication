@@ -1,31 +1,25 @@
-package so.bubu.ui.test.mylibrary.wiget.checkBox;
+package so.bubu.ui.test.mylibrary.input.checkBox;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.LinkedHashMap;
 
 import so.bubu.ui.test.mylibrary.R;
-import so.bubu.ui.test.mylibrary.wiget.checkBox.CheckBox;
+
 
 /**
  * Created by zhengheng on 18/1/31.
@@ -41,7 +35,7 @@ public class AboutCheckBox extends LinearLayout {
     public AboutCheckBox(final Context context, AttributeSet attrs) {
         super(context, attrs);
         this.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        this.setBackgroundColor(Color.WHITE);
+        this.setBackgroundColor(Color.TRANSPARENT);
         inflate = LayoutInflater.from(context).inflate(R.layout.aboutcheckbox, null, false);
         checkbox = (CheckBox) inflate.findViewById(R.id.aboutcheckbox);
         checkbox.setBackgroundColor(Color.WHITE);
