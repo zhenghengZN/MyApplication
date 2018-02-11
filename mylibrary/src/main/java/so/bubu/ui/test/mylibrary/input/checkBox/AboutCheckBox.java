@@ -38,11 +38,8 @@ public class AboutCheckBox extends LinearLayout {
         this.setBackgroundColor(Color.TRANSPARENT);
         inflate = LayoutInflater.from(context).inflate(R.layout.aboutcheckbox, null, false);
         checkbox = (CheckBox) inflate.findViewById(R.id.aboutcheckbox);
-        checkbox.setBackgroundColor(Color.WHITE);
+        checkbox.setBackgroundColor(Color.TRANSPARENT);
         final TextView textView = checkbox.getTextView();
-//        textView.setBackground(context.getResources().getDrawable(R.drawable.text_clickable_span));
-
-//        String text = checkbox.getText();
         String s = "阅读并同意 <<相关条款>>";
         SpannableString spannableString = new SpannableString(s);
         //设置文字的单击事件
@@ -50,8 +47,6 @@ public class AboutCheckBox extends LinearLayout {
             @Override
             public void onClick(View widget) {
                 Toast.makeText(context, "xgtk", Toast.LENGTH_SHORT).show();
-//                checkbox.toggle();
-//                textView.requestFocus();
             }
 
             @Override
@@ -88,7 +83,6 @@ public class AboutCheckBox extends LinearLayout {
 
     public void init(LinkedHashMap<String, Object> objects) {
         this.objects = objects;
-//        object.put("value")
     }
 
     public boolean isCheck() {

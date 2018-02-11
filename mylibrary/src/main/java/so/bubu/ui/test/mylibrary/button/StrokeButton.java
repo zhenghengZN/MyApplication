@@ -370,9 +370,6 @@ public class StrokeButton extends Button {
 
 
     public void setSubmitButton(JSONObject object, final ArrayList<LinkedHashMap<String, Object>> inputWeight) {
-        mRadius = 5;
-        mBgPressedColor = getResources().getColor(R.color.color_006400);
-        buildDraweableState();
         init(object);
         this.setOnClickListener(new OnClickListener() {
             @Override
