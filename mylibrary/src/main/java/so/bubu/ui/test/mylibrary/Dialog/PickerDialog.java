@@ -94,12 +94,18 @@ public class PickerDialog extends Dialog implements PickTimeView.onSelectedChang
 //        pickPhone.setValueData(phoneVaule, defaultValue);
         ArrayList<String> strings = new ArrayList<>();
         ArrayList<JSONObject> jsonObjects = MyJsonUtil.JsonArray2JsonObject(array);
-        for(JSONObject object: jsonObjects) {
+        for (JSONObject object : jsonObjects) {
             HashMap<String, Object> objectHashMap = MyJsonUtil.JSONObject2HashMap(object);
             String value = (String) objectHashMap.get("value");
             strings.add(value);
         }
         String[] phoneVaule = strings.toArray(new String[strings.size()]);
+        this.phoneVaule = phoneVaule;
+        this.defaultValue = defaultValue;
+    }
+
+
+    public void setPickViewValue(String[] phoneVaule, Object defaultValue) {
         this.phoneVaule = phoneVaule;
         this.defaultValue = defaultValue;
     }

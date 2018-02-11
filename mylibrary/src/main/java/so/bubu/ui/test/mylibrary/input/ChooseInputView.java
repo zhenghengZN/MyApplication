@@ -21,7 +21,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import Utils.MyJsonUtil;
 import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.Dialog.PickerDialog;
 import so.bubu.ui.test.mylibrary.R;
@@ -100,8 +102,9 @@ public class ChooseInputView extends LinearLayout {
     private ArrayList<String> titles = new ArrayList<>();
     private JSONObject object;
 
-    public void init(JSONObject object) {
-        this.object = object;
+    public void init(JSONObject objects) {
+        this.object = objects;
+        HashMap<String, Object> object = MyJsonUtil.JSONObject2HashMap(objects);
         try {
             String hint = (String) object.get("placeholder");
             phoneNum.setHint(hint);
