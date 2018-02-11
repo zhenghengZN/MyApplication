@@ -13,7 +13,7 @@
         android:descendantFocusability="blocksDescendants"
         app:checkBoxHeight="13dp"
         app:checkBoxWidth="13dp"
-        app:colorChecked="#aaffaa"
+        app:colorChecked="@color/btn_primary_active"
         app:middlePadding="2dp"
         app:shape="square"
         app:text=""

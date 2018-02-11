@@ -130,11 +130,20 @@ public class StrokeButton extends Button {
         //添加到状态管理里面
         drawable.addState(mPressState, pressedDrawable);
 
-        GradientDrawable disableDrawable = new GradientDrawable();
-        disableDrawable.setStroke(mStrokeWidth, mBgDisableColor);
-        disableDrawable.setCornerRadii(outRectr);
-        disableDrawable.setColor(mSolidDisableColor);
-        drawable.addState(mDisableState, disableDrawable);
+        GradientDrawable disableDrawable2 = new GradientDrawable();
+        disableDrawable2.setStroke(mStrokeWidth, mBgDisableColor);
+        disableDrawable2.setCornerRadii(outRectr);
+        disableDrawable2.setColor(mSolidDisableColor);
+//        disableDrawable2.setAlpha(0Xee);
+        drawable.addState(mDisableState, disableDrawable2);
+
+
+//        GradientDrawable disableDrawable = new GradientDrawable();
+//        disableDrawable.setStroke(mStrokeWidth, mBgDisableColor);
+//        disableDrawable.setCornerRadii(outRectr);
+////        disableDrawable.setColor(mSolidDisableColor);
+////        disableDrawable.setAlpha(0X99);
+//        drawable.addState(mDisableState, disableDrawable);
 
         GradientDrawable normalDrawable = new GradientDrawable();
         normalDrawable.setStroke(mStrokeWidth, mBgNormalColor);
@@ -302,8 +311,8 @@ public class StrokeButton extends Button {
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         if (!enabled) {
-            this.mTextNormalColor = getResources().getColor(R.color.color_un_select);
-            setAlpha(0.4f);
+            this.mTextNormalColor = getResources().getColor(R.color.disable_text_color);
+//            setAlpha(0.9f);
         }
     }
 
@@ -313,6 +322,9 @@ public class StrokeButton extends Button {
     }
 
     public void setTypeStyle(String type) {
+        if(!StringUtils.isNull(type)){
+            return;
+        }
         switch (type) {
             case DEFAULT:
                 mTextNormalColor = Color.BLACK;
@@ -360,10 +372,10 @@ public class StrokeButton extends Button {
                 mBgPressedColor = getColor(R.color.btn_primary_bg);
                 break;
 
-            default:
-                mSolidDisableColor = getColor(R.color.btn_default_disable);
-                mTextDisableColor = getColor(R.color.btn_default_active);
-                mBgDisableColor = getColor(R.color.btn_default_active);
+//            default:
+//                mSolidDisableColor = getColor(R.color.btn_default_disable);
+//                mTextDisableColor = getColor(R.color.btn_default_active);
+//                mBgDisableColor = getColor(R.color.btn_default_active);
         }
         setTextSize(18);
     }

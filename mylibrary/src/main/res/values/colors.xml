@@ -52,4 +52,6 @@
     <color name="btn_warn_activie_border_color">#66E64340</color>
 
     <color name="link_color">#586C94</color>
+
+    <color name="disable_text_color">#E6E6E6</color>
 </resources>

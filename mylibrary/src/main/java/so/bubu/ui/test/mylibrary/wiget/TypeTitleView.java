@@ -41,7 +41,7 @@ public class TypeTitleView extends LinearLayout {
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER_VERTICAL);
         setPadding(mWidth, mHeight, 0, mHeight);
-        setBackgroundColor(mBgColor);
+        setBackgroundColor(Color.TRANSPARENT);
         this.context = context;
         initView();
     }
