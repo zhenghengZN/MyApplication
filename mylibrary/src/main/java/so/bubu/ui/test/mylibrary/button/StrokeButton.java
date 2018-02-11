@@ -240,7 +240,7 @@ public class StrokeButton extends Button {
                 break;
             case SMALL:
 
-                setTextSize(14);
+                setTextSize(12);
                 lp.width = (int) (ResourceUtil.getDeviceWidth((Activity) context) * 0.15);
                 lp.height = ResourceUtil.Dp2Px(35);
                 break;
@@ -264,7 +264,6 @@ public class StrokeButton extends Button {
         String title = (String) object.get("title");
         String size = (String) object.get("size");
         String type = (String) object.get("type");
-        setSize(size);
 
         String noramlTextColor = (String) object.get("noramlTextColor");
         String normalStrokeColor = (String) object.get("normalStrokeColor");
@@ -300,6 +299,7 @@ public class StrokeButton extends Button {
             setEnabled(state);
         }
         setTypeStyle(type);
+        setSize(size);
         buildDraweableState();
         this.setEnabled(state);
         buildColorDrawableState();

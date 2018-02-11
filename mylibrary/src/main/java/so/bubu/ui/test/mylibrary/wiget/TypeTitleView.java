@@ -17,6 +17,7 @@ import java.util.LinkedHashMap;
 
 import Utils.MyJsonUtil;
 import Utils.ResourceUtil;
+import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
@@ -27,7 +28,7 @@ public class TypeTitleView extends LinearLayout {
         this(context, null);
     }
 
-    private int mHeight = ResourceUtil.Dp2Px(40);
+    private int mHeight = ResourceUtil.Dp2Px(60);
     private int mWidth = ResourceUtil.Dp2Px(30);
     private int mBigTextSize = 17;
     private int mSmallTextSize = 15;
@@ -74,9 +75,11 @@ public class TypeTitleView extends LinearLayout {
         String title = (String) objects.get("title");
         String titleName = (String) objects.get("titleName");
         String backgroundColor = (String) objects.get("backgroundColor");
-        int color = Color.parseColor(backgroundColor);
+        if(StringUtils.isNull(backgroundColor)) {
+            int color = Color.parseColor(backgroundColor);
+            setBackgroundColor(color);
+        }
         this.title.setText(title);
         this.titleName.setText(titleName);
-        setBackgroundColor(color);
     }
 }

@@ -13,8 +13,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import Utils.MyJsonUtil;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
@@ -29,7 +34,13 @@ public class ActionSheet extends Dialog implements AdapterView.OnItemClickListen
     }
 
 
-    public void init(ArrayList<String> titles) {
+    public void init(JSONArray array) {
+        ArrayList<JSONObject> jsonObjects = MyJsonUtil.JsonArray2JsonObject(array);
+        for (JSONObject object : jsonObjects) {
+            HashMap<String, Object> objectHashMap = MyJsonUtil.JSONObject2HashMap(object);
+            String title = (String) objectHashMap.get("title");
+            titles.add(title);
+        }
         this.titles = titles;
 //        adapter.notifyDataSetChanged();
     }

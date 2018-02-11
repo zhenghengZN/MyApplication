@@ -24,7 +24,7 @@ public class DialogActivity extends BaseActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ActionSheet actionSheet = new ActionSheet(DialogActivity.this);
+                ActionSheet actionSheet = new ActionSheet(DialogActivity.this);
 //                actionSheet.init(titles);
 //                actionSheet.show();
                 ConfirmDialog confirmdialog = new ConfirmDialog(DialogActivity.this);

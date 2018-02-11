@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import Utils.MyJsonUtil;
 import Utils.StringUtils;
 import so.bubu.ui.test.mylibrary.R;
 
@@ -77,7 +78,8 @@ public class ConfirmDialog extends Dialog implements View.OnClickListener {
 
     private String title, desc, majorUrl, supUrl, majorTitle, supTitle;
 
-    public void init(HashMap<String, Object> object) {
+    public void init(JSONObject objects) {
+        HashMap<String, Object> object = MyJsonUtil.JSONObject2HashMap(objects);
         title = (String) object.get("title");
         desc = (String) object.get("desc");
         majorUrl = (String) object.get("majorUrl");

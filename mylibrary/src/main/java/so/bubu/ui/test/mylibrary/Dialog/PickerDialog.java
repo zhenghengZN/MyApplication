@@ -11,8 +11,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import Utils.MyJsonUtil;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.wiget.pickTimeView.PickTimeView;
 import so.bubu.ui.test.mylibrary.wiget.pickTimeView.PickValueView;
@@ -84,8 +90,16 @@ public class PickerDialog extends Dialog implements PickTimeView.onSelectedChang
     private String[] phoneVaule;
     private Object defaultValue;
 
-    public void setPickViewValue(String[] phoneVaule, Object defaultValue) {
+    public void setPickViewValue(JSONArray array, Object defaultValue) {
 //        pickPhone.setValueData(phoneVaule, defaultValue);
+        ArrayList<String> strings = new ArrayList<>();
+        ArrayList<JSONObject> jsonObjects = MyJsonUtil.JsonArray2JsonObject(array);
+        for(JSONObject object: jsonObjects) {
+            HashMap<String, Object> objectHashMap = MyJsonUtil.JSONObject2HashMap(object);
+            String value = (String) objectHashMap.get("value");
+            strings.add(value);
+        }
+        String[] phoneVaule = strings.toArray(new String[strings.size()]);
         this.phoneVaule = phoneVaule;
         this.defaultValue = defaultValue;
     }
