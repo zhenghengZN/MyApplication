@@ -7,6 +7,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import so.bubu.ui.test.mylibrary.page.tab.TabBaseFragment;
 import so.bubu.ui.test.mylibrary.wiget.FatherViewPager;
 
@@ -20,10 +22,14 @@ public class TabActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction bt = manager.beginTransaction();
         TabBaseFragment tabBaseFragment = new TabBaseFragment() {
-            @Override
             public PagerAdapter setPagerAdapter() {
                 MyPagerAdapter myPagerAdapter = new MyPagerAdapter(TabActivity.this.getSupportFragmentManager());
                 return myPagerAdapter;
+            }
+
+            @Override
+            public ArrayList setFragment(ArrayList list) {
+                return null;
             }
 
             @Override

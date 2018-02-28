@@ -27,7 +27,7 @@ import so.bubu.ui.test.mylibrary.wiget.FatherViewPager;
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class TabBaseFragment extends Fragment {
+public abstract class TabBaseFragment<T extends Fragment> extends Fragment {
 
 
     public TabBaseFragment() {
@@ -36,14 +36,14 @@ public abstract class TabBaseFragment extends Fragment {
     private View view;
     private SlidingTabLayout tab;
     private FatherViewPager pager;
-    private ArrayList<Fragment> list = new ArrayList<>();
+    private ArrayList<T> list = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.tabview_layout, null);
         pager = (FatherViewPager) view.findViewById(R.id.tab_viewpager);
         TabAdapter tabAdapter = new TabAdapter(getChildFragmentManager(), titles);
-        tabAdapter.setFragment(list);
+        tabAdapter.setFragment(setFragment(list));
         pager.setAdapter(tabAdapter);
         tab = (SlidingTabLayout) view.findViewById(R.id.taobao_slidingTabLayout);
         tab.setViewPager(pager);
@@ -65,9 +65,7 @@ public abstract class TabBaseFragment extends Fragment {
         }
     }
 
-    public void setFragment(ArrayList<Fragment> list){
-        this.list = list;
-    }
+    public abstract <T extends Fragment> ArrayList<T> setFragment(ArrayList<T> list);
 
     public abstract void doInOnCreateView(View parentView, FatherViewPager pager);
 }

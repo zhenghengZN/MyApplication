@@ -9,18 +9,18 @@
         android:id="@+id/base_top"
         layout="@layout/common_activity_menu" />
 
-    <android.support.v4.widget.NestedScrollView
+    <so.bubu.ui.test.mylibrary.wiget.MyScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/base_scroll_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/base_scroll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
-    </LinearLayout>
+        </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </so.bubu.ui.test.mylibrary.wiget.MyScrollView>
 </LinearLayout>

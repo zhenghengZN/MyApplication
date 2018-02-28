@@ -10,10 +10,10 @@ import java.util.ArrayList;
 /**
  * Created by zhengheng on 18/2/11.
  */
-public class TabAdapter extends FragmentStatePagerAdapter {
+public class TabAdapter<T extends Fragment> extends FragmentStatePagerAdapter {
 
     private ArrayList<String> title = new ArrayList<>();
-    private ArrayList<Fragment> list = new ArrayList<>();
+    private ArrayList<T> list = new ArrayList<>();
     public TabAdapter(FragmentManager fm, ArrayList<String> title) {
         super(fm);
         this.title = title;
@@ -21,7 +21,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return list.get(position);
+        return (T)list.get(position);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
         return title.get(position);
     }
 
-    public void setFragment(ArrayList<Fragment> list){
+    public void setFragment(ArrayList<T> list){
         this.list = list;
     }
 }
