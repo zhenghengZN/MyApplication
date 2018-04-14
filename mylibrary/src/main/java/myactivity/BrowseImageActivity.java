@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 
-import Utils.DividerGridItemDecoration;
+import so.bubu.ui.test.mylibrary.wiget.DividerGridItemDecoration;
 import so.bubu.ui.test.mylibrary.R;
 import so.bubu.ui.test.mylibrary.page.common.BaseCompatActivity;
 
@@ -15,7 +15,7 @@ import so.bubu.ui.test.mylibrary.page.common.BaseCompatActivity;
 /**
  * 浏览图片
  */
-public abstract class BrowseImageActivity extends BaseCompatActivity {
+public class BrowseImageActivity extends BaseCompatActivity {
 
     public static final String URL = "url";
 
@@ -52,19 +52,21 @@ public abstract class BrowseImageActivity extends BaseCompatActivity {
         super.initData();
 
         dataList = getIntent().getStringArrayExtra(URL);
+//        dataList = new String[]{"http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg", "http://gd2.alicdn.com/imgextra/i2/1810079026/TB2vMVedZbI8KJjy1zdXXbe1VXa_!!1810079026.jpg"};
 //        rcvImage.addItemDecoration(new GridLayoutItemDecoration(ResourceHelper.Dp2Px(4), 0 == dataList.length % 3 ? dataList.length / 3 : dataList.length / 3 + 1, dataList.length));
-        browseImageAdapter = new BrowseImageAdapter(this, dataList)
-        {
+        browseImageAdapter = new BrowseImageAdapter(this, dataList) {
             @Override
             public void ImageOnClick(Context ctx, int position, String[] dataList) {
 //                ImagePageActivity.imageBrower(act, position, dataList);
-                setImagePhotoOnclick(ctx,position,dataList);
+//                setImagePhotoOnclick(ctx,position,dataList);
+                ImagePageActivity.imageBrower(BrowseImageActivity.this, ImagePageActivity.class, position, dataList);
+
             }
         };
         rcvImage.setAdapter(browseImageAdapter);
     }
 
-    public abstract void setImagePhotoOnclick(Context ctx, int position, String[] dataList);
+//    public abstract void setImagePhotoOnclick(Context ctx, int position, String[] dataList);
 
     @Override
     protected void doBack(int keyCode, KeyEvent event) {

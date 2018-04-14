@@ -33,7 +33,11 @@ public abstract class BrowseImageAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return dataList.length;
+        if (dataList == null || dataList.length == 0) {
+            return 0;
+        } else {
+            return dataList.length;
+        }
     }
 
     @Override

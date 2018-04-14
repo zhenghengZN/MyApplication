@@ -10,8 +10,8 @@ import myactivity.BrowseImageActivity;
  */
 public class PhotoActivity extends BrowseImageActivity {
 
-    @Override
-    public void setImagePhotoOnclick(Context ctx, int position, String[] dataList) {
-        ImageActivity.imageBrower(PhotoActivity.this, ImageActivity.class, position, dataList);
-    }
+//    @Override
+//    public void setImagePhotoOnclick(Context ctx, int position, String[] dataList) {
+//        ImageActivity.imageBrower(PhotoActivity.this, ImageActivity.class, position, dataList);
+//    }
 }

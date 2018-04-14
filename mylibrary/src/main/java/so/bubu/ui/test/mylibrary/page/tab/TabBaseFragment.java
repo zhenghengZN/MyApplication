@@ -37,21 +37,21 @@ public abstract class TabBaseFragment<T extends Fragment> extends Fragment {
     private SlidingTabLayout tab;
     private FatherViewPager pager;
     private ArrayList<T> list = new ArrayList<>();
+    private ArrayList<String> titles = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.tabview_layout, null);
         pager = (FatherViewPager) view.findViewById(R.id.tab_viewpager);
-        TabAdapter tabAdapter = new TabAdapter(getChildFragmentManager(), titles);
-        tabAdapter.setFragment(setFragment(list));
-        pager.setAdapter(tabAdapter);
         tab = (SlidingTabLayout) view.findViewById(R.id.taobao_slidingTabLayout);
+        TabAdapter tabAdapter = new TabAdapter(getChildFragmentManager(), titles);
+//        tabAdapter.setFragment(setFragment(list));
+        pager.setAdapter(tabAdapter);
         tab.setViewPager(pager);
         doInOnCreateView(view, pager);
         return view;
     }
-
-    private ArrayList<String> titles = new ArrayList<>();
 
     public void init(JSONArray array) {
         ArrayList<JSONObject> jsonObjects = MyJsonUtil.JsonArray2JsonObject(array);

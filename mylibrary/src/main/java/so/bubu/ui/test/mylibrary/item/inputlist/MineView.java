@@ -22,6 +22,7 @@ import java.util.LinkedHashMap;
 import Utils.GlideHelper;
 import Utils.MyJsonUtil;
 import Utils.StringUtils;
+import Utils.UrlUtils;
 import so.bubu.ui.test.mylibrary.R;
 
 /**
@@ -49,6 +50,7 @@ public class MineView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), url, Toast.LENGTH_LONG).show();
+                UrlUtils.openUrl(url);
             }
         });
     }
@@ -81,6 +83,5 @@ public class MineView extends LinearLayout {
             rightIcon.setVisibility(VISIBLE);
         }
     }
-
 
 }
